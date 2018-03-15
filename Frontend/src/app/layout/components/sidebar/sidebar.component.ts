@@ -1,18 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent {
   isActive: boolean = false;
   showMenu: string = '';
   pushRightClass: string = 'push-right';
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor( public router: Router ) {
+    this.router.events.subscribe(val => {
+      if (
+        val instanceof NavigationEnd &&
+        window.innerWidth <= 992 &&
+        this.isToggled()
+      ) {
+        this.toggleSidebar();
+      }
+    });
   }
 
   eventCalled() {
