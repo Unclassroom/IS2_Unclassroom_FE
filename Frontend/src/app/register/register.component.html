@@ -1,0 +1,29 @@
+<div class="login-page" [@routerTransition]>
+  <div class="row justify-content-md-center">
+    <div class="col-md-4">
+      <img class="user-avatar" src="assets/images/logo.png" width="300px" />
+
+      <form role="form">
+        <div class="form-content">
+          <div class="form-group">
+            <input type="text" class="form-control input-underline input-lg" id="" placeholder="Full Name">
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control input-underline input-lg" id="" placeholder="Email">
+          </div>
+
+          <div class="form-group">
+            <input type="password" class="form-control input-underline input-lg" id="" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control input-underline input-lg" id="" placeholder="Repeat Password">
+          </div>
+        </div>
+
+        <a class="btn rounded-btn" id="log" [routerLink]="['/dashboard']"> Register </a>&nbsp;
+        <a class="btn rounded-btn"  id="reg" [routerLink]="['/login']"> Log in </a>
+      </form>
+    </div>
+  </div>
+</div>
