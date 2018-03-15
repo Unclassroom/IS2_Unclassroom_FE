@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', loadChildren: './layout/layout.module#LayoutModule'}
+  { path: '', loadChildren: './layout/layout.module#LayoutModule'},
+  { path: 'login', loadChildren: './login/login.module#LoginModule' }
+
 ];
 // agregar rutas al nivel de la raiz
 

@@ -1,25 +1,9 @@
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
   <div class="list-group">
     <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
-      <i class="fa fa-fw fa-dashboard"></i>&nbsp;Dashboard
-    </a>
-    <a [routerLink]="['/charts']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-      <i class="fa fa-fw fa-bar-chart-o"></i>&nbsp;Dashboard
-    </a>
-    <a [routerLink]="['/tables']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-      <i class="fa fa-fw fa-table"></i>&nbsp;Dashboard
-    </a>
-    <a [routerLink]="['/forms']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-      <i class="fa fa-fw fa-edit"></i>&nbsp;Dashboard
-    </a>
-    <a [routerLink]="['/bs-element']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-      <i class="fa fa-fw fa-desktop"></i>&nbsp;Dashboard
-    </a>
-    <a [routerLink]="['/grid']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-      <i class="fa fa-fw fa-wrench"></i>&nbsp;Dashboard
-    </a>
-    <a [routerLink]="['/components']" [routerLinkActive]="['router-link-active']" class="list-group-item">
-      <i class="fa fa-th-list"></i>Dashboard
+      <i class="fa fa-fw fa-dashboard"></i>&nbsp;
     </a>
     <div class="nested-menu">
       <a class="list-group-item" (click)="addExpandClass('pages')">
