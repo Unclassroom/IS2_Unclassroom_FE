@@ -37,10 +37,10 @@
 }
 .sidebar .list-group a:hover {
   background: #eeeeee;
-  color: #fff;
+  color: #93B360;
 }
 .sidebar .list-group a.router-link-active {
-  background: #eeeeee;
+  background: #95B452;
   color: #fff;
 }
 .sidebar .list-group .header-fields {
@@ -112,7 +112,7 @@
   height: auto;
 }
 .nested-menu .expand ul.submenu li a {
-  color: #fff;
+  color: #3EA5B9;
   padding: 10px;
   display: block;
 }
