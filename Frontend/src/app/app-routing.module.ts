@@ -4,7 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import {BuzonentradaModule} from './layout/buzonentrada/buzonentrada.module';
 
 const routes: Routes = [
-  { path: '', loadChildren: './layout/layout.module#LayoutModule'},
+  { path: '', loadChildren: './landing/landing.module#LandingModule'},
+  { path: 'home', loadChildren: './layout/layout.module#LayoutModule'},
   { path: 'login', loadChildren: './login/login.module#LoginModule' },
   { path: 'register', loadChildren: './register/register.module#RegisterModule' }
 ];
