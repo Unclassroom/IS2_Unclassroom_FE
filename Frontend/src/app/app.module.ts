@@ -12,6 +12,8 @@ import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { Angular2TokenService } from 'angular2-token';
+import { HttpModule } from '@angular/http';
 
 
 @NgModule({
@@ -23,9 +25,13 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [
+    Angular2TokenService,
+    HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
