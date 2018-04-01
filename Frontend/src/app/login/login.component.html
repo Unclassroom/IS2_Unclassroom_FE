@@ -2,26 +2,59 @@
   <div class="row justify-content-md-center">
       <div class="col-md-4">
           <img src="assets/images/logo.png" width="300px"  class="user-avatar" />
-          <form role="form">
+          <form role="form" (ngSubmit)="onSignInSubmit()" #f="ngForm" >
               <div class="form-content">
                   <div class="form-group">
-                      <input type="text" ng-model="name"
-                      class="form-control input-underline input-lg" id="" placeholder="Email">
+                      <input 
+                        id="email"
+                        type="email"
+                        required 
+                        [(ngModel)]="signInUser.email"
+                        name="email"
+                        placeholder="Email"
+                        class="validate">
+                        <!-- <input id="email"
+                        type="email"
+                        name='email' 
+                        [(ngModel)]="signInUser.email" 
+                        placeholder="Email"
+                        > -->
                   </div>
+
                   <div class="form-group">
-                      <input type="password" class="form-control input-underline input-lg"
-                      id="" placeholder="Password">
+                      <input 
+                      id="password"
+                      type="password" 
+                      required 
+                      [(ngModel)]="signInUser.password"
+                      name="password"
+                      class="validate"
+                      placeholder="Password">
+                        <!-- <input id="password" 
+                        type="password"  
+                        name='password' 
+                        [(ngModel)]="signInUser.password" 
+                        class="validate"
+                        placeholder="Password"> -->
                   </div>
                 </div>
-                </form>
+                <div class="row justify-content-md-center">
+                    <div class="row" >
+                        <button 
+                            type="submit" 
+                            [disabled]="!(f.valid)" 
+                            [ngClass]="{'disabled': !(f.valid)}" 
+                            class="waves-effect waves-light btn blue right"
+                        > Login </button>
+                        <!-- <a class="btn rounded-btn" id="log"> Log in </a>&nbsp; -->
+                        <a class="btn rounded-btn" id="reg" [routerLink]="['/register']" > Register </a>&nbsp;
+                    </div>
+                </div>
+        </form>
       </div>
   </div>
-  <div class="row justify-content-md-center">
-  <div class="row">
-        <a class="btn rounded-btn" id="log" [routerLink]="['/dashboard']" (click)="onLoggedin()"> Log in </a>
-        &nbsp;
-    <a class="btn rounded-btn" id="goo" [routerLink]="['/register']" style="color: #FFF;">
-      <span class="icon-google2" style="color: #FFF;"></span  >&nbsp;Start with google</a>
-  </div>
 </div>
-</div>
+
+<!-- <a class="btn rounded-btn" id="log" *ngIf="!tokenAuthService.userSignedIn()" (click)="onLoggedin()" > Log in </a>
+&nbsp; -->
+<!--  -->
