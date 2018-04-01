@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { Router } from '@angular/router';
+import {Angular2TokenService} from "angular2-token";
+import { RouterModule, Routes } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -7,11 +10,44 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  constructor(public router: Router) {}
+  signInUser = {
+    email: '',
+    password: ''
+  };
 
+  @Output() onFormResult = new EventEmitter<any>();
+  // constructor(public router: Router) {}
+  // constructor(tokenAuthService: Angular2TokenService,  router: Router) {
+  //   if ( tokenAuthService.userSignedIn() ) {
+  //     router.navigate(['layout']);
+  //   }
+  //  }
+  constructor(private authToken: Angular2TokenService) { }
   ngOnInit() {}
-
-  onLoggedin() {
-    localStorage.setItem('isLoggedin', 'true');
+  onSignInSubmit()
+  {
+    this.authToken.signIn(this.signInUser).subscribe(
+        res => {
+          console.log('auth response:', res);
+          console.log('auth response headers: ', res.headers.toJSON()); //log the response header to show the auth token
+           console.log('auth response body:', res.json()); //log the response body to show the user 
+          if(res.status == 200){
+            console.log('auth response:', res);
+            console.log('auth response headers: ', res.headers.toJSON()); //log the response header to show the auth token
+            console.log('auth response body:', res.json()); //log the response body to show the user 
+            this.onFormResult.emit({signedIn: true, res});
+          }
+        },
+        err => {
+          console.error('auth error:', err);
+          console.log('err:', err);
+          this.onFormResult.emit({signedIn: false, err});
+        }
+    )
   }
+  // onLoggedin() {
+  //   // ngIf="tokenAuthService.userSignedIn()"
+  //   // return 'by pressing ESC';
+  //   localStorage.setItem('isLoggedin', 'true');
+  // }
 }
