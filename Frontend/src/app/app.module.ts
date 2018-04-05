@@ -15,6 +15,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Angular2TokenService } from 'angular2-token';
 import { HttpModule } from '@angular/http';
 
+import { NgRedux, NgReduxModule } from '@angular-redux/store';
+import { AppState, rootReducer, INITIAL_STATE } from './redux/store';
+
 
 @NgModule({
   declarations: [
@@ -27,11 +30,16 @@ import { HttpModule } from '@angular/http';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    NgReduxModule
   ],
   providers: [
     Angular2TokenService,
     HttpClientModule],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(ngRedux: NgRedux<AppState>) {
+    ngRedux.configureStore(rootReducer, INITIAL_STATE);
+  }
+}
