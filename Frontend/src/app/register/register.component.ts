@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {Angular2TokenService} from "angular2-token";
 
+import { NgRedux } from '@angular-redux/store';
+import { AppState } from '../redux/store';
+import { ISession } from '../redux/session';
+import { ADD_SESSION } from '../redux/actions';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -8,7 +13,7 @@ import {Angular2TokenService} from "angular2-token";
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ngRedux: NgRedux<AppState>) { }
 
   ngOnInit() {
   }

@@ -6,6 +6,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
+import { NgRedux } from '@angular-redux/store';
+import { AppState } from '../redux/store';
+import { ISession } from '../redux/session';
+import { ADD_SESSION } from '../redux/actions';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -27,7 +32,7 @@ export class LoginComponent implements OnInit {
   //     router.navigate(['layout']);
   //   }
   //  }
-  constructor(private authToken: Angular2TokenService) { }
+  constructor(private authToken: Angular2TokenService, private ngRedux: NgRedux<AppState>) { }
   ngOnInit() {}
   onSignInSubmit() {
     this.authToken.signIn(this.signInUser).subscribe(

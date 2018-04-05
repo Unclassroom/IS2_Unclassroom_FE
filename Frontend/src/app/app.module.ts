@@ -16,6 +16,9 @@ import { Angular2TokenService } from 'angular2-token';
 import { HttpModule } from '@angular/http';
 import { UsuariosService } from './usuarios.service';
 
+import { NgRedux, NgReduxModule } from '@angular-redux/store';
+import { AppState, rootReducer, INITIAL_STATE } from './redux/store';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import { UsuariosService } from './usuarios.service';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    NgReduxModule
   ],
   providers: [
     Angular2TokenService,
@@ -36,4 +40,8 @@ import { UsuariosService } from './usuarios.service';
     UsuariosService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(ngRedux: NgRedux<AppState>) {
+    ngRedux.configureStore(rootReducer, INITIAL_STATE);
+  }
+}
