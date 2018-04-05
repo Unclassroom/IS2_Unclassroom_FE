@@ -14,6 +14,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Angular2TokenService } from 'angular2-token';
 import { HttpModule } from '@angular/http';
+import { UsuariosService } from './usuarios.service';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { HttpModule } from '@angular/http';
   ],
   providers: [
     Angular2TokenService,
-    HttpClientModule],
+    HttpClientModule,
+    UsuariosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
