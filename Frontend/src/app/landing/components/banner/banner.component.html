@@ -4,9 +4,22 @@
       <div class="d-flex align-items-center d-flex justify-content-center" style="height: 1000px">
         <div class="row mt-5">
           <div class="col-md-12 wow fadeIn mb-3">
-            <div class="intro-info-content text-center">
-              <h1 class="display-1 mb-2 wow fadeInDown" data-wow-delay="0.3s">UN <a class="indigo-text font-bold" style="color: #3EA5B9 !important;">Classroom</a></h1>
-              <h5 class="font-up mb-3 mt-1 font-bold wow fadeIn" data-wow-delay="0.4s">Lorep ipusom.....</h5></div>
+
+            <div class="card card-image mb-3 rgba-grey-slight">
+
+              <!-- Content -->
+              <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+                <div>
+                  <h1 class="display-1 mb-2 wow fadeInDown  font-bold" data-wow-delay="0.3s" style="color: #f5f5f5 !important;">UN <a class="indigo-text font-bold" style="color: #3EA5B9 !important;">Classroom</a></h1>
+                  <h5 class="font-up mb-3 mt-1 font-bold wow fadeIn" data-wow-delay="0.4s" style="color: #FFFFFF !important;">Plataforma desarrollada para la gestión de recursos de la planta fisica en la Universidad</h5>
+
+                  <a class="btn  waves-light" style="background-color: #3EA5B9;"  (click)="form.show()"  mdbRippleRadius><i class="fa fa-clone left"></i> Login</a>
+                </div>
+              </div>
+              <!-- Content -->
+            </div>
+
+            <div class="intro-info-content text-center">  </div>
           </div>
         </div>
       </div>
@@ -14,99 +27,53 @@
   </div>
 </div>
 
-<div class="container">
-  <!--Grid row-->
-  <div class="row">
-    <!--Grid column-->
-    <div class="col-md-12 text-center mb-5">
-      <h1 class="font-bold light-blue-text my-5">Lorem ipsum dolor sit amet, consectetur quis elit.</h1>
-      <p align="justify">Lorem ipsum dolor sit amet, consectetur quis elit. Perspiciatis commodi porro, cumque provident rem corporis odit, ut quas dolores maxime nesciunt possimus quis, soluta velit debitis amet, veritatis cupiditate reprehenderit.Lorem ipsum dolor sit amet, consectetur quis elit. Perspiciatis commodi porro, cumque provident rem corporis odit, ut quas dolores maxime nesciunt possimus quis, soluta velit debitis amet, veritatis cupiditate reprehenderit.Lorem ipsum dolor sit amet, consectetur quis elit. Perspiciatis commodi porro, cumque provident rem corporis odit, ut quas dolores maxime nesciunt possimus quis, soluta velit debitis amet, veritatis cupiditate reprehenderit.Lorem ipsum dolor sit amet, consectetur quis elit. Perspiciatis commodi porro, cumque provident rem corporis odit, ut quas dolores maxime nesciunt possimus quis, soluta velit debitis amet, veritatis cupiditate reprehenderit.Lorem ipsum dolor sit amet, consectetur quis elit. Perspiciatis commodi porro, cumque provident rem corporis odit, ut quas dolores maxime nesciunt possimus quis, soluta velit debitis amet, veritatis cupiditate reprehenderit.Lorem ipsum dolor sit amet, consectetur quis elit. Perspiciatis commodi porro, cumque provident rem corporis odit, ut quas dolores maxime nesciunt possimus quis, soluta velit debitis amet, veritatis cupiditate reprehenderit.Lorem ipsum dolor sit amet, consectetur quis elit. Perspiciatis commodi porro, cumque provident rem corporis odit, ut quas dolores maxime nesciunt possimus quis, soluta velit debitis amet, veritatis cupiditate reprehenderit.Lorem ipsum dolor sit amet, consectetur quis elit. Perspiciatis commodi porro, cumque provident rem corporis odit, ut quas dolores maxime nesciunt possimus quis, soluta velit debitis amet, veritatis cupiditate reprehenderit.</p>
+<!--Modal: Login Form-->
+<div mdbModal  #form="mdb-modal"   class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content">
+
+      <!--Header-->
+      <div class="modal-header light-blue darken-3 white-text">
+        <h4 class="title"><i class="fa fa-user"></i> Log in</h4>
+        <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="form.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <!--Body-->
+      <div class="modal-body">
+        <div class="md-form form-sm">
+          <i class="fa fa-envelope prefix"></i>
+          <input mdbActive type="text" id="form30" class="form-control">
+          <label for="form30">Your email</label>
+        </div>
+
+        <div class="md-form form-sm">
+          <i class="fa fa-lock prefix"></i>
+          <input mdbActive type="password" id="form31" class="form-control">
+          <label for="form31">Your password</label>
+        </div>
+
+        <div class="text-center mt-2">
+          <button class="btn btn-info waves-light" mdbRippleRadius>Log in <i class="fa fa-sign-in ml-1"></i></button>
+        </div>
+
+      </div>
+      <!--Footer-->
+      <div class="modal-footer">
+        <div class="options text-center text-md-right mt-1">
+          <p>Not a member? <a href="#">Sign Up</a></p>
+          <p>Forgot <a href="#">Password?</a></p>
+        </div>
+        <button type="button" class="btn btn-outline-info ml-auto" data-dismiss="modal" (click)="form.hide()" mdbRippleRadius>Close</button>
+      </div>
     </div>
-    <!--Grid column-->
+    <!--/.Content-->
   </div>
-  <!--Grid row-->
 </div>
-
-
-  <div class="view intro hm-white-light" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/a/a9/FacultaddemedicinaUNAL.jpg); background-attachment: fixed;     min-height: 500px !important;"  >
-
-    <div class="container">
-        <div class="row mt-5">
-          <div class="col-md-12 wow fadeIn mb-3">
-            <div class="intro-info-content text-center">
-              <h1 class="display-1 mb-2 wow fadeInDown" data-wow-delay="0.3s">UN <a class="indigo-text font-bold" style="color: #3EA5B9 !important;">Classroom</a></h1>
-              <h5 class="font-up mb-3 mt-1 font-bold wow fadeIn" data-wow-delay="0.4s">Lorep ipusom.....</h5></div>
-          </div>
-        </div>
-      </div>
-    </div>
+<!--Modal: Login Form-->
 
 
 
-<div class="container">
-  <!--Section: Features v.3-->
-  <section class="section feature-box pt-5">
 
-    <!--Section heading-->
-    <h1 class="section-heading pt-4">Why is it so great?</h1>
-    <!--Section description-->
-    <p class="section-description lead grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur accusamus veniam. Quia, minima?</p>
 
-    <!--Grid row-->
-    <div class="row features-small pt-5">
-
-      <!--Grid column-->
-      <div class="col-lg-5 mb-r center-on-small-only">
-        <img src="https://mdbootstrap.com/img/Mockups/Transparent/Small/ipad-portfolio2.png" alt="" class="img-fluid z-depth-0">
-      </div>
-      <!--Grid column-->
-
-      <!--Grid column-->
-      <div class="col-lg-7">
-
-        <!--Grid row-->
-        <div class="row pb-3">
-          <div class="col-2 col-md-1">
-            <i class="fa fa-bank blue-text"></i>
-          </div>
-          <div class="col-10">
-            <h5 class="feature-title">Safety</h5>
-            <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima assumenda deleniti hic.</p>
-          </div>
-        </div>
-        <!--Grid row-->
-
-        <!--Grid row-->
-        <div class="row pb-3">
-          <div class="col-2 col-md-1">
-            <i class="fa fa-code blue-text"></i>
-          </div>
-          <div class="col-10">
-            <h5 class="feature-title">Technology</h5>
-            <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima assumenda deleniti hic.</p>
-          </div>
-        </div>
-        <!--Grid row-->
-
-        <!--Grid row-->
-        <div class="row pb-3">
-          <div class="col-2 col-md-1">
-            <i class="fa fa-money blue-text"></i>
-          </div>
-          <div class="col-10">
-            <h5 class="feature-title">Finance</h5>
-            <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima assumenda deleniti hic.</p>
-          </div>
-        </div>
-        <!--Grid row-->
-
-      </div>
-      <!--Grid column-->
-
-    </div>
-    <!--Grid row-->
-
-  </section>
-  <!--Section: Features v.3-->
-
-</div>
