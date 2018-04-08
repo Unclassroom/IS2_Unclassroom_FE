@@ -4,6 +4,7 @@ import { UsuariosComponent } from './usuarios.component';
 import {NgbAlertModule, NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 import {UsuariosRoutingModule} from './usuarios-routing.module';
 import {TablesModule} from '../components/tables/tables.module';
+import {Headbuildingonfaculty} from '../models/headbuildingonfaculty';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import {TablesModule} from '../components/tables/tables.module';
     UsuariosRoutingModule,
     TablesModule
   ],
-  declarations: [UsuariosComponent]
+  declarations: [UsuariosComponent],
+  providers: [ Headbuildingonfaculty ],
 })
 export class UsuariosModule { }
