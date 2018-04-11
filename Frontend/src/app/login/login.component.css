@@ -48,7 +48,7 @@
         background: #95B452;
     }
     #goo{
-        background: rgb(236, 27, 27);
+        background: rgba(165, 15, 15, 0.932);
     }
     .rounded-btn {
         color: rgba(31, 27, 27, 0.8);
@@ -84,7 +84,7 @@
     }
     
     .button.red:hover {
-        background-color: #C53727;	
+        background-color: rgb(129, 28, 17);	
     }
     
     h1 {
