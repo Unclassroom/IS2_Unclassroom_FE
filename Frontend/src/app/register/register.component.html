@@ -3,26 +3,49 @@
     <div class="col-md-4">
       <img class="user-avatar" src="assets/images/logo.png" width="300px" />
 
-      <form role="form">
+      <form (ngSubmit)="onSignUpSubmit()" #f="ngForm" >
         <div class="form-content">
+
           <div class="form-group">
-            <input type="text" class="form-control input-underline input-lg" id="" placeholder="Full Name">
+            <input id="email"
+                   type="email"
+                   required
+                   name='email'
+                   [(ngModel)]="signUpUser.email"
+                   class="validate">
+            <label for="email">Email</label>
           </div>
 
           <div class="form-group">
-            <input type="text" class="form-control input-underline input-lg" id="" placeholder="Email">
+            <input id="password"
+                   type="password"
+                   required
+                   name='password'
+                   [(ngModel)]="signUpUser.password"
+                   class="validate">
+            <label for="password">Password</label>
           </div>
-
           <div class="form-group">
-            <input type="password" class="form-control input-underline input-lg" id="" placeholder="Password">
+            <input id="password_confirmation"
+                   type="password"
+                   required
+                   name='password_confirmation'
+                   [(ngModel)]="signUpUser.passwordConfirmation"
+                   class="validate">
+            <label for="password_confirmation">Password confirmation</label>
           </div>
-          <div class="form-group">
-            <input type="password" class="form-control input-underline input-lg" id="" placeholder="Repeat Password">
-          </div>
+          <span
+            *ngIf="signUpUser.password != signUpUser.passwordConfirmation"
+            style="color:red">Passwords must match
+          </span>
         </div>
+        <button type="submit"
+                [disabled]="!(f.valid) || !(signUpUser.password == signUpUser.passwordConfirmation)"
+                class="waves-effect waves-light btn blue right">
+          Sign up
+        </button>
 
-        <a class="btn rounded-btn" id="log" [routerLink]="['/dashboard']"> Register </a>&nbsp;
-        <a class="btn rounded-btn"  id="reg" [routerLink]="['/login']"> Log in </a>
+        <a class="btn rounded-btn"  id="log" [routerLink]="['/login']"> Log in </a>
       </form>
     </div>
   </div>

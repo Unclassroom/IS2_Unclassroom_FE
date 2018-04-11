@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import {BuzonentradaModule} from './layout/buzonentrada/buzonentrada.module';
+import {BuzonentradaComponent} from './layout/buzonentrada/buzonentrada.component';
 import {LandingComponent} from "./landing/landing.component";
 
 const routes: Routes = [
@@ -10,7 +10,8 @@ const routes: Routes = [
   { path: '', loadChildren:'./landing/landing.module#LandingModule', pathMatch: 'full'},
   { path: 'layout', loadChildren: './layout/layout.module#LayoutModule'},
   { path: 'login', loadChildren: './login/login.module#LoginModule' },
-  { path: 'register', loadChildren: './register/register.module#RegisterModule' }
+  { path: 'register', loadChildren: './register/register.module#RegisterModule' },
+  // {path: 'dashboard', component: BuzonentradaComponent, data:{requiresLogin: true}}
 ];
 // agregar rutas al nivel de la raiz
 

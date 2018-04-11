@@ -13,7 +13,7 @@
       <li class="nested" [class.expand]="showMenu === 'pages'">
         <ul class="submenu">
           <li>
-            <a  routerLink="/buzonentrada"><span>Buzon de entrada</span></a>
+            <a  routerLink="/layout/buzonentrada"><span>Buzon de entrada</span></a>
           </li>
           <li>
             <a href="javascript:void(0)"><span>Listado salones y reportes de daños</span></a>
@@ -24,9 +24,21 @@
     <a class="list-group-item more-themes" href="" >
       <span><i class="fa fa-upload fa-fw"></i>Parametrización</span>
     </a>
-    <a class="list-group-item more-themes" href="" >
-      <span><i class="fa fa-users fa-fw"></i>Administración</span>
-    </a>
+
+
+    <div class="nested-menu">
+      <a class="list-group-item" (click)="addExpandClass('pages')">
+        <span><i class="fa fa-users fa-fw"></i>Administración</span>
+      </a>
+      <li class="nested" [class.expand]="showMenu === 'pages'">
+        <ul class="submenu">
+          <li>
+            <a  routerLink="/layout/usuarios"><span>Encargados</span></a>
+          </li>
+        </ul>
+      </li>
+    </div>
+
     <a class="list-group-item more-themes" href="" >
       <span><i class="fa fa-hdd-o fa-fw"></i>Historial</span>
     </a>
