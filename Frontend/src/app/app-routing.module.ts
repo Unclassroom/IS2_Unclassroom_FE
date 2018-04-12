@@ -6,7 +6,8 @@ import {LandingComponent} from "./landing/landing.component";
 
 const routes: Routes = [
   { path: 'home', loadChildren: './landing/landing.module#LandingModule'},
-  { path: '', loadChildren: './landing/landing.module#LandingModule', pathMatch: 'full'},
+  { path: 'landing', loadChildren: './landing/landing.module#LandingModule'},
+  { path: '', loadChildren:'./landing/landing.module#LandingModule', pathMatch: 'full'},
   { path: 'layout', loadChildren: './layout/layout.module#LayoutModule'},
   { path: 'login', loadChildren: './login/login.module#LoginModule' },
   { path: 'register', loadChildren: './register/register.module#RegisterModule' },
