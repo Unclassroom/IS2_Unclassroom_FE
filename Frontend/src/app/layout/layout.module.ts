@@ -15,15 +15,17 @@ import { DepartmentsService } from './services/departments.service';
 import { ClassroomService } from './services/classroom.service';
 import { GroupService } from './services/group.service';
 import { SubjectService } from './services/subject.service';
-import { MigadepanComponent } from './components/migadepan/migadepan.component';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import {MDBBootstrapModule} from 'angular-bootstrap-md/index';
 
 @NgModule({
   imports: [
     CommonModule,
     NgbModule.forRoot(),
+    MDBBootstrapModule.forRoot(),
     LayoutRoutingModule
   ],
-  declarations: [LayoutComponent, HeaderComponent, SidebarComponent, MigadepanComponent],
+  declarations: [LayoutComponent, HeaderComponent, SidebarComponent, BreadcrumbComponent],
   providers: [FalcultyService, HeadBuildingService, BuildingService, ManagerService, TeacherService, ExternalPersonService, DepartmentsService, ClassroomService, GroupService, SubjectService]
 })
 export class LayoutModule { }

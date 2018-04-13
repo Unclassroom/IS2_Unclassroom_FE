@@ -9,12 +9,12 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'dashboard' },
       { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
-      { path: 'buzonentrada', loadChildren: './buzonentrada/buzonentrada.module#BuzonentradaModule' },
-      { path: 'historial', loadChildren: './historial/historial.module#HistorialModule' },
-      { path: 'parametrizacion', loadChildren: './parametrizacion/parametrizacion.module#ParametrizacionModule' },
-      { path: 'salones', loadChildren: './salones/salones.module#SalonesModule' },
-      { path: 'usuarios', loadChildren: './usuarios/usuarios.module#UsuariosModule' },
-      { path: 'calendario', loadChildren: './calendario/calendario.module#CalendarioModule' },
+      { path: 'inbox', loadChildren: './inbox/inbox.module#InboxModule' },
+      { path: 'history', loadChildren: './history/history.module#HistoryModule' },
+      { path: 'parametrization', loadChildren: './parametrization/parametrization.module#ParametrizationModule' },
+      { path: 'classroom', loadChildren: './classroom/classroom.module#ClassroomModule' },
+      { path: 'users', loadChildren: './users/users.module#UsersModule' },
+      { path: 'calendar', loadChildren: './calendar/calendar.module#CalendarModule' },
       ]
   }
 ];

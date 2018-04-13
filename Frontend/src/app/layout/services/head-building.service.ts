@@ -9,14 +9,14 @@ import {Headbuildingonfaculty} from '../models/headbuildingonfaculty';
 @Injectable()
 export class HeadBuildingService {
 
-  private headBuildingGeneralUrl = 'http://localhost:3000/head_buildings/get_head_buildings';  // URL to web api
+  private headBuildingGeneralUrl = 'http://localhost:3000/all_head_buildings';  // URL to web api
 
   constructor(
     private http: HttpClient) { }
 
   /** GET heroes from the server */
   getHeadBuildingsGeneral (): Observable<Headbuildingonfaculty[]> {
-    return this.http.get<Headbuildingonfaculty[]>(this.headBuildingGeneralUrl)
+    return this.http.get<Headbuildingonfaculty[]>(this.headBuildingGeneralUrl);
   }
 
 }
