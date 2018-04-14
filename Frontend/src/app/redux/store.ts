@@ -1,4 +1,4 @@
-import { ISession } from './session'
+import { ISession } from './session';
 import { ADD_SESSION, ADD_REGISTER, REMOVE_SESSION, REMOVE_REGISTER } from './actions';
 
 export interface AppState {
@@ -17,10 +17,13 @@ export const INITIAL_STATE: AppState = {
   tempID: undefined
 }
 
-export function rootReducer(state, action){
+export function rootReducer(state, action) {
   switch (action.type) {
     case ADD_SESSION:
-      return Object.assign({}, state, { session: action.session, isLogged: true });
+      let newState = Object.assign({}, state, { session: action.session, isLogged: true });
+      if (!action.session.token)
+        newState.session.token = state.session.token;
+      return newState;
     case REMOVE_SESSION:
       return Object.assign({}, state, INITIAL_STATE);
     case ADD_REGISTER:

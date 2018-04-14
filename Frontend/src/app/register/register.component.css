@@ -1,1 +1,28 @@
+/* Basic Styles */
 @import "../login/login.component.css";
+/* Validation Styles */
+input:valid {
+    color: rgb(55, 163, 55);
+  background-color: #BBFFF0;
+}
+input:valid ~ .pcheck{
+  display: none;
+}
+.check-ok {
+  color: lime;
+}
+
+input:invalid ~ .check-ok {
+  display: none;
+}
+input:invalid ~ .pcheck {
+    color: red;
+  }
+input:invalid{
+    color: red;
+  }
+
+input:valid ~ .check-ok {
+  display: inline;
+}
+

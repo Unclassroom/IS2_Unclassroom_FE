@@ -6,6 +6,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LandingRoutingModule } from './landing-routing.module';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {SectioninfoComponent} from './components/sectioninfo/sectioninfo.component';
+import {FooterComponent} from './components/footer/footer.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,7 @@ import {SectioninfoComponent} from './components/sectioninfo/sectioninfo.compone
     LandingRoutingModule,
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  declarations: [LandingComponent, BannerComponent, NavbarComponent, SectioninfoComponent],
+  declarations: [LandingComponent, BannerComponent, NavbarComponent, SectioninfoComponent, FooterComponent],
   bootstrap: [LandingComponent]
 })
 export class LandingModule { }

@@ -12,10 +12,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { Angular2TokenService } from 'angular2-token';
 import { HttpModule } from '@angular/http';
-import { UsuariosService } from './usuarios.service';
 
+//Services
+import { UsuariosService } from './usuarios.service';
+import { Angular2TokenService } from 'angular2-token';
+
+//Redux
 import { NgRedux, NgReduxModule } from '@angular-redux/store';
 import { AppState, rootReducer, INITIAL_STATE } from './redux/store';
 
@@ -32,7 +35,8 @@ import { AppState, rootReducer, INITIAL_STATE } from './redux/store';
     AppRoutingModule,
     HttpClientModule,
     HttpModule,
-    NgReduxModule
+    NgReduxModule,
+    ReactiveFormsModule
   ],
   providers: [
     Angular2TokenService,

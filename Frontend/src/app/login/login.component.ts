@@ -2,7 +2,7 @@ import {Component, OnInit, Output, EventEmitter, NgModule, NO_ERRORS_SCHEMA} fro
 import { Router } from '@angular/router';
 import {Angular2TokenService} from 'angular2-token';
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
@@ -10,7 +10,6 @@ import { NgRedux } from '@angular-redux/store';
 import { AppState } from '../redux/store';
 import { ISession } from '../redux/session';
 import { ADD_SESSION } from '../redux/actions';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -19,12 +18,11 @@ import { ADD_SESSION } from '../redux/actions';
 
 
 export class LoginComponent implements OnInit {
+  frmLogin: FormGroup;
   signInUser = {
     email: '',
     password: ''
   };
-
-
   @Output() onFormResult = new EventEmitter<any>();
   // constructor(public router: Router) {}
   // constructor(tokenAuthService: Angular2TokenService,  router: Router) {
@@ -32,7 +30,14 @@ export class LoginComponent implements OnInit {
   //     router.navigate(['layout']);
   //   }
   //  }
-  constructor(private authToken: Angular2TokenService, private ngRedux: NgRedux<AppState>) { }
+  constructor(private authToken: Angular2TokenService,
+     private ngRedux: NgRedux<AppState>,
+     private fb: FormBuilder) {
+      this.frmLogin = this.fb.group({
+        'email':    ['', Validators.email],
+        'password': ['', Validators.required]
+      })
+     }
   ngOnInit() {}
   onSignInSubmit() {
     this.authToken.signIn(this.signInUser).subscribe(
