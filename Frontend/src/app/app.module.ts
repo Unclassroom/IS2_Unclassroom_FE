@@ -21,11 +21,13 @@ import { Angular2TokenService } from 'angular2-token';
 //Redux
 import { NgRedux, NgReduxModule } from '@angular-redux/store';
 import { AppState, rootReducer, INITIAL_STATE } from './redux/store';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
