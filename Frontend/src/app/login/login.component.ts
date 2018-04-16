@@ -5,6 +5,7 @@ import {  RouterModule, Routes } from '@angular/router';
 import {  FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {  BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 
 import { NgRedux } from '@angular-redux/store';
 import { AppState } from '../redux/store';
@@ -21,6 +22,7 @@ interface Token {
   styleUrls: ['./login.component.css']
 })
 
+
 export class LoginComponent implements OnInit {
   frmLogin: FormGroup;
 
@@ -29,17 +31,11 @@ export class LoginComponent implements OnInit {
     password: ''
   };
 
+  @Output() onFormResult = new EventEmitter<any>();
+
   token :string;
   configUrl = 'http://localhost:3000/';
-  result:Object; 
-
-  @Output() onFormResult = new EventEmitter<any>();
-  // constructor(public router: Router) {}
-  // constructor(tokenAuthService: Angular2TokenService,  router: Router) {
-  //   if ( tokenAuthService.userSignedIn() ) {
-  //     router.navigate(['layout']);
-  //   }
-  //  }
+  result:Object;
   constructor(
     private authToken: Angular2TokenService,
     private ngRedux: NgRedux<AppState>,
@@ -53,13 +49,16 @@ export class LoginComponent implements OnInit {
     })
     this.http = http;
   }
+  
   ngOnInit() {}
 
   onSignInSubmit() {
     this.getToken();
-    this.signIn();
+    var user = localStorage.getItem("currentUser");
+    console.log(user)
+    // this.signIn();
   }
-  
+
   getToken()
   {
     const req = this.http.post<Token>(this.configUrl+'/user_token', {
@@ -72,14 +71,42 @@ export class LoginComponent implements OnInit {
         result => {
           this.result = result.jwt;
           this.token = result.jwt;
-          console.log(this.token);
+          this.signIn();
+
+        },
+        err => {
+          console.log("Error occured");
+        }
+      );
+    
+  }
+  signIn() {
+    // console.log(this.token);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': 'Baerer '+this.token
+      })
+    };
+       
+    const req = this.http.get(this.configUrl+'users/current', httpOptions)
+      .subscribe(
+        result => {
+          // this.result = result;
+          // console.log(result);
+          localStorage.setItem('currentUser', JSON.stringify(result));
+        //   if (result) {
+        //     // store user details and jwt token in local storage to keep user logged in between page refreshes
+        //     localStorage.setItem('currentUser', JSON.stringify(result));
+        // }
+
+        return result;
         },
         err => {
           console.log("Error occured");
         }
       );
   }
-  signIn() {}
  
   // onSignInSubmit() 
   // {
