@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../_models/index';
 import { UserService } from '../_services/index';
 
+import { AuthenticationService } from '../_services/index';
+
 @Component({
   moduleId: module.id,
   selector: 'app-profile',
@@ -15,8 +17,10 @@ export class ProfileComponent implements OnInit {
   users: User[] = [];
 
   constructor(
-    private userService: UserService
-  ) {
+    private userService: UserService,
+    private authenticationService: AuthenticationService
+  ) 
+  {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
   ngOnInit() {

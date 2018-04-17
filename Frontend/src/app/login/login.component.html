@@ -3,14 +3,15 @@
       <div class="col-md-4">
           <img src="assets/images/logo.png" width="300px"  class="user-avatar" />
           <h1>{{token}}</h1>
-          <form role="form" (ngSubmit)="onSignInSubmit()" #f="ngForm" >
+          <form role="form" (ngSubmit)="login() " #f="ngForm" >
               <div class="form-content">
                   <div class="form-group">
                       <input
                         id="email"
                         type="email"
                         required
-                        [(ngModel)]="signInUser.email"
+                        [(ngModel)]="model.email" 
+                        #email="ngModel"
                         name="email"
                         placeholder="Email"
                         class="form-contorl">
@@ -20,7 +21,8 @@
                       id="password"
                       type="password"
                       required
-                      [(ngModel)]="signInUser.password"
+                      [(ngModel)]="model.password" 
+                      #password="ngModel"
                       name="password"
                       class="validate"
                       placeholder="Password">
@@ -30,7 +32,7 @@
                     <div class="row" >
                         <button
                             type="submit"
-                            [disabled]="!(f.valid)"
+                            [disabled]="loading"
                             [ngClass]="{'disabled': !(f.valid)}"
                             class="btn rounded-btn"
                         > Login </button>

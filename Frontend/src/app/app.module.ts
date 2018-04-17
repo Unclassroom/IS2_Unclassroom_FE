@@ -9,12 +9,15 @@ import { AppRoutingModule } from './app-routing.module';
 
 // import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpModule } from '@angular/http';
 
 //Services
+import { AuthGuard } from './_guards/index';
+import { JwtInterceptor } from './_helpers/index';
+import { AuthenticationService, UserService } from './_services/index';
 import { UsuariosService } from './usuarios.service';
 import { Angular2TokenService } from 'angular2-token';
 
@@ -25,7 +28,8 @@ import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
-  declarations: [
+  declarations: 
+  [
     AppComponent,
     ProfileComponent
   ],
@@ -40,10 +44,20 @@ import { ProfileComponent } from './profile/profile.component';
     NgReduxModule,
     ReactiveFormsModule
   ],
-  providers: [
+  providers: 
+  [
     Angular2TokenService,
     HttpClientModule,
-    UsuariosService],
+    UsuariosService,
+    AuthGuard,
+    AuthenticationService,
+    UserService,
+      {
+        provide: HTTP_INTERCEPTORS,
+        useClass: JwtInterceptor,
+        multi: true
+      }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
