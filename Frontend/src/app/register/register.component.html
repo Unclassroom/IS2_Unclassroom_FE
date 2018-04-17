@@ -3,50 +3,62 @@
     <div class="col-md-4">
       <img class="user-avatar" src="assets/images/logo.png" width="300px" />
 
-      <form (ngSubmit)="onSignUpSubmit()" #f="ngForm" >
+      <form (ngSubmit)="register()" #f="ngForm" >
         <div class="form-content">
 
           <div class="form-group">
+            <label for="email">Username</label>
+            <input 
+              id="username"
+              required
+              name='username'
+              [(ngModel)]="model.username"
+              class="validate">
+          </div>
+          
+          <div class="form-group">
               <label for="email">Email</label>
-            <input id="email"
-                   type="email"
-                   required
-                   name='email'
-                   pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
-                   [(ngModel)]="signUpUser.email"
-                   class="validate">
-            
-            <i class="fa fa-check check-ok"></i>
+              <input id="email"
+                type="email"
+                required
+                name='email'
+                pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+                [(ngModel)]="model.email"
+                class="validate">
+              <i class="fa fa-check check-ok"></i>
           </div>
 
           <div class="form-group">
               <label for="password">Password</label>
-            <input id="password"
-                   type="password"
-                   required
-                   name='password'
-                   pattern ="[A-Za-z0-9]*[A-Za-z0-9]+[A-Za-z0-9]{8,16}"
-                   [(ngModel)]="signUpUser.password"
-                   class="validate">
-                   <p class="pcheck">*The password must have between 8 and 16 characters and have at least one uppercase letter, one lowercase and one number</p>
-            
+              <input id="password"
+                type="password"
+                required
+                name='password'
+                pattern ="[A-Za-z0-9]*[A-Za-z0-9]+[A-Za-z0-9]{8,16}"
+                [(ngModel)]="model.password"
+                class="validate">
+                <p class="pcheck">*The password must have between 8 and 16 characters and have at least one uppercase letter, one lowercase and one number</p>
           </div>
+         
           <div class="form-group">
-            <input id="password_confirmation"
-                   type="password"
-                   required
-                   name='password_confirmation'
-                   [(ngModel)]="signUpUser.passwordConfirmation"
-                   class="validate">
+            <input 
+              id="password_confirmation"
+              type="password"
+              required
+              name='password_confirmation'
+              [(ngModel)]="model.password_confirmation"
+              class="validate">
             <label for="password_confirmation">Password confirmation</label>
           </div>
+
           <span
-            *ngIf="signUpUser.password != signUpUser.passwordConfirmation"
+            *ngIf="model.password != model.password_confirmation"
             style="color:red">Passwords must match<br>
           </span>
         </div>
         <button type="submit"
-                [disabled]="!(f.valid) || !(signUpUser.password == signUpUser.passwordConfirmation)"
+                [disabled]="loading" 
+                [disabled]="!(f.valid) || !(model.password == model.password_confirmation)"
                 class="btn rounded-btn">
           Sign up
         </button>
