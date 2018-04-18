@@ -35,12 +35,19 @@
                             [disabled]="loading"
                             [ngClass]="{'disabled': !(f.valid)}"
                             class="btn rounded-btn"
-                        > Login </button>
+                        > Login </button>    
                         <!-- <a class="btn rounded-btn" id="log"> Log in </a>&nbsp; -->
                         <a class="btn rounded-btn" id="reg" [routerLink]="['/register']" > Register </a>&nbsp;
                     </div>
                 </div>
         </form>
+        <button
+                            (click)="socialSignIn('facebook')"
+                        >Sign in with Facebook</button>
+                        <button
+                            class="g-signin2"
+                            (click)="socialSignIn('google')"
+                        >Signin in with Google</button> 
       </div>
   </div>
 </div>

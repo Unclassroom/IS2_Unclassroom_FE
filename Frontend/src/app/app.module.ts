@@ -14,19 +14,10 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpModule } from '@angular/http';
 
-// Social authenticate
-import {
-  SocialLoginModule,
-  AuthServiceConfig,
-  GoogleLoginProvider,
-  FacebookLoginProvider,
-} from "angular5-social-login";
-
 //Services
 import { AuthGuard } from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
 import { AuthenticationService, UserService } from './_services/index';
-import { UsuariosService } from './usuarios.service';
 import { Angular2TokenService } from 'angular2-token';
 
 //Redux
@@ -34,6 +25,26 @@ import { NgRedux, NgReduxModule } from '@angular-redux/store';
 import { AppState, rootReducer, INITIAL_STATE } from './redux/store';
 import { ProfileComponent } from './profile/profile.component';
 
+// Social authenticate
+import { SocialLoginModule, AuthServiceConfig } from "angular5-social-login";
+import { GoogleLoginProvider, FacebookLoginProvider} from "angular5-social-login";
+
+// Configs 
+export function getAuthServiceConfigs() {
+  let config = new AuthServiceConfig(
+      [
+        {
+          id: FacebookLoginProvider.PROVIDER_ID,
+          provider: new FacebookLoginProvider("Your-Facebook-app-id")
+        },
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider("794647363495-bt195vh2d1nk46qg9l84tbbkihfto84d.apps.googleusercontent.com")
+        },
+      ]
+  );
+  return config;
+}
 
 @NgModule({
   declarations: 
@@ -56,7 +67,6 @@ import { ProfileComponent } from './profile/profile.component';
   [
     Angular2TokenService,
     HttpClientModule,
-    UsuariosService,
     AuthGuard,
     AuthenticationService,
     UserService,
@@ -64,6 +74,10 @@ import { ProfileComponent } from './profile/profile.component';
         provide: HTTP_INTERCEPTORS,
         useClass: JwtInterceptor,
         multi: true
+      },
+      {
+        provide: AuthServiceConfig,
+        useFactory: getAuthServiceConfigs
       }
   ],
   bootstrap: [AppComponent]

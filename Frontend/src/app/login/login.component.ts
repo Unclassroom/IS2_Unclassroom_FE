@@ -10,6 +10,9 @@ import { AppState } from '../redux/store';
 import { ISession } from '../redux/session';
 import { ADD_SESSION } from '../redux/actions';
 
+// Social login
+import { AuthService, FacebookLoginProvider,GoogleLoginProvider} from 'angular5-social-login';
+
 import { AuthenticationService } from '../_services/index';
 
 interface Token {
@@ -52,6 +55,7 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthenticationService,
+    private socialAuthService: AuthService,
   ) 
   {
     this.frmLogin = this.fb.group({
@@ -67,6 +71,37 @@ export class LoginComponent implements OnInit {
  
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+  }
+
+  public socialSignIn(socialPlatform : string) {
+    let socialPlatformProvider;
+    if(socialPlatform == "facebook")
+    {
+      socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
+    }
+    else if(socialPlatform == "google")
+    {
+      socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
+    }
+    
+    this.socialAuthService.signIn(socialPlatformProvider)
+    .then(
+      (userData) => 
+      {
+        console.log(socialPlatform+" sign in data : " , userData);
+        this.token = JSON.parse(localStorage.getItem('token'));
+    this.authenticationService.login(this.token)
+      .subscribe(
+        data => {
+          this.router.navigate(["/profile"]);
+        },
+        error => {
+          console.log("Error occured");
+          this.loading = false;
+        }
+      );  
+      }
+    );
   }
 
   login() {
