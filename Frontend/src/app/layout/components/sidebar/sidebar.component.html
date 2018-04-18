@@ -2,7 +2,7 @@
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
   <div class="list-group">
-    <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
+    <a routerLink="/layout/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
 
       <span><i class="fa fa-bar-chart-o fa-fw"></i>Dashboard</span>
     </a>
@@ -13,7 +13,7 @@
       <li class="nested" [class.expand]="showMenu === 'pages'">
         <ul class="submenu">
           <li>
-            <a  routerLink="/layout/buzonentrada"><span>Buzon de entrada</span></a>
+            <a  routerLink="/layout/inbox"><span>Buzon de entrada</span></a>
           </li>
           <li>
             <a href="javascript:void(0)"><span>Listado salones y reportes de daños</span></a>
@@ -33,7 +33,42 @@
       <li class="nested" [class.expand]="showMenu === 'pages'">
         <ul class="submenu">
           <li>
-            <a  routerLink="/layout/usuarios"><span>Encargados</span></a>
+            <a  routerLink="/layout/users"><span>Encargados</span></a>
+          </li>
+        </ul>
+      </li>
+      <li class="nested" [class.expand]="showMenu === 'pages'">
+        <ul class="submenu">
+          <li>
+            <a  routerLink="/layout/faculty"><span>Facultad</span></a>
+          </li>
+        </ul>
+      </li>
+      <li class="nested" [class.expand]="showMenu === 'pages'">
+        <ul class="submenu">
+          <li>
+            <a  routerLink="/layout/event"><span>Evento</span></a>
+          </li>
+        </ul>
+      </li>
+      <li class="nested" [class.expand]="showMenu === 'pages'">
+        <ul class="submenu">
+          <li>
+            <a  routerLink="/layout/subject"><span>Asignatura</span></a>
+          </li>
+        </ul>
+      </li>
+      <li class="nested" [class.expand]="showMenu === 'pages'">
+        <ul class="submenu">
+          <li>
+            <a  routerLink="/layout/group"><span>Grupo</span></a>
+          </li>
+        </ul>
+      </li>
+      <li class="nested" [class.expand]="showMenu === 'pages'">
+        <ul class="submenu">
+          <li>
+            <a  routerLink="/layout/purpose-classroom"><span>Proposito salon</span></a>
           </li>
         </ul>
       </li>
@@ -42,9 +77,28 @@
     <a class="list-group-item more-themes" href="" >
       <span><i class="fa fa-hdd-o fa-fw"></i>Historial</span>
     </a>
+
+
+    <div class="nested-menu">
+      <a class="list-group-item" (click)="addExpandClass('pages')">
+        <span><i class="fa fa-users fa-fw"></i>Solicitudes</span>
+      </a>
+      <li class="nested" [class.expand]="showMenu === 'pages'">
+        <ul class="submenu">
+          <li>
+            <a  routerLink="/layout/requestbag"><span>Lista Solicitudes</span></a>
+          </li>
+          <li>
+            <a  routerLink="/layout/requestbag/register"><span>Crear Solicitud</span></a>
+          </li>
+        </ul>
+      </li>
+    </div>
+
     <a class="list-group-item more-themes" href="" >
       <span><i class="fa fa-question-circle fa-fw"></i>About</span>
     </a>
+
     <div class="header-fields">
       <a (click)="rltAndLtr()" class="list-group-item">
         <span><i class="fa fa-arrows-h"></i>&nbsp; RTL/LTR</span>

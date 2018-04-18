@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-xl-9 col-lg-9">
+    <h3 style="margin-top: 15px"  class="text-muted"> Solicitudes </h3>
+  </div>
+</div>
+
+<hr class=" px-4 ">
+<!--Panel-->
+<form class="col-xl-7 col-lg-7" #requestForm="ngForm" (ngSubmit)="add()">
+  <input type="text" class="form-control" value="for pending" name="state" [(ngModel)]="request.state">
+  <input type="text" class="form-control" value="21" name="external_person_id" [(ngModel)]="request.external_person_id">
+  <input type="text" class="form-control" value="21" name="teacher_id" [(ngModel)]="request.teacher_id">
+      <label mdbActive  for="purpose_classroom" class="text-muted">Asunto</label>
+        <div class="md-form"   *ngIf="getSubjects">
+
+          <select class="form-control" id="purpose_classroom" name="purpose_classroom_id" [(ngModel)]="request.purpose_classroom_id" >
+            <option value=""></option>
+            <option  *ngFor="let purposeclassroom of purposesclassroom" value="{{purposeclassroom.id}}">{{purposeclassroom.name}}</option>
+          </select>
+        </div>
+
+      <label mdbActive  for="typeclassroom"  class="text-muted">Tipo Salón: </label>
+      <div class="md-form"   *ngIf="getTypesClassroom">
+        <select class="form-control" id="typeclassroom" name="type_classroom_id" [(ngModel)]="request.type_classroom_id">
+          <option value=""></option>
+          <option  *ngFor="let typeclassroom of typeclassrooms" value="{{typeclassroom.id}}">{{typeclassroom.name}}</option>
+        </select>
+      </div>
+
+      <label mdbActive  for="body"  class="text-muted"> </label>
+      <div class="md-form">
+        <textarea mdbActive type="text" id="body" class="md-textarea"></textarea>
+      </div>
+      <div class="md-form">
+        <input type="file" id="file" class="custom-file-input">
+        <span class="custom-file-control"></span>
+      </div>
+
+      <label mdbActive id="form1"  class="text-muted">Horario: </label>
+        <div class="card w-100"  style="margin-bottom: 10px">
+          <div class="card-body">
+            <p class="text-muted">Fecha: </p>
+            <p class="text-muted">Desde: </p>
+            <p class="text-muted">Hasta: </p>
+          </div>
+        </div>
+
+  <button type="submit" class="btn btn-default"  [disabled]="!requestForm.form.valid">Registrar</button>
+
+</form>
+<!--/.Panel-->

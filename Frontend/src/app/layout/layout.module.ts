@@ -15,17 +15,26 @@ import { DepartmentsService } from './services/departments.service';
 import { ClassroomService } from './services/classroom.service';
 import { GroupService } from './services/group.service';
 import { SubjectService } from './services/subject.service';
+import { RequestService } from './services/request.service';
+import { EventService } from './services/event.service';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import {MDBBootstrapModule} from 'angular-bootstrap-md/index';
+import {MessageService} from './services/message.service';
+import { FormsModule } from '@angular/forms';
+import {PurposeClassroomService} from './services/purpose-classroom.service';
+import {TypeClassroomService} from './services/type-classroom.service';
 
 @NgModule({
   imports: [
     CommonModule,
     NgbModule.forRoot(),
     MDBBootstrapModule.forRoot(),
-    LayoutRoutingModule
+    LayoutRoutingModule,
+    FormsModule
   ],
   declarations: [LayoutComponent, HeaderComponent, SidebarComponent, BreadcrumbComponent],
-  providers: [FalcultyService, HeadBuildingService, BuildingService, ManagerService, TeacherService, ExternalPersonService, DepartmentsService, ClassroomService, GroupService, SubjectService]
+  providers: [FalcultyService, HeadBuildingService, RequestService, BuildingService, ManagerService,
+    TeacherService, ExternalPersonService, DepartmentsService, ClassroomService, GroupService,
+    SubjectService, MessageService, PurposeClassroomService, EventService, TypeClassroomService]
 })
 export class LayoutModule { }
