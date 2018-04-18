@@ -1,14 +1,18 @@
 <h3> Buzón de Entrada </h3>
 <hr class=" px-4 ">
 <!--Panel-->
-<div class="card w-100">
+<div *ngIf="requests">
+<div class="card w-100"  *ngFor="let request of requests" style="margin-bottom: 10px">
   <div class="card-body">
-    <h3 class="card-title">Asunto: NN</h3>
-    <p class="card-text">From: NN</p>
-    <p class="card-text">Dependenciaa: NN</p>
-    <a href="#" class="btn btn-primary">Gestionar</a>
+    <h3 class="card-title">Asunto:  {{request.purpose_classroom}}</h3>
+    <p class="card-text">From: {{request.teacher.first_name +' '+ request.teacher.last_name}}</p>
+    <p class="card-text">E-mail: {{request.teacher.email}}</p>
+    <p class="card-text">Cargo: {{request.teacher.role}}</p>
+
+    <a  routerLink="/layout/inbox/mail/{{request.id}}" class="btn btn-primary">Gestionar</a>
     <a href="#" class="btn btn-primary">Dar de Baja</a>
   </div>
+</div>
 </div>
 <!--/.Panel-->
 

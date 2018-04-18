@@ -26,7 +26,7 @@
 </div>
 <!--Top Table UI-->
 
-<div class="card card-cascade narrower">
+<div class="card card-cascade narrower" >
   <!--/Card image-->
 
   <div class="px-4">
@@ -43,7 +43,6 @@
           </th>
           <th class="th-lg"><a>Usuario <i class="fa fa-sort ml-1"></i></a></th>
           <th class="th-lg"><a>Email <i class="fa fa-sort ml-1"></i></a></th>
-          <th class="th-lg"><a href="">Facultad<i class="fa fa-sort ml-1"></i></a></th>
           <th class="th-lg"><a href="">Edificio<i class="fa fa-sort ml-1"></i></a></th>
           <th class="th-lg"><a href="">Opciones<i class="fa fa-sort ml-1"></i></a></th>
         </tr>
@@ -53,12 +52,11 @@
           <th scope="row">
             <label  class="label-table">{{headbuildingonfaculty.cc}}</label>
           </th>
-          <td>{{headbuildingonfaculty.first_name+ '' + headbuildingonfaculty.last_name}}</td>
+          <td>{{headbuildingonfaculty.first_name+ ' ' + headbuildingonfaculty.last_name}}</td>
           <td>{{headbuildingonfaculty.email}}</td>
-          <td>{{headbuildingonfaculty.facultyname}}</td>
           <td>{{ headbuildingonfaculty.buildingname }}</td>
           <td>
-            <button class="get" title="">Selection</button></td>
+            <a  routerLink="/layout/faculty/register/" class="btn btn-warning">Selection</a></td>
         </tr>
         </tbody>
         <!--Table body-->
