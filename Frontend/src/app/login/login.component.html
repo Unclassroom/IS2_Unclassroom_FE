@@ -31,6 +31,7 @@
                 <div class="row justify-content-md-center">
                     <div class="row" >
                         <button
+                            id="log"
                             type="submit"
                             [disabled]="loading"
                             [ngClass]="{'disabled': !(f.valid)}"
@@ -41,13 +42,11 @@
                     </div>
                 </div>
         </form>
-        <button
-                            (click)="socialSignIn('facebook')"
-                        >Sign in with Facebook</button>
-                        <button
-                            class="g-signin2"
-                            (click)="socialSignIn('google')"
-                        >Signin in with Google</button> 
+                <button (click)="socialSignIn('facebook')"
+                    >Sign in with Facebook</button>
+                <button class="g-signin2" 
+                    (click)="socialSignIn('google')"
+                    >Signin in with Google</button> 
       </div>
   </div>
 </div>
@@ -55,3 +54,38 @@
 <!-- <a class="btn rounded-btn" id="log" *ngIf="!tokenAuthService.userSignedIn()" (click)="onLoggedin()" > Log in </a>
 &nbsp; -->
 <!--  -->
+
+<!--link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<! Include the above in your HEAD tag ->
+
+<div class="container">
+	<div class="row">
+        <h2>"Waiting for..." modal dialog with progress bar</h2>
+        <p>If you need to block a user screen while loading some data or doing heavy computations, 
+        you can use this snippet to show modal dialog with progress bar.</p>
+		<p>Fork it on <a href="https://github.com/ehpc/bootstrap-waitingfor">github</a></p>
+        <h2>Examples <small>All dialogs will be automatically closed after 2 seconds</small></h2>
+        
+        <h3>Simple dialog</h3>
+        <pre>
+waitingDialog.show();</pre>
+        <button type="button" class="btn btn-primary" onclick="waitingDialog.show();setTimeout(function () {waitingDialog.hide();}, 3000);">Show dialog</button>
+        
+        <h3>Dialog with custom message</h3>
+        <pre>
+waitingDialog.show('Custom message');</pre>
+        <button type="button" class="btn btn-success" onclick="waitingDialog.show('Custom message');setTimeout(function () {waitingDialog.hide();}, 2000);">Show dialog</button>
+        
+        <h3>Dialog with custom settings</h3>
+        <pre>
+waitingDialog.show('Custom message', {dialogSize: 'sm', progressType: 'warning'});</pre>
+        <button type="button" class="btn btn-warning" onclick="waitingDialog.show('Custom message', {dialogSize: 'sm', progressType: 'warning'});setTimeout(function () {waitingDialog.hide();}, 2000);">Show dialog</button>
+        
+        <h3>Dialog with some callback firing after it was hidden</h3>
+        <pre>waitingDialog.show('Dialog with callback on hidden',{onHide: function () {alert('Callback!');}});</pre>
+        
+        <p></p>
+	</div>
+</div-->

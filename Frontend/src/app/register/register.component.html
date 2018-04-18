@@ -9,6 +9,7 @@
           <div class="form-group">
             <label for="email">Username</label>
             <input
+              type="text"
               id="username"
               required
               name='username'
@@ -58,6 +59,7 @@
           </span>
         </div>
         <button type="submit"
+                id="reg"
                 [disabled]="loading"
                 [disabled]="!(f.valid) || !(model.password == model.password_confirmation)"
                 class="btn rounded-btn">

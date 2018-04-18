@@ -11,7 +11,7 @@
     bottom: 0;
     overflow: auto;
     text-align: center;
-    color: rgb(219, 206, 206);
+    color: rgba(35, 102, 71, 0.603);
     padding: 3em;
 }
 .row{
@@ -28,6 +28,7 @@
         font-size: 18px;
         line-height: 1.3333333;
         border-radius: 0;
+        color: darkcyan;
     }
     .input-underline {
         background: 0 0;
@@ -66,7 +67,7 @@
             margin-top: 10px;
             background-color: #95B452;
             border: none;
-            color: white;
+            color: rgb(55, 199, 180);
             padding: 5px 5px;
             text-align: center;
             text-decoration: none;
@@ -95,16 +96,16 @@
     }
         input:-moz-placeholder {
             /* Firefox 18- */
-            color: rgba(255, 255, 255, 0.6) !important;
+            color: rgba(51, 119, 110, 0.514) !important;
         }
 
         input::-moz-placeholder {
             /* Firefox 19+ */
-            color: rgba(255, 255, 255, 0.6) !important;
+            color: rgba(60, 114, 116, 0.452) !important;
         }
 
         input:-ms-input-placeholder {
-            color: rgba(255, 255, 255, 0.6) !important;
+            color: rgba(51, 92, 88, 0.397) !important;
         }
     .form-content {
         padding: 40px 0;

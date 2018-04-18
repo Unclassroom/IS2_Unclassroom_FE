@@ -6,10 +6,10 @@ import {  BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {  HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { NgRedux } from '@angular-redux/store';
-import { AppState } from '../redux/store';
+/*import { AppState } from '../redux/store';
 import { ISession } from '../redux/session';
 import { ADD_SESSION } from '../redux/actions';
-
+*/
 // Social login
 import { AuthService, FacebookLoginProvider,GoogleLoginProvider} from 'angular5-social-login';
 
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
   
   constructor(
-    private ngRedux: NgRedux<AppState>,
+  //  private ngRedux: NgRedux<AppState>,
     private fb: FormBuilder,
     private http: HttpClient,
     private route: ActivatedRoute,

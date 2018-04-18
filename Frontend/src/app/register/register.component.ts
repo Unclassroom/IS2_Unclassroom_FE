@@ -2,10 +2,10 @@ import { Component, OnInit, EventEmitter, Output} from '@angular/core';
 import { Router } from '@angular/router';
 import { Angular2TokenService} from 'angular2-token';
 import { NgRedux } from '@angular-redux/store';
-import { AppState } from '../redux/store';
+/*import { AppState } from '../redux/store';
 import { ISession } from '../redux/session';
 import { ADD_SESSION } from '../redux/actions';
-
+*/
 import { UserService } from '../_services/index';
 
 @Component({
@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
   @Output() onFormResult = new EventEmitter<any>();
 
   constructor(
-    private ngRedux: NgRedux<AppState>, 
+  //  private ngRedux: NgRedux<AppState>, 
     private tokenAuthSerivce: Angular2TokenService,
     private userService: UserService,
     private router: Router
