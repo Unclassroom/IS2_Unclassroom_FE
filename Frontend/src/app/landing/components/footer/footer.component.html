@@ -90,14 +90,20 @@
       <div class="modal-body">
         <div class="md-form form-sm">
           <i class="fa fa-envelope prefix"></i>
-          <input mdbActive type="text" id="form32" class="form-control">
+          <input mdbActive type="text" id="form32" 
+                class="form-control"  
+                pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$">
           <label for="form32">Your email</label>
         </div>
 
         <div class="md-form form-sm">
           <i class="fa fa-lock prefix"></i>
-          <input mdbActive type="password" id="form33" class="form-control">
-          <label for="form33">Your password</label>
+          <input mdbActive type="password" id="form33" 
+            pattern ="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@$!%*?]{8,16}"
+            class="form-control">
+           <label for="form33">Your password</label>
+           <p class="pcheck">*The password must have between 8 and 16 characters and have at least one uppercase letter, one lowercase and one number</p>
+
         </div>
 
         <div class="md-form form-sm">

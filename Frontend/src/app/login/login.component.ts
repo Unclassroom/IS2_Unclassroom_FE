@@ -6,10 +6,7 @@ import {  BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {  HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { NgRedux } from '@angular-redux/store';
-/*import { AppState } from '../redux/store';
-import { ISession } from '../redux/session';
-import { ADD_SESSION } from '../redux/actions';
-*/
+
 // Social login
 import { AuthService, FacebookLoginProvider,GoogleLoginProvider} from 'angular5-social-login';
 
@@ -29,6 +26,7 @@ interface Token {
 
 export class LoginComponent implements OnInit {
   frmLogin: FormGroup;
+  public loadingg: boolean;
 
   signInUser = {
     email: '',
@@ -63,6 +61,7 @@ export class LoginComponent implements OnInit {
       'password': ['', Validators.required]
     })
     this.http = http;
+    this.loadingg=true;
   }
   
   ngOnInit() {
