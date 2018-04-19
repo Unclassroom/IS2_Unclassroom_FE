@@ -29,6 +29,7 @@ interface UserCreate {
 
 export class LoginComponent implements OnInit {
   frmLogin: FormGroup;
+  public loadingg: boolean;
 
   signInUser = {
     email: '',
@@ -47,6 +48,7 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
   
   constructor(
+  //  private ngRedux: NgRedux<AppState>,
     private fb: FormBuilder,
     private http: HttpClient,
     private route: ActivatedRoute,
@@ -61,6 +63,7 @@ export class LoginComponent implements OnInit {
       'password': ['', Validators.required]
     })
     this.http = http;
+    this.loadingg=true;
   }
   
   ngOnInit() {
