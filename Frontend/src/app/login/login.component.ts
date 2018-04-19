@@ -94,33 +94,40 @@ export class LoginComponent implements OnInit {
         this.userService.create_social(this.model)
           .subscribe(
             data => {
-              // console.log(Object.values(data)[0])
-              // console.log('${data[0].id}')
-              // this.authenticationService.getTokenSocial(Object.values(data)[0])
-              console.log('data', data)
               localStorage.setItem('number_user', Object.values(data)[0] )
-              console.log('data with id'+Object.values(data)[0].id)
               console.log('data array'+Object.values(data)[0])
               this.authenticationService.getTokenSocial(localStorage.getItem('number_user'))
-              console.log('final token'+localStorage.getItem('token'))
-              // this.authenticationService.login(localStorage.getItem('token'))
-              //   .subscribe(
-              //       data => {
-              //         this.router.navigate(["/layout"]);
-              //       },
-              //       error => {
-              //         console.log("Error occured");
-              //         this.loading = false;
-              //   }
-              // );
-            // set success message and pass true paramater to persist the message after redirecting to the login page
-              // this.router.navigate(['/landing']);
+              console.log('user service token'+localStorage.getItem('token'))
+              this.token = JSON.parse(localStorage.getItem('token'));
+              const httpOptions = {
+                headers: new HttpHeaders({
+                  'Content-Type':  'application/json',
+                  'Authorization': 'Baerer '+ this.token
+                })
+              }
+              console.log('before test');
+              this.http.get(this.configUrl+'/users/current', httpOptions)
+              .subscribe(
+                result => {
+                  // if (result) {
+                  //   // store user details and jwt token in local storage to keep user logged in between page refreshes
+                  //   console.log(result);
+                  //   localStorage.setItem('currentUser', JSON.stringify(result));
+                  // }
+                  console.log(result);
+                  localStorage.setItem('currentUser', JSON.stringify(result));
+                  this.router.navigate(["/layout"]);
+                },
+                err => {
+                  console.log("Error occured");
+                }
+            );
             },
             error => {
               this.loading = false;
             });
-        // this.socialLogin()
-
+          // console.log('final token'+this.token)
+          // console.log('current user'+localStorage.getItem('currentUser'))
       }
     );
   }

@@ -56,15 +56,30 @@ export class AuthenticationService {
             console.log('supuestamente solo jwt'+token.jwt);
             localStorage.setItem('token', JSON.stringify(token.jwt));
             console.log('authen token'+localStorage.getItem('token'))
-            this.login(localStorage.getItem('token'))
-                .subscribe(
-                    data => {
-                      this.router.navigate(["/layout"]);
-                    },
-                    error => {
-                      console.log("Error occured");
-                }
-              );
+            // const httpOptions = {
+            //   headers: new HttpHeaders({
+            //     'Content-Type':  'application/json',
+            //     'Authorization': 'Baerer '+ localStorage.getItem('token')
+            //   })
+            // };
+            // console.log(httpOptions)
+            // this.http.get(this.configUrl+'/users/current', httpOptions)
+            //   .subscribe(
+            //     result => {
+            //       if (result) {
+            //         // store user details and jwt token in local storage to keep user logged in between page refreshes
+            //         console.log(result);
+            //         localStorage.setItem('currentUser', JSON.stringify(result));
+            //       }
+            //       console.log(result);
+            //       localStorage.setItem('currentUser', JSON.stringify(result));
+                  
+            //     },
+            //     err => {
+            //       console.log("Error occured");
+            //     }
+            // );
+        
             
           }
           console.log(token);
