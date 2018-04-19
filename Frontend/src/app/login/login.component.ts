@@ -103,16 +103,16 @@ export class LoginComponent implements OnInit {
               console.log('data array'+Object.values(data)[0])
               this.authenticationService.getTokenSocial(localStorage.getItem('number_user'))
               console.log('final token'+localStorage.getItem('token'))
-              this.authenticationService.login(localStorage.getItem('token'))
-                .subscribe(
-                    data => {
-                      this.router.navigate(["/layout"]);
-                    },
-                    error => {
-                      console.log("Error occured");
-                      this.loading = false;
-                }
-              );
+              // this.authenticationService.login(localStorage.getItem('token'))
+              //   .subscribe(
+              //       data => {
+              //         this.router.navigate(["/layout"]);
+              //       },
+              //       error => {
+              //         console.log("Error occured");
+              //         this.loading = false;
+              //   }
+              // );
             // set success message and pass true paramater to persist the message after redirecting to the login page
               // this.router.navigate(['/landing']);
             },
