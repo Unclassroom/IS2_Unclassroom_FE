@@ -1,16 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { User } from '../../../_models/index';
+import { UserService } from '../../../_services/index';
+
+import { AuthenticationService } from '../../../_services/index';
 
 @Component({
+  moduleId: module.id,
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit 
+{
   pushRightClass = 'push-right';
+  currentUser: User;
+  users: User[] = [];
 
-  constructor( public router: Router) {
+  constructor( 
+    public router: Router,
+    private userService: UserService,
+    private authenticationService: AuthenticationService
+  ) 
+  {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.router.events.subscribe(val => {
       if (
         val instanceof NavigationEnd &&

@@ -41,15 +41,15 @@
                     </div>
                 </div>
         </form>
-        <button
-                            (click)="socialSignIn('facebook')"
-                        >Sign in with Facebook</button>
-                        <button
-                            class="g-signin2"
-                            (click)="socialSignIn('google')"
-                        >Signin in with Google</button> 
       </div>
   </div>
+  <button
+        (click)="socialSignIn('facebook')"
+    > Sign in with Facebook </button>
+    <button
+        class="g-signin2"
+        (click)="socialSignIn('google')"
+    >Signin in with Google</button> 
 </div>
 
 <!-- <a class="btn rounded-btn" id="log" *ngIf="!tokenAuthService.userSignedIn()" (click)="onLoggedin()" > Log in </a>

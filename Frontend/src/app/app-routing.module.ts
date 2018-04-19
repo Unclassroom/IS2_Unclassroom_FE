@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'home', loadChildren: './landing/landing.module#LandingModule'},
   { path: 'landing', loadChildren: './landing/landing.module#LandingModule', pathMatch: 'full'},
   { path: '', loadChildren: './landing/landing.module#LandingModule', pathMatch: 'full'},
-  { path: 'layout', loadChildren: './layout/layout.module#LayoutModule'},
+  { path: 'layout', loadChildren: './layout/layout.module#LayoutModule', canActivate: [AuthGuard] },
   { path: 'login', loadChildren: './login/login.module#LoginModule' },
   { path: 'register', loadChildren: './register/register.module#RegisterModule' }
 ];

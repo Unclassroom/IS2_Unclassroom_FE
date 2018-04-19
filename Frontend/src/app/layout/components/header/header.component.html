@@ -1,16 +1,12 @@
 <nav class="navbar navbar-expand-lg fixed-top">
   <a class="navbar-brand" href="#"><img src="../assets/images/logo.png" width="200px"> </a>
-
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav ml-auto">&nbsp;
-
-
-  <li class="nav-item dropdown" ngbDropdown>
-    <a href="javascript:void(0)" class="nav-link" ngbDropdownToggle>
-      <i class="fa fa-user"></i> John Smith <b class="caret"></b>
-    </a>
-  </li>
-  </ul>
+      <li class="nav-item dropdown" ngbDropdown>
+        <i class="fa fa-user"></i> Hi {{currentUser.username}}! &nbsp; &nbsp;  
+      </li>
+    </ul>
+    <p><a [routerLink]="['/login']">Logout</a></p>
   </div>
 </nav>
 

@@ -22,7 +22,6 @@ import { Angular2TokenService } from 'angular2-token';
 
 //Redux
 import { NgRedux, NgReduxModule } from '@angular-redux/store';
-import { AppState, rootReducer, INITIAL_STATE } from './redux/store';
 import { ProfileComponent } from './profile/profile.component';
 
 // Social authenticate
@@ -83,7 +82,6 @@ export function getAuthServiceConfigs() {
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(ngRedux: NgRedux<AppState>) {
-    ngRedux.configureStore(rootReducer, INITIAL_STATE);
+  constructor() {
   }
 }

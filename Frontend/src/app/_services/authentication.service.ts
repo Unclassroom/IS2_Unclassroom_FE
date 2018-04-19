@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {  Router, RouterModule, Routes,  ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
@@ -14,7 +15,10 @@ export class AuthenticationService {
   
   returnUrl: string;
   tok:string;
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+  ) { }
 
   getToken(email: string, password: string)
   {
@@ -41,16 +45,48 @@ export class AuthenticationService {
     
   }
 
+  getTokenSocial(endpoint: string)
+  {
+    console.log(this.configUrl+'social_auth/'+endpoint);
+    return this.http.get<Token>(this.configUrl+'social_auth/'+endpoint)
+      .subscribe(
+        token => {
+          if (token) {
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            console.log('supuestamente solo jwt'+token.jwt);
+            localStorage.setItem('token', JSON.stringify(token.jwt));
+            console.log('authen token'+localStorage.getItem('token'))
+            this.login(localStorage.getItem('token'))
+                .subscribe(
+                    data => {
+                      this.router.navigate(["/layout"]);
+                    },
+                    error => {
+                      console.log("Error occured");
+                }
+              );
+            
+          }
+          console.log(token);
+          return token;
+        },
+        err => {
+          console.log("Error occured");
+        }
+      );
+    
+  }
+
   login(token: string) 
   {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
-        'Authorization': 'Baerer '+ token
+        'Authorization': 'Baerer '+ localStorage.getItem('token')
       })
     };
 
-    console.log(token)
+    console.log('token dentro de login'+localStorage.getItem('token'))
 
     return this.http.get(this.configUrl+'users/current', httpOptions)
       .map(
@@ -66,28 +102,7 @@ export class AuthenticationService {
           console.log("Error occured");
         }
       );
-    
   }
-
-  // const req = this.http.post<Token>(this.configUrl+'/user_token', {
-  //   "auth":{
-  //     "email": this.signInUser.email,
-  //     "password": this.signInUser.password
-  //   }
-  // })
-  //   .subscribe(
-  //     result => {
-  //       this.result = result.jwt;
-  //       this.token = result.jwt;
-  //       this.signIn();
-
-  //     },
-  //     err => {
-  //       console.log("Error occured");
-  //     }
-  //   );
-
-
 
   logout() 
   {
