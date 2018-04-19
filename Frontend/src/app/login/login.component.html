@@ -1,7 +1,20 @@
-<div class="login-page" [@routerTransition]>
+<head>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+     
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
+     
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+     
+        <!-- font awesome css -->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    </head>
+     
+     <div class="login-page" [@routerTransition]>
     <div  *ngIf="loading">
-        <img src="../../assets/images/loader.gif"
-        >
+        <img src="../../assets/images/loader.gif">
         
     </div>
   <div class="row justify-content-md-center">
@@ -33,7 +46,8 @@
                       placeholder="Password">
                   </div>
                 </div>
-                <div class="row justify-content-md-center">
+            </form>
+                <div class="container">
                     <div class="row" >
                         <button
                             id="log"
@@ -41,17 +55,32 @@
                             [disabled]="loading"
                             [ngClass]="{'disabled': !(f.valid)}"
                             class="btn rounded-btn"
-                        > Login </button>    
+                        > Login </button> 
                         <!-- <a class="btn rounded-btn" id="log"> Log in </a>&nbsp; -->
                         <a class="btn rounded-btn" id="reg" [routerLink]="['/register']" > Register </a>&nbsp;
                     </div>
                 </div>
-        </form>
-                <button (click)="socialSignIn('facebook')"
-                    >Sign in with Facebook</button>
-                <button class="g-signin2" 
-                    (click)="socialSignIn('google')"
-                    >Signin in with Google</button> 
+                <div  *ngIf="!loadingg">
+                        <p>Usuario o contraseña invalidos</p>
+                     </div>
+                
+        
+    
+<div class="container">
+    <div class="row">
+        <div class="btn-group">
+                <a class='btn btn-danger'><i class="fa fa-google-plus" 
+                    (click)="socialSignIn('google')" style="width:10px; height:100%"></i></a>
+                <a class='btn btn-danger' (click)="socialSignIn('google')"> Sign in with Google</a>
+            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="btn-group">
+                <a class='btn btn-primary'><i class="fa fa-facebook" 
+                    style="width:16px; height:100%"></i></a>
+                <a class='btn btn-primary ' (click)="socialSignIn('facebook')"> Sign in with Facebook</a>
+            </div>	
+        </div>
+    </div>
       </div>
   </div>
 </div>

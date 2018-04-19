@@ -1,13 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-// import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -22,6 +20,7 @@ import { Angular2TokenService } from 'angular2-token';
 
 //Redux
 import { NgRedux, NgReduxModule } from '@angular-redux/store';
+
 //import { AppState, rootReducer, INITIAL_STATE } from './redux/store';
 import { ProfileComponent } from './profile/profile.component';
 

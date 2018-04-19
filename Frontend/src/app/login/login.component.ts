@@ -97,6 +97,7 @@ export class LoginComponent implements OnInit {
         error => {
           console.log("Error occured");
           this.loading = false;
+          this.loadingg = true;
         }
       );  
       }
