@@ -4,4 +4,8 @@ import { createStore, applyMiddleware } from 'redux';
 import reducer from './session';
 
 // const store = createStore(reducer, {}, applyMiddleware(thunk, logger));
+<<<<<<< HEAD
 export default store;
+=======
+// export default store;
+>>>>>>> social

@@ -5,17 +5,10 @@ import { User } from '../_models/index';
 
 @Injectable()
 export class UserService {
+    
     configUrl = 'http://localhost:3000/';
     
     constructor(private http: HttpClient) { }
-
-    getAll() {
-        return this.http.get<User[]>('/profile');
-    }
-
-    getById(id: number) {
-        return this.http.get('/profile' + id);
-    }
 
     create(user: User) {
         return this.http.post(this.configUrl+'/users/create', 
@@ -38,12 +31,23 @@ export class UserService {
           );
     }
 
-    update(user: User) {
-        return this.http.put('/profile' + user.id, user);
-    }
-
-    delete(id: number) {
-        return this.http.delete('/profile' + id);
+    create_social(user: User) {
+        console.log(user)
+        return this.http.post(this.configUrl+'/social_auth', 
+        {
+            "username": user.username,
+            "email": user.email
+        })
+        .map(
+            result => 
+            {
+                console.log("user create")
+                return result;
+            },
+            err => {
+              console.log("NO user create");
+            }
+          );
     }
 
 }

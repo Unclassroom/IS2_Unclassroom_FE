@@ -24,14 +24,14 @@ export class ProfileComponent implements OnInit {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
   ngOnInit() {
-    this.loadAllUsers();
+    // this.loadAllUsers();
   }
 
-  deleteUser(id: number) {
-    this.userService.delete(id).subscribe(() => { this.loadAllUsers() });
-  }
+  // deleteUser(id: number) {
+  //   this.userService.delete(id).subscribe(() => { this.loadAllUsers() });
+  // }
 
-  private loadAllUsers() {
-    this.userService.getAll().subscribe(users => { this.users = users; });
-  }
+  // private loadAllUsers() {
+  //   this.userService.getAll().subscribe(users => { this.users = users; });
+  // }
 }
