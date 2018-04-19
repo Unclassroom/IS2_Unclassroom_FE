@@ -155,7 +155,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.loading = true;
+    console.log("into login")
     this.authenticationService.getToken(this.model.email, this.model.password)
       .subscribe(
         token =>{
@@ -165,17 +165,20 @@ export class LoginComponent implements OnInit {
           console.log("Error occured");
         }
       );
-    console.log("after service")
-    console.log(localStorage.getItem('token'))
+    // console.log("after service")
+    // console.log(localStorage.getItem('token'))
     this.token = JSON.parse(localStorage.getItem('token'));
     this.authenticationService.login(this.token)
       .subscribe(
         data => {
           this.router.navigate(["/layout"]);
+          this.loading = true;
+          console.log(this.loading)
         },
         error => {
           console.log("Error occured");
           this.loading = false;
+          console.log(this.loading)
         }
       );
   }

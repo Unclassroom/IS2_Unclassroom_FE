@@ -97,11 +97,9 @@ export class AuthenticationService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
-        'Authorization': 'Baerer '+ localStorage.getItem('token')
+        'Authorization': 'Baerer '+ token
       })
     };
-
-    console.log('token dentro de login'+localStorage.getItem('token'))
 
     return this.http.get(this.configUrl+'users/current', httpOptions)
       .map(
