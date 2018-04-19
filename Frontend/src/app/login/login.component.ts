@@ -29,8 +29,6 @@ interface UserCreate {
 
 export class LoginComponent implements OnInit {
   frmLogin: FormGroup;
-  public loadingg: boolean;
-
   signInUser = {
     email: '',
     password: ''
@@ -43,10 +41,10 @@ export class LoginComponent implements OnInit {
   result:Object;
   model: any = {
   };
-
+  clickscnt=0;
   loading = false;
   returnUrl: string;
-  
+  clickstwo: boolean;
   constructor(
   //  private ngRedux: NgRedux<AppState>,
     private fb: FormBuilder,
@@ -63,7 +61,6 @@ export class LoginComponent implements OnInit {
       'password': ['', Validators.required]
     })
     this.http = http;
-    this.loadingg=true;
   }
   
   ngOnInit() {
@@ -156,6 +153,8 @@ export class LoginComponent implements OnInit {
 
   login() {
     console.log("into login")
+    console.log(this.clickscnt)
+    this.clickscnt+=1
     this.authenticationService.getToken(this.model.email, this.model.password)
       .subscribe(
         token =>{
@@ -174,8 +173,14 @@ export class LoginComponent implements OnInit {
           this.router.navigate(["/layout"]);
           this.loading = true;
           console.log(this.loading)
+          if (this.clickscnt>=2){
+            this.clickstwo=true;
+          }
         },
         error => {
+          if (this.clickscnt>=2){
+            this.clickstwo=true;
+          }
           console.log("Error occured");
           this.loading = false;
           console.log(this.loading)

@@ -55,16 +55,15 @@
                             [ngClass]="{'disabled': !(f.valid)}"
                             class="btn rounded-btn"
                             (click)="login()"
+
                         > Login </button> 
                         <!-- <a class="btn rounded-btn" id="log"> Log in </a>&nbsp; -->
                         <a class="btn rounded-btn" id="reg" [routerLink]="['/register']" > Register </a>&nbsp;
                     </div>
                 </div>
-                <div  *ngIf="!loadingg">
-                        <p>Usuario o contraseña invalidos</p>
-                     </div>
-                
-        
+                <div *ngIf="clickstwo">
+                        <p> Usuario o contraseña incorrecoto</p>
+                    </div>        
     
 <div class="container">
     <div class="row">
