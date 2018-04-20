@@ -5,6 +5,8 @@ import {TypeClassroom} from '../../models/type-classroom';
 import {TypeClassroomService} from '../../services/type-classroom.service';
 import {PurposeClassroom} from '../../models/purpose-classroom';
 import {PurposeClassroomService} from '../../services/purpose-classroom.service';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +14,21 @@ import {PurposeClassroomService} from '../../services/purpose-classroom.service'
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  request = {
+
+  files: FileList;
+  filestring: string;
+  request: any = {
+    state: '',
+    motive: '',
+    type_classroom_id: '',
+    external_person_id: '',
+    purpose_classroom_id: '',
+    teacher_id: '',
+    file: {
+      url: ''
+    }
+  }
+request_data = {
     /*'teacher_id': '21',
     'purpose_classroom_id': '26',
     'type_classroom_id': '17',
@@ -22,12 +38,45 @@ export class RegisterComponent implements OnInit {
 
   purposesclassroom: PurposeClassroom[];
   typeclassrooms: TypeClassroom[];
+  private router: Router;
   constructor(private requestService: RequestService, private purposeClassroomService: PurposeClassroomService, private typeClassroomService: TypeClassroomService) { }
   ngOnInit() {
     this.getSubjects();
     this.getTypesClassroom();
   }
+
+  getFiles(event) {
+    this.files = event.target.files;
+    var reader = new FileReader();
+    reader.onload = this._handleReaderLoaded.bind(this);
+    reader.readAsBinaryString(this.files[0]);
+  }
+
+
+  _handleReaderLoaded(readerEvt) {
+    var binaryString = readerEvt.target.result;
+    this.filestring = btoa(binaryString);  // Converting binary string data.
+    console.log(this.filestring );
+  }
+  logForm(form: NgForm) {
+    this.request.state = form.value.state ;
+    this.request.motive = form.value.motive ;
+    this.request.type_classroom_id = form.value.type_classroom_id ;
+    this.request.external_person_id = form.value.external_person_id ;
+    this.request.purpose_classroom_id = form.value.purpose_classroom_id ;
+    this.request.teacher_id = form.value.teacher_id ;
+    this.request.file = this.filestring ;
+
+    console.log(this.filestring);
+    this.add();
+  }
+
+  registerClient() {
+    this.router.initialNavigation();
+  }
+
   add(): void {
+
     if (!this.request) { return; }
     this.requestService.addRequest(this.request)
       .subscribe();

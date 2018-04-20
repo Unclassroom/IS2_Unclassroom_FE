@@ -39,7 +39,7 @@ export class RequestService {
     );
   }
   /** PUT: update the request on the server validate answer */
-  updateRequest (request, id: number): Observable<any> {
+  updateRequest (request, id: string): Observable<any> {
     return this.http.put(this.AllRequestUrl + '/' + id, request, httpOptions).pipe(
       tap(_ => this.log(`updated hero id=${request.id}`)),
       catchError(this.handleError<any>('updateRequest'))

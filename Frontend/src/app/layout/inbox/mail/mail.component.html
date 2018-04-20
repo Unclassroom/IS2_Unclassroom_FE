@@ -20,20 +20,20 @@
 
       <hr>
 
-      <div *ngIf="request_mail.times">
-      <h3 class="card-title">Horario:  </h3>
-      <div class="card w-100" *ngFor="let time of request_mail.times"  style="margin-bottom: 10px">
-        <div class="card-body">
-          <p class="font-weight-normal">Fecha: {{time.date}}</p>
-          <p class="font-weight-normal">Desde: {{time.begin_at}}</p>
-          <p class="font-weight-normal">Hasta: {{time.end_at}}</p>
-        </div>
-      </div>
+      <!--     <div *ngIf="request_mail.times">
+           <h3 class="card-title">Horario:  </h3>
+           <div class="card w-100" *ngFor="let time of request_mail.times"  style="margin-bottom: 10px">
+             <div class="card-body">
+               <p class="font-weight-normal">Fecha: {{time.date}}</p>
+               <p class="font-weight-normal">Desde: {{time.begin_at}}</p>
+               <p class="font-weight-normal">Hasta: {{time.end_at}}</p>
+             </div>
+           </div>
 
-      </div>
+           </div>-->
 
-      <a   (click)="save()" class="btn btn-primary">Gestionar</a>
-    </div>
-  </div>
-</div>
-<!--/.Panel-->
+           <a   (click)="save()" class="btn btn-primary">Gestionar</a>
+         </div>
+       </div>
+     </div>
+     <!--/.Panel-->

@@ -5,15 +5,16 @@
 </div>
 
 <hr class=" px-4 ">
-<!--Panel-->
-<form class="col-xl-7 col-lg-7" #requestForm="ngForm" (ngSubmit)="add()">
-  <input type="text" class="form-control" value="for pending" name="state" [(ngModel)]="request.state">
-  <input type="text" class="form-control" value="21" name="external_person_id" [(ngModel)]="request.external_person_id">
-  <input type="text" class="form-control" value="21" name="teacher_id" [(ngModel)]="request.teacher_id">
+<!--Panel
+<form class="col-xl-7 col-lg-7" #form = "ngForm" (ngSubmit)="logForm(form)" enctype="multipart/form-data">
+-->
+<form class="col-xl-7 col-lg-7" (submit)="registerClient()" enctype="multipart/form-data" action="http://localhost:3000/requests" method="post">
+
+
       <label mdbActive  for="purpose_classroom" class="text-muted">Asunto</label>
         <div class="md-form"   *ngIf="getSubjects">
 
-          <select class="form-control" id="purpose_classroom" name="purpose_classroom_id" [(ngModel)]="request.purpose_classroom_id" >
+          <select class="form-control" id="purpose_classroom" name="purpose_classroom_id"  >
             <option value=""></option>
             <option  *ngFor="let purposeclassroom of purposesclassroom" value="{{purposeclassroom.id}}">{{purposeclassroom.name}}</option>
           </select>
@@ -21,31 +22,36 @@
 
       <label mdbActive  for="typeclassroom"  class="text-muted">Tipo Salón: </label>
       <div class="md-form"   *ngIf="getTypesClassroom">
-        <select class="form-control" id="typeclassroom" name="type_classroom_id" [(ngModel)]="request.type_classroom_id">
+        <select class="form-control" id="typeclassroom" name="type_classroom_id" >
           <option value=""></option>
           <option  *ngFor="let typeclassroom of typeclassrooms" value="{{typeclassroom.id}}">{{typeclassroom.name}}</option>
         </select>
       </div>
 
-      <label mdbActive  for="body"  class="text-muted"> </label>
+      <label mdbActive  for="motive"  class="text-muted"> Motivo</label>
       <div class="md-form">
-        <textarea mdbActive type="text" id="body" class="md-textarea"></textarea>
+        <textarea mdbActive type="text" id="motive" class="md-textarea" id="motive" name="motive" ></textarea>
       </div>
       <div class="md-form">
-        <input type="file" id="file" class="custom-file-input">
-        <span class="custom-file-control"></span>
-      </div>
+        <!-- <input type="file" id="file" class="custom-file-input"  name="file" [(ngModel)]="request.file">
+         <span class="custom-file-control"></span>-->
 
-      <label mdbActive id="form1"  class="text-muted">Horario: </label>
-        <div class="card w-100"  style="margin-bottom: 10px">
-          <div class="card-body">
-            <p class="text-muted">Fecha: </p>
-            <p class="text-muted">Desde: </p>
-            <p class="text-muted">Hasta: </p>
-          </div>
-        </div>
+         <input type="file" name="file" class="form-control-file" id="file"  name="file"  >
+       </div>
 
-  <button type="submit" class="btn btn-default"  [disabled]="!requestForm.form.valid">Registrar</button>
+       <label mdbActive id="form1"  class="text-muted">Horario: </label>
+         <div class="card w-100"  style="margin-bottom: 10px">
+           <div class="card-body">
+             <p class="text-muted">Fecha: </p>
+             <p class="text-muted">Desde: </p>
+             <p class="text-muted">Hasta: </p>
+           </div>
+         </div>
 
-</form>
-<!--/.Panel-->
+  <input type="hidden" class="form-control" value="pending" name="state"  >
+  <input type="hidden" class="form-control" value="2" name="external_person_id" >
+  <input type="hidden" class="form-control" value="2" name="teacher_id" >
+   <button type="submit" class="btn btn-default" >Registrar</button>
+
+ </form>
+ <!--/.Panel-->

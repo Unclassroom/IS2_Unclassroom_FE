@@ -27,7 +27,7 @@ export class MailComponent implements OnInit {
   }
 
   save(): void {
-    this.requestService.updateRequest(this.request, this.id)
+    this.requestService.updateRequest(this.request, this.request_mail.id)
       .subscribe();
   }
 
