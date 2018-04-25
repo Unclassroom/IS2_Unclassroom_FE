@@ -2,7 +2,6 @@
     display: block;
 }
 .login-page {
-    background-image: url("/assets/images/plaza.png");
     background-size: cover;
     position: absolute;
     top: 0;
@@ -19,106 +18,86 @@
     left:10;
     align-content: center;
 }
-    .col-lg-4 {
-        padding: 0;
-    }
-    .input-lg {
-        height: 46px;
-        padding: 10px 16px;
-        font-size: 18px;
-        line-height: 1.3333333;
-        border-radius: 0;
-        color: darkcyan;
-    }
-    .input-underline {
-        background: 0 0;
-        border: none;
-        box-shadow: none;
-        border-bottom: 2px solid rgba(58, 53, 53, 0.363);
-        color: rgb(101, 233, 226);
-        border-radius: 0;
-    }
-    .input-underline:focus {
-        border-bottom: 2px solid rgb(54, 47, 47);
-        box-shadow: none;
-    }
-    #reg, #log:hover{
-        background: #3EA5B9;
-    }
-    #log, #reg:hover{
-        background: #95B452;
-    }
-    .rounded-btn {
-        color: rgba(31, 27, 27, 0.8);
-        border: 2px solid rgba(255, 255, 255, 0.8);
-        font-size: 12px;
-        line-height: 40px;
-        padding: 0 25px;
-        width: 150px;
-        margin: 20px
-    }
+.col-lg-4 {
+    padding: 0;
+}
+.input-lg {
+    height: 46px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 0;
+    color: darkcyan;
+}
+.input-underline {
+    background: 0 0;
+    border: none;
+    box-shadow: none;
+    border-bottom: 2px solid rgba(58, 53, 53, 0.363);
+    color: rgb(101, 233, 226);
+    border-radius: 0;
+}
+.input-underline:focus {
+    border-bottom: 2px solid rgb(54, 47, 47);
+    box-shadow: none;
+}
+#reg, #log:hover{
+    background: #3EA5B9;
+}
+#log, #reg:hover{
+    background: #95B452;
+}
 
+#gog{
+    background: rgb(211, 72, 54);
+    ;
+}
 
-    .rounded-btn:hover,
-    .rounded-btn:focus,
-    .rounded-btn:active,
-    .rounded-btn:visited {
-            margin-top: 10px;
-            background-color: #95B452;
-            border: none;
-            color: rgb(55, 199, 180);
-            padding: 5px 5px;
-            text-align: center;
-            display: inline-block;
-            font-size: 16px;
-            transition-duration: 0.4s;
-            cursor: pointer;
-            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);     
-    }
+.rounded-btn:hover,
+.rounded-btn:focus,
+.rounded-btn:active,
+.rounded-btn:visited {
+    margin-top: 10px;
+    background-color: #95B452;
+    border: none;
+    color: rgb(55, 199, 180);
+    padding: 5px 5px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);     
+}
 
-    h1 {
-        font-weight: 300;
-        margin-top: 20px;
-        margin-bottom: 10px;
-        font-size: 36px;
-    }
-        input:-moz-placeholder {
-            /* Firefox 18- */
-            color: rgba(51, 119, 110, 0.514) !important;
-        }
-
-        input::-moz-placeholder {
-            /* Firefox 19+ */
-            color: rgba(60, 114, 116, 0.452) !important;
-        }
-
-        input:-ms-input-placeholder {
-            color: rgba(51, 92, 88, 0.397) !important;
-        }
-    .form-content {
-        padding: 40px 0;
-    }
-    .user-avatar {
-        -webkit-border-radius: 10%;
-        border-radius: 10%;
-    }
-
-      html {
-        margin: 40px auto;
-        text-align: center;
-      }
-      .btn-facebook {
-        background: #3B5998;
-        border-radius: 0;
-        color: #fff;
-        border-width: 1px;
-        border-style: solid;
-        border-color: #263961; 
-      }
-      .btn-facebook:link, .btn-facebook:visited {
-        color: #fff;
-      }
-      .btn-facebook:active, .btn-facebook:hover {
-        background: #263961;
-        color: #fff;
-      }
+h1 {
+    font-weight: 300;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 36px;
+}
+input:-moz-placeholder {
+    /* Firefox 18- */
+    color: rgba(51, 119, 110, 0.514) !important;
+}
+input::-moz-placeholder {
+    /* Firefox 19+ */
+    color: rgba(60, 114, 116, 0.452) !important;
+}
+input:-ms-input-placeholder {
+    color: rgba(51, 92, 88, 0.397) !important;
+}
+.form-content {
+    padding: 40px 0;
+}
+.user-avatar {
+    -webkit-border-radius: 10%;
+    border-radius: 10%;
+}
+html {
+    margin: 40px auto;
+    text-align: center;
+}
+.modal-header{
+    background:  rgb(55, 199, 180)
+}

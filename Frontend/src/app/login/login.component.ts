@@ -12,7 +12,7 @@ import { AuthService, FacebookLoginProvider,GoogleLoginProvider} from 'angular5-
 
 import { AuthenticationService } from '../_services/index';
 import { UserService } from '../_services/index';
-
+ 
 interface Token {
   "jwt": string;
 }

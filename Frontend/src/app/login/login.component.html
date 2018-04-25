@@ -1,88 +1,84 @@
 <head>
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
 
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
 
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 
-        <!-- font awesome css -->
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-    </head>
+    <!-- font awesome css -->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+</head>
 
-     <div class="login-page" [@routerTransition]>
+<div class="login-page" [@routerTransition]>
     <div  *ngIf="loading">
         <img src="../../assets/images/loader.gif">
-
     </div>
-  <div class="row justify-content-md-center">
-      <div class="col-md-4">
-          <img src="assets/images/logo.png" width="300px"  class="user-avatar" />
-          <form role="form" (ngSubmit)="login()" #f="ngForm" >
-              <div class="form-content">
-                  <div class="form-group">
-                      <input
-                        id="email"
-                        type="email"
-                        required
-                        [(ngModel)]="model.email"
-                        #email="ngModel"
-                        name="email"
-                        placeholder="Email"
-                        class="form-contorl">
-                  </div>
-                  <div class="form-group">
-                      <input
-                      id="password"
-                      type="password"
-                      required
-                      [(ngModel)]="model.password"
-                      #password="ngModel"
-                      name="password"
-                      class="validate"
-                      placeholder="Password">
-                  </div>
+
+    <img src="assets/images/logo.png" width="300px"  class="user-avatar" /> <br><br><br> 
+
+    <div class="row justify-content-md-center">
+        <div class="col-md-5">
+            <form role="form" (ngSubmit)="login()" #f="ngForm" >
+                <div class="form-content">
+                    <div class="md-form form-sm">
+                        <i class="fa fa-envelope prefix"></i>  
+                        <input mdbActive
+                            id="email"
+                            type="email"
+                            required
+                            [(ngModel)]="model.email"
+                            #email="ngModel"
+                            name="email"
+                            placeholder="Email">
+                            <label for="email">Your email</label>
+                    </div>
+                    
+                    <div class="md-form form-sm">
+                        <i class="fa fa-lock prefix"></i>  
+                        <input mdbActive 
+                            id="password"
+                            type="password"
+                            required
+                            [(ngModel)]="model.password"
+                            #password="ngModel"
+                            name="password"
+                            class="validate"
+                            placeholder="Password">
+                            <label for="password">Your password</label>
+                    </div>
                 </div>
             </form>
-                <div class="container">
-                    <div class="row" >
-                        <button
-                            id="log"
-                            type="submit"
-                            [disabled]="loading"
-                            [ngClass]="{'disabled': !(f.valid)}"
-                            class="btn rounded-btn"
-                            (click)="login()"
+            <div class="text-center mt-2">
+                    <button class="btn btn-info waves-light" 
+                        id="log"
+                        mdbRippleRadius
+                        type="submit"
+                        [disabled]="loading"
+                        [ngClass]="{'disabled': !(f.valid)}"
+                        class="btn rounded-btn"
+                        (click)="login()"> Log in <i class="fa fa-sign-in ml-1"></i>
+                    </button>
+                    or                                                                                                                                                                                                                                                                                                                
+                    <button class="btn btn-info waves-light" 
+                        id="gog"
+                        mdbRippleRadius
+                        type="submit"
+                        class="btn btn-danger"
+                        (click)="socialSignIn('google')"> Google <i class="fa fa-google-plus"></i>
+                    </button>                                                    
+                </div><br><br>
 
-                        > Login </button>
-                        <!-- <a class="btn rounded-btn" id="log"> Log in </a>&nbsp; -->
-                        <a class="btn rounded-btn" id="reg" [routerLink]="['/register']" > Register </a>&nbsp;
-                    </div>
-                </div>
-                <div *ngIf="clickstwo">
-                        <p> Usuario o contraseña incorrecoto</p>
-                    </div>
-
-<div class="container">
-    <div class="row">
-        <div class="btn-group">
-                <a class='btn btn-danger'><i class="fa fa-google-plus"
-                    (click)="socialSignIn('google')" style="width:10px; height:100%"></i></a>
-                <a class='btn btn-danger' (click)="socialSignIn('google')"> Sign in with Google</a>
+            <div class="options text-center text-md-right mt-1">
+                Not a member? <a [routerLink]="['/register']" >Sign Up</a>
             </div>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <div class="btn-group">
-                <a class='btn btn-primary'><i class="fa fa-facebook"
-                    style="width:16px; height:100%"></i></a>
-                <a class='btn btn-primary ' (click)="socialSignIn('facebook')"> Sign in with Facebook</a>
+            <div *ngIf="clickstwo">
+                    <p> Usuario o contraseña incorrecoto</p>
             </div>
         </div>
-    </div>
-      </div>
-  </div>
-
+    </div>  
 </div>
 
 <!-- <a class="btn rounded-btn" id="log" *ngIf="!tokenAuthService.userSignedIn()" (click)="onLoggedin()" > Log in </a>
@@ -95,31 +91,31 @@
 <! Include the above in your HEAD tag ->
 
 <div class="container">
-	<div class="row">
-        <h2>"Waiting for..." modal dialog with progress bar</h2>
-        <p>If you need to block a user screen while loading some data or doing heavy computations,
-        you can use this snippet to show modal dialog with progress bar.</p>
-		<p>Fork it on <a href="https://github.com/ehpc/bootstrap-waitingfor">github</a></p>
-        <h2>Examples <small>All dialogs will be automatically closed after 2 seconds</small></h2>
+<div class="row">
+    <h2>"Waiting for..." modal dialog with progress bar</h2>
+    <p>If you need to block a user screen while loading some data or doing heavy computations,
+    you can use this snippet to show modal dialog with progress bar.</p>
+    <p>Fork it on <a href="https://github.com/ehpc/bootstrap-waitingfor">github</a></p>
+    <h2>Examples <small>All dialogs will be automatically closed after 2 seconds</small></h2>
 
-        <h3>Simple dialog</h3>
-        <pre>
+    <h3>Simple dialog</h3>
+    <pre>
 waitingDialog.show();</pre>
-        <button type="button" class="btn btn-primary" onclick="waitingDialog.show();setTimeout(function () {waitingDialog.hide();}, 3000);">Show dialog</button>
+    <button type="button" class="btn btn-primary" onclick="waitingDialog.show();setTimeout(function () {waitingDialog.hide();}, 3000);">Show dialog</button>
 
-        <h3>Dialog with custom message</h3>
-        <pre>
+    <h3>Dialog with custom message</h3>
+    <pre>
 waitingDialog.show('Custom message');</pre>
-        <button type="button" class="btn btn-success" onclick="waitingDialog.show('Custom message');setTimeout(function () {waitingDialog.hide();}, 2000);">Show dialog</button>
+    <button type="button" class="btn btn-success" onclick="waitingDialog.show('Custom message');setTimeout(function () {waitingDialog.hide();}, 2000);">Show dialog</button>
 
-        <h3>Dialog with custom settings</h3>
-        <pre>
+    <h3>Dialog with custom settings</h3>
+    <pre>
 waitingDialog.show('Custom message', {dialogSize: 'sm', progressType: 'warning'});</pre>
-        <button type="button" class="btn btn-warning" onclick="waitingDialog.show('Custom message', {dialogSize: 'sm', progressType: 'warning'});setTimeout(function () {waitingDialog.hide();}, 2000);">Show dialog</button>
+    <button type="button" class="btn btn-warning" onclick="waitingDialog.show('Custom message', {dialogSize: 'sm', progressType: 'warning'});setTimeout(function () {waitingDialog.hide();}, 2000);">Show dialog</button>
 
-        <h3>Dialog with some callback firing after it was hidden</h3>
-        <pre>waitingDialog.show('Dialog with callback on hidden',{onHide: function () {alert('Callback!');}});</pre>
+    <h3>Dialog with some callback firing after it was hidden</h3>
+    <pre>waitingDialog.show('Dialog with callback on hidden',{onHide: function () {alert('Callback!');}});</pre>
 
-        <p></p>
-	</div>
+    <p></p>
+</div>
 </div-->

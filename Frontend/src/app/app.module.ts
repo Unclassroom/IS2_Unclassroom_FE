@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
@@ -60,8 +61,10 @@ export function getAuthServiceConfigs() {
     HttpClientModule,
     HttpModule,
     NgReduxModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MDBBootstrapModule.forRoot()
   ],
+  schemas: [ NO_ERRORS_SCHEMA ],
   providers: 
   [
     Angular2TokenService,
