@@ -5,6 +5,8 @@ import {RequestbagComponent} from './requestbag.component';
 import {RegisterComponent} from './register/register.component';
 import {RequestbagRoutingModule} from './requestbag-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatDatepickerModule, MatInputModule, MatNativeDateModule} from '@angular/material';
+import {MatFormFieldModule} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -12,7 +14,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     NgbCarouselModule.forRoot(),
     RequestbagRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   declarations: [RequestbagComponent, RegisterComponent]
 })
