@@ -30,7 +30,7 @@ import {TypeClassroomService} from './services/type-classroom.service';
     NgbModule.forRoot(),
     MDBBootstrapModule.forRoot(),
     LayoutRoutingModule,
-    FormsModule
+    FormsModule,
   ],
   declarations: [LayoutComponent, HeaderComponent, SidebarComponent, BreadcrumbComponent],
   providers: [FalcultyService, HeadBuildingService, RequestService, BuildingService, ManagerService,

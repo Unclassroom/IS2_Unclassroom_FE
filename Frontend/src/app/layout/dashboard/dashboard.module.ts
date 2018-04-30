@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard.component';
 import { NgbCarouselModule, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { StatModule} from '../../stat/stat.module';
+import { ChartsModule as Ng2Charts } from 'ng2-charts';
 
 @NgModule({
   imports: [
@@ -11,7 +12,8 @@ import { StatModule} from '../../stat/stat.module';
     NgbCarouselModule.forRoot(),
     NgbAlertModule.forRoot(),
     DashboardRoutingModule,
-    StatModule
+    StatModule,
+    Ng2Charts
   ],
   declarations: [DashboardComponent]
 })
