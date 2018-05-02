@@ -29,9 +29,9 @@ const routes: Routes = [
       { path: 'purpose-classroom', loadChildren: './purpose-classroom/purpose-classroom.module#PurposeClassroomModule', canActivate: [ManagerGuard] },
       // Sin clasificar
       { path: 'history', loadChildren: './history/history.module#HistoryModule' },
-      { path: 'calendar', loadChildren: './calendar/calendar.module#CalendarModule'},
-      { path: 'requestbag', loadChildren: './requestbag/requestbag.module#RequestbagModule' },
       { path: 'classroom', loadChildren: './classroom/classroom.module#ClassroomModule' },
+      { path: 'calendarevent', loadChildren: './calendarevent/calendarevent.module#CalendareventModule' },
+      { path: 'requestbag', loadChildren: './requestbag/requestbag.module#RequestbagModule' }
       ]
   }
 ];

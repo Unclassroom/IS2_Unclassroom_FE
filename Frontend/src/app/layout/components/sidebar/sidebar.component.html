@@ -1,7 +1,7 @@
 <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
-  <div [ngSwitch]="currentUser.role" class="list-group">
+  <div [ngSwitch]="man" class="list-group">
     <!-- Profile -->
      <a routerLink="/layout/profile" [routerLinkActive]="['router-link-active']" class="list-group-item">
       <span><i class="fa fa-bar-chart-o fa-fw"></i>Profile</span>
@@ -22,6 +22,9 @@
           </li>
           <li>
             <a href="javascript:void(0)"><span>Listado salones y reportes de daños</span></a>
+          </li>
+          <li>
+            <a routerLink="/layout/calendarevent"><span>Calendario</span></a>
           </li>
         </ul>
       </li>

@@ -8,6 +8,7 @@ import {PurposeClassroomService} from '../../services/purpose-classroom.service'
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -28,14 +29,11 @@ export class RegisterComponent implements OnInit {
       url: ''
     }
   }
-request_data = {
-    /*'teacher_id': '21',
-    'purpose_classroom_id': '26',
-    'type_classroom_id': '17',
-    'state': 'pending',
-    'external_person_id': '21'*/
-  };
-
+  myFilter = (d: Date): boolean => {
+    const day = d.getDay();
+    // Prevent Saturday and Sunday from being selected.
+    return day !== 0 && day !== 6;
+  }
   purposesclassroom: PurposeClassroom[];
   typeclassrooms: TypeClassroom[];
   private router: Router;
@@ -59,15 +57,15 @@ request_data = {
     console.log(this.filestring );
   }
   logForm(form: NgForm) {
-    this.request.state = form.value.state ;
+    this.request.state = 'pending' ;
     this.request.motive = form.value.motive ;
     this.request.type_classroom_id = form.value.type_classroom_id ;
-    this.request.external_person_id = form.value.external_person_id ;
+    this.request.external_person_id = '2' ;
     this.request.purpose_classroom_id = form.value.purpose_classroom_id ;
-    this.request.teacher_id = form.value.teacher_id ;
-    this.request.file = this.filestring ;
+    this.request.teacher_id = '2';
+    //this.request.file = this.filestring ;
 
-    console.log(this.filestring);
+   // console.log(this.filestring);
     this.add();
   }
 

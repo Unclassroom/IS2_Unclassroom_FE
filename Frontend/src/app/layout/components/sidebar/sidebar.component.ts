@@ -17,6 +17,8 @@ export class SidebarComponent {
   isStudent: boolean = false;
   isHeadBuilding: boolean = false;
   currentUser: User;
+  user:string
+
 
   constructor( public router: Router ) {
     this.router.events.subscribe(val => {
@@ -29,6 +31,7 @@ export class SidebarComponent {
       }
     });
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.user = this.currentUser.role
     // this.defineRole();
   }
 

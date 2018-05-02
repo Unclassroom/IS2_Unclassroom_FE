@@ -31,7 +31,7 @@ import { ProfileComponent } from './profile/profile.component';
     NgbModule.forRoot(),
     MDBBootstrapModule.forRoot(),
     LayoutRoutingModule,
-    FormsModule
+    FormsModule,
   ],
   declarations: [LayoutComponent, HeaderComponent, SidebarComponent, BreadcrumbComponent, ProfileComponent],
   providers: [FalcultyService, HeadBuildingService, RequestService, BuildingService, ManagerService,
