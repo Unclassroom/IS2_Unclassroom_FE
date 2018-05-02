@@ -24,6 +24,7 @@ import { FormsModule } from '@angular/forms';
 import {PurposeClassroomService} from './services/purpose-classroom.service';
 import {TypeClassroomService} from './services/type-classroom.service';
 import { SampleModule } from 'angular-pdf-generator';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   imports: [
@@ -33,8 +34,16 @@ import { SampleModule } from 'angular-pdf-generator';
     FormsModule,
     SampleModule,
   ],
-  declarations: [LayoutComponent, HeaderComponent, SidebarComponent, BreadcrumbComponent],
-  providers: [FalcultyService, HeadBuildingService, RequestService, BuildingService, ManagerService,
+  declarations: [
+    LayoutComponent,
+    HeaderComponent,
+    SidebarComponent,
+    BreadcrumbComponent,
+    ProfileComponent],
+  providers: [
+    FalcultyService,
+    HeadBuildingService,
+    RequestService, BuildingService, ManagerService,
     TeacherService, ExternalPersonService, DepartmentsService, ClassroomService, GroupService,
     SubjectService, MessageService, PurposeClassroomService, EventService, TypeClassroomService]
 })

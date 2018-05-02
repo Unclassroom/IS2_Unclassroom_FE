@@ -6,8 +6,9 @@
 <a class="navbar-brand" href="#"><img src="../assets/images/logo.png" width="200px" > </a>
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav ml-auto">&nbsp;
-      <li class="nav-item dropdown" ngbDropdown style="font-size:16px">
-        <i class="fa fa-user"></i>Hi {{currentUser.username}}! &nbsp; &nbsp;
+      <li class="nav-item dropdown" ngbDropdown>
+        <i class="fa fa-user"></i> Hola {{currentUser.username}} &nbsp; &nbsp;
+        <i class="fa fa-user"></i> Rol: {{currentUser.role}} &nbsp; &nbsp;
       </li>
     </ul>
     <p><a [routerLink]="['/login']" style="font-size:16px;padding-top: 5%"><i class="fa fa-sign-out" aria-hidden="true" ></i></a></p>
