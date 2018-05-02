@@ -24,6 +24,7 @@ import { FormsModule } from '@angular/forms';
 import {PurposeClassroomService} from './services/purpose-classroom.service';
 import {TypeClassroomService} from './services/type-classroom.service';
 import { ProfileComponent } from './profile/profile.component';
+import { ComentComponent } from './coment/coment.component';
 
 @NgModule({
   imports: [
@@ -38,7 +39,7 @@ import { ProfileComponent } from './profile/profile.component';
     HeaderComponent, 
     SidebarComponent, 
     BreadcrumbComponent, 
-    ProfileComponent],
+    ProfileComponent, ComentComponent],
   providers: [
     FalcultyService, 
     HeadBuildingService, 
