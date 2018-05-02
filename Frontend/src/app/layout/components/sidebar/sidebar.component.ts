@@ -12,13 +12,7 @@ export class SidebarComponent {
   isActive: boolean = false;
   showMenu: string = '';
   pushRightClass: string = 'push-right';
-  isAdmin: boolean = false;
-  isTeacher: boolean = false;
-  isStudent: boolean = false;
-  isHeadBuilding: boolean = false;
   currentUser: User;
-  user:string
-
 
   constructor( public router: Router ) {
     this.router.events.subscribe(val => {
@@ -31,8 +25,6 @@ export class SidebarComponent {
       }
     });
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.user = this.currentUser.role
-    // this.defineRole();
   }
 
   eventCalled() {
@@ -64,14 +56,6 @@ export class SidebarComponent {
 
   onLoggedout() {
     localStorage.removeItem('isLoggedin');
-  }
-
-  defineRole(){
-    if (this.currentUser.role == "manager"){
-      this.isAdmin == true
-    } else if (this.currentUser.role == "teacher"){
-
-    }
   }
 
 }
