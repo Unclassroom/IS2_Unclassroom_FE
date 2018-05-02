@@ -1,12 +1,17 @@
 <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
-  <div class="list-group">
-    <a routerLink="/layout/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
-
+  <div [ngSwitch]="currentUser.role" class="list-group">
+    <!-- Profile -->
+     <a routerLink="/layout/profile" [routerLinkActive]="['router-link-active']" class="list-group-item">
+      <span><i class="fa fa-bar-chart-o fa-fw"></i>Profile</span>
+    </a>
+    <!-- Dashboard -->
+    <a *ngSwitchCase="manager" routerLink="/layout/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
       <span><i class="fa fa-bar-chart-o fa-fw"></i>Dashboard</span>
     </a>
-    <div class="nested-menu">
+    <!-- Recursos -->
+    <div *ngSwitchCase="manager"  class="nested-menu">
       <a class="list-group-item" (click)="addExpandClass('pages')">
         <span><i class="fa fa-file-text"></i>&nbsp;Recursos</span>
       </a>
@@ -21,12 +26,13 @@
         </ul>
       </li>
     </div>
-    <a class="list-group-item more-themes" href="" >
+    <!-- Parametrización -->
+    <a *ngSwitchCase="manager" class="list-group-item more-themes" href="" >
       <span><i class="fa fa-upload fa-fw"></i>Parametrización</span>
     </a>
 
-
-    <div class="nested-menu">
+    <!-- Administración -->
+    <div *ngSwitchCase="manager" class="nested-menu">
       <a class="list-group-item" (click)="addExpandClass('pages')">
         <span><i class="fa fa-users fa-fw"></i>Administración</span>
       </a>
@@ -73,12 +79,11 @@
         </ul>
       </li>
     </div>
-
-    <a class="list-group-item more-themes" href="" >
+    <!-- Historial -->
+    <a *ngSwitchCase="manager" class="list-group-item more-themes" href="" >
       <span><i class="fa fa-hdd-o fa-fw"></i>Historial</span>
     </a>
-
-
+    <!-- Solicitudes -->
     <div class="nested-menu">
       <a class="list-group-item" (click)="addExpandClass('pages')">
         <span><i class="fa fa-users fa-fw"></i>Solicitudes</span>
@@ -94,46 +99,10 @@
         </ul>
       </li>
     </div>
-
+    <!-- About -->
     <a class="list-group-item more-themes" href="" >
       <span><i class="fa fa-question-circle fa-fw"></i>About</span>
     </a>
-
-    <div class="header-fields">
-      <a (click)="rltAndLtr()" class="list-group-item">
-        <span><i class="fa fa-arrows-h"></i>&nbsp; RTL/LTR</span>
-      </a>
-
-      <div class="nested-menu">
-        <a class="list-group-item" (click)="addExpandClass('profile')">
-          <span><i class="fa fa-user"></i>&nbsp; John Smith</span>
-        </a>
-        <li class="nested" [class.expand]="showMenu === 'profile'">
-          <ul class="submenu">
-            <li>
-              <a href="javascript:void(0)">
-                <span><i class="fa fa-fw fa-user"></i>Profile</span>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:void(0)">
-                <span><i class="fa fa-fw fa-envelope"></i> Inbox</span>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:void(0)">
-                <span><i class="fa fa-fw fa-gear"></i>Settings</span>
-              </a>
-            </li>
-            <li>
-              <a [routerLink]="['/login']" (click)="onLoggedout()">
-                <span><i class="fa fa-fw fa-power-off"></i>Log Out</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-      </div>
-    </div>
   </div>
 </nav>
 

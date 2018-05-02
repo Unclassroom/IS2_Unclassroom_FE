@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { User } from '../../../_models/index';
+import { ElementSchemaRegistry } from '@angular/compiler';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,6 +12,11 @@ export class SidebarComponent {
   isActive: boolean = false;
   showMenu: string = '';
   pushRightClass: string = 'push-right';
+  isAdmin: boolean = false;
+  isTeacher: boolean = false;
+  isStudent: boolean = false;
+  isHeadBuilding: boolean = false;
+  currentUser: User;
 
   constructor( public router: Router ) {
     this.router.events.subscribe(val => {
@@ -21,6 +28,8 @@ export class SidebarComponent {
         this.toggleSidebar();
       }
     });
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    // this.defineRole();
   }
 
   eventCalled() {
@@ -52,6 +61,14 @@ export class SidebarComponent {
 
   onLoggedout() {
     localStorage.removeItem('isLoggedin');
+  }
+
+  defineRole(){
+    if (this.currentUser.role == "manager"){
+      this.isAdmin == true
+    } else if (this.currentUser.role == "teacher"){
+
+    }
   }
 
 }

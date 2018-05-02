@@ -23,6 +23,7 @@ import {MessageService} from './services/message.service';
 import { FormsModule } from '@angular/forms';
 import {PurposeClassroomService} from './services/purpose-classroom.service';
 import {TypeClassroomService} from './services/type-classroom.service';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   imports: [
@@ -32,7 +33,7 @@ import {TypeClassroomService} from './services/type-classroom.service';
     LayoutRoutingModule,
     FormsModule
   ],
-  declarations: [LayoutComponent, HeaderComponent, SidebarComponent, BreadcrumbComponent],
+  declarations: [LayoutComponent, HeaderComponent, SidebarComponent, BreadcrumbComponent, ProfileComponent],
   providers: [FalcultyService, HeadBuildingService, RequestService, BuildingService, ManagerService,
     TeacherService, ExternalPersonService, DepartmentsService, ClassroomService, GroupService,
     SubjectService, MessageService, PurposeClassroomService, EventService, TypeClassroomService]
