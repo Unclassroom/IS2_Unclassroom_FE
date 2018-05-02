@@ -2,7 +2,6 @@
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
   <div [ngSwitch]="currentUser.role" class="list-group">
-    <P>{{currentUser.role}}></P>
     <!-- Profile -->
      <a routerLink="/layout/profile" [routerLinkActive]="['router-link-active']" class="list-group-item">
       <span><i class="fa fa-bar-chart-o fa-fw"></i>Profile</span>
