@@ -31,6 +31,9 @@ export class FalcultyService {
       catchError(this.handleError<Faculty>(`getFaculty id=${id}`))
     );
   }
+  getFacultiesPagination (id: number): Observable<Faculty[]> {
+    return this.http.get<Faculty[]>(this._Url + '?page=' + id);
+  }
 
   //////// Save methods //////////
 

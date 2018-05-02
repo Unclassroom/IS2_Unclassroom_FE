@@ -7,6 +7,8 @@ import {RequestbagRoutingModule} from './requestbag-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDatepickerModule, MatInputModule, MatNativeDateModule} from '@angular/material';
 import {MatFormFieldModule} from '@angular/material';
+import {DatetimeListComponent} from './register/datetime-list/datetime-list.component';
+import {DatetimeService} from './register/datetime.service';
 
 @NgModule({
   imports: [
@@ -20,6 +22,8 @@ import {MatFormFieldModule} from '@angular/material';
     MatFormFieldModule,
     MatInputModule
   ],
-  declarations: [RequestbagComponent, RegisterComponent]
+  declarations: [RequestbagComponent, RegisterComponent,
+    DatetimeListComponent],
+  providers: [DatetimeService]
 })
 export class RequestbagModule { }

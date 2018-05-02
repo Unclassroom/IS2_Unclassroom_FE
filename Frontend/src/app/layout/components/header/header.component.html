@@ -1,13 +1,17 @@
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.js"></script>
 <nav class="navbar navbar-expand-lg fixed-top">
-  <a class="navbar-brand" href="#"><img src="../assets/images/logo.png" width="200px"> </a>
+  <!--  <a href="#sidebar" data-toggle="collapse"><i class="fa fa-navicon fa-lg"></i></a> !-->
+<a class="navbar-brand" href="#"><img src="../assets/images/logo.png" width="200px" > </a>
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav ml-auto">&nbsp;
       <li class="nav-item dropdown" ngbDropdown>
-        <i class="fa fa-user"></i> Hola {{currentUser.username}} &nbsp; &nbsp;  
-        <i class="fa fa-user"></i> Rol: {{currentUser.role}} &nbsp; &nbsp;  
+        <i class="fa fa-user"></i> Hola {{currentUser.username}} &nbsp; &nbsp;
+        <i class="fa fa-user"></i> Rol: {{currentUser.role}} &nbsp; &nbsp;
       </li>
     </ul>
-    <p><a [routerLink]="['/login']">Logout</a></p>
+    <p><a [routerLink]="['/login']" style="font-size:16px;padding-top: 5%"><i class="fa fa-sign-out" aria-hidden="true" ></i></a></p>
   </div>
 </nav>
 

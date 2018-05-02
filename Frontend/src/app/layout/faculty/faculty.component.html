@@ -81,7 +81,7 @@
         <ul class="pagination pagination-circle pg-blue mb-0">
 
           <!--First-->
-          <li class="page-item disabled"><a class="page-link">First</a></li>
+          <li class="page-item disabled"><a class="page-link" (click)="onChangeFaculty(1)">First</a></li>
 
           <!--Arrow left-->
           <li class="page-item disabled">
@@ -92,13 +92,18 @@
           </li>
 
           <!--Numbers-->
-          <li class="page-item active"><a class="page-link" >1</a></li>
+          <li class="page-item active" (click)="onChangeFaculty(1)"><a class="page-link" >1</a></li>
+          <li  (click)="onChangeFaculty(2)"><a class="page-link" >2</a></li>
+          <li  (click)="onChangeFaculty(3)"><a class="page-link" >3</a></li>
+          <li  (click)="onChangeFaculty(4)"><a class="page-link" >4</a></li>
+          <li  (click)="onChangeFaculty(5)"><a class="page-link" >5</a></li>
+          <li  (click)="onChangeFaculty(6)"><a class="page-link" >6</a></li>
 
           <!--Arrow right-->
           <li class="page-item">
             <a class="page-link" aria-label="Next">
               <span aria-hidden="true">&raquo;</span>
-              <span class="sr-only">Next</span>
+              <span class="sr-only"  (click)="onChangeFaculty(6)">Next</span>
             </a>
           </li>
 
