@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {Mail} from '../../models/mail';
+import { Component, OnInit, ChangeDetectionStrategy  } from '@angular/core';
 import {RequestService} from '../../services/request.service';
 import {TypeClassroom} from '../../models/type-classroom';
 import {TypeClassroomService} from '../../services/type-classroom.service';
@@ -7,15 +6,19 @@ import {PurposeClassroom} from '../../models/purpose-classroom';
 import {PurposeClassroomService} from '../../services/purpose-classroom.service';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import {DatetimeService} from './datetime.service';
 
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegisterComponent implements OnInit {
 
+  private datetimes$: Observable<any[]>;
   files: FileList;
   filestring: string;
   request: any = {
@@ -37,11 +40,18 @@ export class RegisterComponent implements OnInit {
   purposesclassroom: PurposeClassroom[];
   typeclassrooms: TypeClassroom[];
   private router: Router;
-  constructor(private requestService: RequestService, private purposeClassroomService: PurposeClassroomService, private typeClassroomService: TypeClassroomService) { }
+  constructor(private requestService: RequestService, private purposeClassroomService: PurposeClassroomService, private typeClassroomService: TypeClassroomService, private datetimeService: DatetimeService) { }
   ngOnInit() {
     this.getSubjects();
     this.getTypesClassroom();
+    this.datetimes$  = this.datetimeService.getDatetimes();
+    this.datetimeService.loadDummyData();
   }
+
+  createDatetime(datetime) {
+    this.datetimeService.createNewDatetime(datetime);
+  }
+
 
   getFiles(event) {
     this.files = event.target.files;
@@ -63,7 +73,6 @@ export class RegisterComponent implements OnInit {
     this.request.external_person_id = '2' ;
     this.request.purpose_classroom_id = form.value.purpose_classroom_id ;
     this.request.teacher_id = '2';
-    //this.request.file = this.filestring ;
 
    // console.log(this.filestring);
     this.add();

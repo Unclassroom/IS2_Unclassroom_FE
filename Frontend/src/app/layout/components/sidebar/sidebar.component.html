@@ -1,6 +1,6 @@
 <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
+<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}"  id="sidebar">
   <div class="list-group">
     <a routerLink="/layout/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
 
@@ -102,41 +102,6 @@
       <span><i class="fa fa-question-circle fa-fw"></i>About</span>
     </a>
 
-    <div class="header-fields">
-      <a (click)="rltAndLtr()" class="list-group-item">
-        <span><i class="fa fa-arrows-h"></i>&nbsp; RTL/LTR</span>
-      </a>
-
-      <div class="nested-menu">
-        <a class="list-group-item" (click)="addExpandClass('profile')">
-          <span><i class="fa fa-user"></i>&nbsp; John Smith</span>
-        </a>
-        <li class="nested" [class.expand]="showMenu === 'profile'">
-          <ul class="submenu">
-            <li>
-              <a href="javascript:void(0)">
-                <span><i class="fa fa-fw fa-user"></i>Profile</span>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:void(0)">
-                <span><i class="fa fa-fw fa-envelope"></i> Inbox</span>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:void(0)">
-                <span><i class="fa fa-fw fa-gear"></i>Settings</span>
-              </a>
-            </li>
-            <li>
-              <a [routerLink]="['/login']" (click)="onLoggedout()">
-                <span><i class="fa fa-fw fa-power-off"></i>Log Out</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-      </div>
-    </div>
   </div>
 </nav>
 

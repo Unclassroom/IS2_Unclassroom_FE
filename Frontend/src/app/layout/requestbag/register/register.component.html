@@ -8,29 +8,33 @@
 <!--Panel
 <form class="col-xl-7 col-lg-7" #form = "ngForm" (ngSubmit)="logForm(form)" enctype="multipart/form-data">
 -->
-<form class="col-xl-7 col-lg-7" (submit)="logForm(facultyForm)"  #facultyForm="ngForm"  enctype="multipart/form-data" >
 
 
-  <label mdbActive  for="purpose_classroom" class="text-muted">Asunto</label>
-  <div class="md-form"   *ngIf="getSubjects">
+<form class="col-xl-12 col-lg-12" (submit)="logForm(facultyForm)"  #facultyForm="ngForm"  enctype="multipart/form-data" >
 
-    <select class="form-control" id="purpose_classroom" name="purpose_classroom_id" ngModel >
+  <div class="md-form"  class="col-xl-6 col-lg-6"  *ngIf="getSubjects">
+
+    <label mdbActive  for="purpose_classroom" class="text-muted">Asunto</label>
+    <select id="purpose_classroom"  class="form-control " name="purpose_classroom_id" ngModel >
       <option value=""></option>
       <option  *ngFor="let purposeclassroom of purposesclassroom" value="{{purposeclassroom.id}}">{{purposeclassroom.name}}</option>
     </select>
   </div>
 
-  <label mdbActive  for="typeclassroom"  class="text-muted">Tipo Salón: </label>
-  <div class="md-form"   *ngIf="getTypesClassroom">
-    <select class="form-control" id="typeclassroom" name="type_classroom_id" ngModel>
+  <div class="md-form"  class="col-xl-6 col-lg-6" *ngIf="getTypesClassroom">
+
+    <label mdbActive  for="typeclassroom"  class="text-muted">Tipo Salón: </label>
+    <select  id="typeclassroom" name="type_classroom_id"   class="form-control " ngModel>
       <option value=""></option>
       <option  *ngFor="let typeclassroom of typeclassrooms" value="{{typeclassroom.id}}">{{typeclassroom.name}}</option>
     </select>
   </div>
 
+  <div class="md-form"  class="col-xl-12 col-lg-12">
   <label mdbActive  for="motive"  class="text-muted"> Motivo</label>
   <div class="md-form">
     <textarea mdbActive type="text" id="motive" class="md-textarea" id="motive" name="motive" ngModel></textarea>
+  </div>
   </div>
 
   <!--
@@ -39,6 +43,7 @@
 
   </div>-->
 
+    <datetime-list [datetimes]="datetimes$ | async" (onCreateDatetime)="createDatetime($event)" ></datetime-list>
 
   <button type="submit" class="btn btn-default" >Registrar</button>
 

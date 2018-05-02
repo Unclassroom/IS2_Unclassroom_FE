@@ -21,5 +21,9 @@ export class FacultyComponent implements OnInit {
       .subscribe(faculties => this.faculties = faculties);
 
   }
+  onChangeFaculty(id: number): void {
+    this.facultyService.getFacultiesPagination(id)
+      .subscribe(faculties => this.faculties = faculties);
+  }
 
 }

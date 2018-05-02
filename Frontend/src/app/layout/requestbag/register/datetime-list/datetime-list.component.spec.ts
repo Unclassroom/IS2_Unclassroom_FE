@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DateitemComponent } from './dateitem.component';
+import {DatetimeListComponent} from './datetime-list.component';
 
-describe('DateitemComponent', () => {
-  let component: DateitemComponent;
-  let fixture: ComponentFixture<DateitemComponent>;
+describe('DatetimeListComponent', () => {
+  let component: DatetimeListComponent;
+  let fixture: ComponentFixture<DatetimeListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DateitemComponent ]
+      declarations: [ DatetimeListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DateitemComponent);
+    fixture = TestBed.createComponent(DatetimeListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

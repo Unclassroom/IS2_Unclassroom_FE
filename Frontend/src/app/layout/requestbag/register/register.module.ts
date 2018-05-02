@@ -7,7 +7,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDatepickerModule, MatInputModule} from '@angular/material';
 import {MatFormFieldModule} from '@angular/material';
 import {MatNativeDateModule} from '@angular/material';
-import { DateitemComponent } from './dateitem/dateitem.component';
+import {DatetimeListComponent} from './datetime-list/datetime-list.component';
 
 @NgModule({
   imports: [
@@ -21,6 +21,8 @@ import { DateitemComponent } from './dateitem/dateitem.component';
     MatFormFieldModule,
     MatInputModule
   ],
-  declarations: [RegisterComponent, DateitemComponent]
+  declarations: [RegisterComponent,
+    DatetimeListComponent],
+  providers: []
 })
 export class RegisterModule { }

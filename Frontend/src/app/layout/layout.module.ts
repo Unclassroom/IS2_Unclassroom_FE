@@ -23,14 +23,15 @@ import {MessageService} from './services/message.service';
 import { FormsModule } from '@angular/forms';
 import {PurposeClassroomService} from './services/purpose-classroom.service';
 import {TypeClassroomService} from './services/type-classroom.service';
+import { SampleModule } from 'angular-pdf-generator';
 
 @NgModule({
   imports: [
     CommonModule,
-    NgbModule.forRoot(),
     MDBBootstrapModule.forRoot(),
     LayoutRoutingModule,
     FormsModule,
+    SampleModule,
   ],
   declarations: [LayoutComponent, HeaderComponent, SidebarComponent, BreadcrumbComponent],
   providers: [FalcultyService, HeadBuildingService, RequestService, BuildingService, ManagerService,

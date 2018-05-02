@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
+import * as jsPDF from 'jspdf';
+import * as html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,8 +10,6 @@ import { routerTransition } from '../../router.animations';
   animations: [routerTransition()]
 })
 export class DashboardComponent implements OnInit {
-
-
   // bar chart
   public barChartOptions: any = {
     scaleShowVerticalLines: false,
@@ -55,7 +55,7 @@ export class DashboardComponent implements OnInit {
   public chartClicked(e: any): void {
     // console.log(e);
   }
-
+n
   public chartHovered(e: any): void {
     // console.log(e);
   }
@@ -80,6 +80,21 @@ export class DashboardComponent implements OnInit {
      * so one way around it, is to clone the data, change it and then
      * assign it;
      */
+  }
+  downloadPDF() {
+
+    html2canvas(document.getElementById('timerequest')).then(function(canvas) {
+      const self = this;
+
+      const doc = new jsPDF();
+      doc.text(50, 10, 'page 1');
+      const img = canvas.toDataURL('image/png');
+      doc.addImage(img, 'JPEG', 10, 10);
+      doc.addPage();
+      doc.text(50, 100, 'page 2')
+      doc.save('TimeRequest.pdf');
+    });
+    // doc.save('test.pdf');//fails to add image to pdf
   }
   constructor() { }
 
