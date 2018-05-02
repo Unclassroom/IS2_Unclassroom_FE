@@ -33,8 +33,16 @@ import { ProfileComponent } from './profile/profile.component';
     LayoutRoutingModule,
     FormsModule,
   ],
-  declarations: [LayoutComponent, HeaderComponent, SidebarComponent, BreadcrumbComponent, ProfileComponent],
-  providers: [FalcultyService, HeadBuildingService, RequestService, BuildingService, ManagerService,
+  declarations: [
+    LayoutComponent, 
+    HeaderComponent, 
+    SidebarComponent, 
+    BreadcrumbComponent, 
+    ProfileComponent],
+  providers: [
+    FalcultyService, 
+    HeadBuildingService, 
+    RequestService, BuildingService, ManagerService,
     TeacherService, ExternalPersonService, DepartmentsService, ClassroomService, GroupService,
     SubjectService, MessageService, PurposeClassroomService, EventService, TypeClassroomService]
 })

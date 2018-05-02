@@ -15,19 +15,19 @@ const routes: Routes = [
       // Profile
       { path: 'profile', component: ProfileComponent},
       // Dashboard
-      { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
+      { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule', canActivate: [ManagerGuard] },
       // Recursos
-      { path: 'inbox', loadChildren: './inbox/inbox.module#InboxModule'},
-      { path: 'calendarevent', loadChildren: './calendarevent/calendarevent.module#CalendareventModule'},
+      { path: 'inbox', loadChildren: './inbox/inbox.module#InboxModule', canActivate: [ManagerGuard]},
+      { path: 'calendarevent', loadChildren: './calendarevent/calendarevent.module#CalendareventModule', canActivate: [ManagerGuard]},
       // Parametrización
-      { path: 'parametrization', loadChildren: './parametrization/parametrization.module#ParametrizationModule' },
+      { path: 'parametrization', loadChildren: './parametrization/parametrization.module#ParametrizationModule', canActivate: [ManagerGuard]},
       // Administración
-      { path: 'users', loadChildren: './users/users.module#UsersModule' },
-      { path: 'faculty', loadChildren: './faculty/faculty.module#FacultyModule' },
-      { path: 'event', loadChildren: './event/event.module#EventModule'},
-      { path: 'subject', loadChildren: './subject/subject.module#SubjectModule'},
-      { path: 'group', loadChildren: './group/group.module#GroupModule'},
-      { path: 'purpose-classroom', loadChildren: './purpose-classroom/purpose-classroom.module#PurposeClassroomModule' },
+      { path: 'users', loadChildren: './users/users.module#UsersModule', canActivate: [ManagerGuard] },
+      { path: 'faculty', loadChildren: './faculty/faculty.module#FacultyModule', canActivate: [ManagerGuard] },
+      { path: 'event', loadChildren: './event/event.module#EventModule', canActivate: [ManagerGuard]},
+      { path: 'subject', loadChildren: './subject/subject.module#SubjectModule', canActivate: [ManagerGuard]},
+      { path: 'group', loadChildren: './group/group.module#GroupModule', canActivate: [ManagerGuard]},
+      { path: 'purpose-classroom', loadChildren: './purpose-classroom/purpose-classroom.module#PurposeClassroomModule', canActivate: [ManagerGuard] },
       // Solicitudes
       { path: 'requestbag', loadChildren: './requestbag/requestbag.module#RequestbagModule' },
       // Sin clasificar
