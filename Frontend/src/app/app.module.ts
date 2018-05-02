@@ -22,15 +22,16 @@ import { Angular2TokenService } from 'angular2-token';
 //Redux
 import { NgRedux, NgReduxModule } from '@angular-redux/store';
 
-//import { AppState, rootReducer, INITIAL_STATE } from './redux/store';
-import { ProfileComponent } from './profile/profile.component';
-
 // Social authenticate
-import { SocialLoginModule, AuthServiceConfig } from "angular5-social-login";
+import { SocialLoginModule, AuthServiceConfig} from "angular5-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider} from "angular5-social-login";
+// import { LoginOpt } from "angular4-social-login";
 
 // Configs 
 export function getAuthServiceConfigs() {
+  // const googleLoginOptions: LoginOpt = {
+  //   hosted_domain: 'unal.edu.co'
+  // }; 
   let config = new AuthServiceConfig(
       [
         {
@@ -50,7 +51,6 @@ export function getAuthServiceConfigs() {
   declarations: 
   [
     AppComponent,
-    ProfileComponent
   ],
   imports: [
     CommonModule,

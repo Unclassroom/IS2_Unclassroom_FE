@@ -66,12 +66,11 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     // reset login status
     this.authenticationService.logout();
- 
-    // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   socialSignIn(socialPlatform : string) {
+    
     let socialPlatformProvider;
     if(socialPlatform == "facebook")
     {
@@ -86,104 +85,70 @@ export class LoginComponent implements OnInit {
     .then(
       (userData) => 
       {
-        console.log(socialPlatform+" sign in data : " , userData);
+        let fn = userData.name.split(" ")
+        let e = userData.email.split("@")
         this.loading = true;
         this.model.email = userData.email
-        this.model.username = userData.name
-        console.log(" the model is : " , this.model);
+        this.model.username = e[0]
+        this.model.role = "student"
+        console.log(this.model)
         this.userService.create_social(this.model)
           .subscribe(
-            data => {
-              localStorage.setItem('number_user', Object.values(data)[0] )
-              console.log('data array'+Object.values(data)[0])
-              this.authenticationService.getTokenSocial(localStorage.getItem('number_user'))
-              console.log('user service token'+localStorage.getItem('token'))
+            data => {              
+              // Request for currentUser
+              localStorage.setItem('token', JSON.stringify(data.jwt));
               this.token = JSON.parse(localStorage.getItem('token'));
-              const httpOptions = {
-                headers: new HttpHeaders({
-                  'Content-Type':  'application/json',
-                  'Authorization': 'Baerer '+ this.token
-                })
-              }
-              console.log('before test');
-              this.http.get(this.configUrl+'/users/current', httpOptions)
-              .subscribe(
-                result => {
-                  // if (result) {
-                  //   // store user details and jwt token in local storage to keep user logged in between page refreshes
-                  //   console.log(result);
-                  //   localStorage.setItem('currentUser', JSON.stringify(result));
-                  // }
-                  console.log(result);
-                  localStorage.setItem('currentUser', JSON.stringify(result));
-                  this.router.navigate(["/layout"]);
-                },
-                err => {
-                  console.log("Error occured");
-                }
-            );
+              this.authenticationService.login(this.token)
+                .subscribe(
+                  data => 
+                  {
+                    // Create type user
+                    this.model.first_name = fn[0]
+                    this.model.last_name = fn[1]
+                    this.model.id = JSON.stringify(data.id)
+                    this.userService.createTypeUser(this.model, "student")
+                    localStorage.setItem('currentUser', JSON.stringify(this.model));
+                    this.router.navigate(["/layout"]);
+                  },
+                  error => {
+                    console.log("Error occured");
+                  }
+              );
             },
             error => {
               this.loading = false;
             });
-          // console.log('final token'+this.token)
-          // console.log('current user'+localStorage.getItem('currentUser'))
       }
     );
   }
 
-  socialLogin(){
-    console.log("algo")
-    console.log(localStorage.getItem('number_user'))
-    this.http.get('http://localhost:3000/social_auth/3')
-    .subscribe(
-      data => {
-        if (data) {
-          // store user details and jwt token in local storage to keep user logged in between page refreshes
-          console.log(data);
-          localStorage.setItem('token', JSON.stringify(data));
-        }
-        console.log(data);
-      },
-      err => {
-        console.log("Error occured");
-      }
-  );
-  }
-
   login() {
-    console.log("into login")
-    console.log(this.clickscnt)
     this.clickscnt+=1
     this.authenticationService.getToken(this.model.email, this.model.password)
       .subscribe(
         token =>{
-          console.log(token)
-        },
+          this.token = JSON.parse(localStorage.getItem('token'));
+          this.authenticationService.login(this.token)
+            .subscribe(
+                data => {
+                  this.router.navigate(["/layout"]);
+                  this.loading = true;
+                  console.log(this.loading)
+                  if (this.clickscnt>=2){
+                      this.clickstwo=true;
+                  }
+                },
+                error => {
+                  if (this.clickscnt>=2){
+                  this.clickstwo=true;
+                  }
+                  console.log("Error occured");
+                  this.loading = false;
+                }
+            );
+          },
         error =>{
           console.log("Error occured");
-        }
-      );
-    // console.log("after service")
-    // console.log(localStorage.getItem('token'))
-    this.token = JSON.parse(localStorage.getItem('token'));
-    this.authenticationService.login(this.token)
-      .subscribe(
-        data => {
-          this.router.navigate(["/layout"]);
-          this.loading = true;
-          console.log(this.loading)
-          if (this.clickscnt>=2){
-            this.clickstwo=true;
-          }
-        },
-        error => {
-          if (this.clickscnt>=2){
-            this.clickstwo=true;
-          }
-          console.log("Error occured");
-          this.loading = false;
-          console.log(this.loading)
         }
       );
   }
