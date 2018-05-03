@@ -3,9 +3,6 @@ import { Injectable } from '@angular/core';
 
 interface IDatetime {
   name: string;
-  registration: string;
-  email: string;
-  isPremium: boolean;
 }
 
 export const DUMMY_DATA = [
