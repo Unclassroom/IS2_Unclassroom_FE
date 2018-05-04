@@ -5,6 +5,7 @@ import { AuthGuard, ManagerGuard } from './../_guards/index';
 import { ProfileComponent} from './profile/profile.component';
 import { ComentComponent } from './coment/coment.component';
 import { LoadrequestComponent } from './loadrequest/loadrequest.component';
+import {MycalendarModule} from './mycalendar/mycalendar.module';
 
 const routes: Routes = [
   {
@@ -36,7 +37,9 @@ const routes: Routes = [
 
       // Sin clasificar
       { path: 'history', loadChildren: './history/history.module#HistoryModule' },
-      { path: 'classroom', loadChildren: './classroom/classroom.module#ClassroomModule' }
+      { path: 'classroom', loadChildren: './classroom/classroom.module#ClassroomModule' },
+      { path: 'mycalendar', loadChildren: './mycalendar/mycalendar.module#MycalendarModule' },
+      { path: 'mycalendar', loadChildren: './mycalendar/mycalendar.module#MycalendarModule' },
 
       ]
   }
