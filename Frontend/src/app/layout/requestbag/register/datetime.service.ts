@@ -39,7 +39,7 @@ export class DatetimeService {
      * se debe generar un nuevo array !!!!.
      */
     this.datetimes = [...this.datetimes, datetime];
-    this.refresh();
+    // this.refresh();
   }
 
   loadDummyData() {

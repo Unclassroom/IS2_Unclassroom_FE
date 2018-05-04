@@ -16,7 +16,7 @@ export class UserService {
     constructor
     (
         private http: HttpClient,
-    private router: Router,
+        private router: Router,
     ) { }
 
     createUser(user: User) {
@@ -52,6 +52,7 @@ export class UserService {
         })
         .map(
             result => {
+                // console.log(result)
                 // localStorage.setItem('currentUser', JSON.stringify(result));
                 return result;
             },

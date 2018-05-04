@@ -1,5 +1,3 @@
-
-
 <table class="ui compact  definition table">
   <thead>
   <tr>
@@ -12,11 +10,11 @@
   <tbody>
   <tr *ngFor="let datetime of datetimes">
     <td>1</td>
-    <td><input type="date" id="inputIconEx1" class="form-control">
+    <td><input [(ngModel)]="day" type="date" id="day" name="day" class="form-control">
     </td>
-    <td> <input type="time" id="inputIconEx2" class="form-control">
+    <td> <input [(ngModel)]="begin_hour" type="time" id="begin_hour" end="begin_hour" class="form-control">
       </td>
-    <td> <input type="time" id="inputIconEx3" class="form-control">
+    <td> <input [(ngModel)]="end_hour" type="time" id="end_hour" name="end_hour" class="form-control">
      </td>
   </tr>
   </tbody>
