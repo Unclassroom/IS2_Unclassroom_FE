@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout.component';
-import { PurposeClassroomModule} from './purpose-classroom/purpose-classroom.module';
 import { AuthGuard, ManagerGuard } from './../_guards/index';
 import { ProfileComponent} from './profile/profile.component';
 import { ComentComponent } from './coment/coment.component';
@@ -34,14 +33,14 @@ const routes: Routes = [
       { path: 'coment', component: ComentComponent},
       // Sin clasificar
       { path: 'history', loadChildren: './history/history.module#HistoryModule' },
-      { path: 'classroom', loadChildren: './classroom/classroom.module#ClassroomModule' },
-      
+      { path: 'classroom', loadChildren: './classroom/classroom.module#ClassroomModule' }
+
       ]
   }
 ];
 
 @NgModule({
-  imports: 
+  imports:
     [
       RouterModule.forChild(routes)
     ],

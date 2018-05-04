@@ -5,6 +5,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
 import {Mail} from '../models/mail';
+import {RequestPurpose} from '../models/requestpurposes';
+import 'rxjs/add/operator/toPromise';
 
 import { of } from 'rxjs/observable/of';
 const httpOptions = {
@@ -13,16 +15,52 @@ const httpOptions = {
 
 @Injectable()
 export class RequestService {
+
   private AllRequestUrl = 'http://localhost:3000/requests';  // URL to web api
+  private DataRequestByPurposesUrl = 'http://localhost:3000/request_count_by_purpose';  // URL to web api
+  private DataRequestByStateUrl = 'http://localhost:3000/request_count_by_state';  // URL to web api
+  private DataRequestByPurposesUrlFiltered = 'http://localhost:3000/request_count_by_purpose?end_date="03-23-2018"&begin_date="02-23-2017"';  // URL to web api
 
   constructor(
     private http: HttpClient,
     private messageService: MessageService) { }
 
+
   /** GET Request from the server */
   getAllRequest (): Observable<InboxRequest[]> {
     return this.http.get<InboxRequest[]>(this.AllRequestUrl);
   }
+
+  getDataRequestByPurposes_Filtered (): Observable<Response> {
+    return this.http.get<Response>(this.DataRequestByPurposesUrlFiltered);
+  }
+
+  /** GET Request from the server */
+   getDataRequestByPurposes (): Observable<Response> {
+    return this.http.get<Response>(this.DataRequestByPurposesUrl);
+  }
+
+
+  /** GET Request from the server */
+  getDataRequestByState (): Observable<Response> {
+    return this.http.get<Response>(this.DataRequestByStateUrl);
+  }
+
+
+  /* getDataRequestByPurposes() {
+     let promise = new Promise((resolve, reject) => {
+       let apiURL = `${this.DataRequestByPurposesUrl}`;
+       this.http.get(apiURL)
+         .toPromise()
+         .then(
+           res => { // Success
+             console.log(res.json());
+             resolve();
+           }
+         );
+     });
+     return promise;
+   }*/
 
   getRequest(id: number): Observable<InboxRequest> {
     // TODO: send the message _after_ fetching the hero

@@ -14,6 +14,7 @@ export class FacultyComponent implements OnInit {
 
   ngOnInit() {
     this.getFaculties();
+    console.log(this.faculties);
   }
 
   getFaculties(): void {

@@ -5,7 +5,7 @@ import { of } from 'rxjs/observable/of';
 @Injectable()
 export class CalendareventService {
 
-  public getEvents(): Observable<any> {
+    public getEvents(): Observable<any> {
     const dateObj = new Date();
     const yearMonth = dateObj.getUTCFullYear() + '-' + (dateObj.getUTCMonth() + 1);
     const data: any = [{

@@ -36,10 +36,10 @@ import { ComentComponent } from './coment/coment.component';
     SampleModule,
   ],
   declarations: [
-    LayoutComponent, 
-    HeaderComponent, 
-    SidebarComponent, 
-    BreadcrumbComponent, 
+    LayoutComponent,
+    HeaderComponent,
+    SidebarComponent,
+    BreadcrumbComponent,
     ProfileComponent, ComentComponent],
   providers: [
     FalcultyService,

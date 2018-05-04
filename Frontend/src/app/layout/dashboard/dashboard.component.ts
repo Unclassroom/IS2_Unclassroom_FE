@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
 import * as jsPDF from 'jspdf';
 import * as html2canvas from 'html2canvas';
+import {RequestService} from '../services/request.service';
+import {Faculty} from '../models/faculty';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,6 +12,10 @@ import * as html2canvas from 'html2canvas';
   animations: [routerTransition()]
 })
 export class DashboardComponent implements OnInit {
+
+  requestpurposes = [];
+  requeststate = [];
+
   // bar chart
   public barChartOptions: any = {
     scaleShowVerticalLines: false,
@@ -28,26 +34,18 @@ export class DashboardComponent implements OnInit {
   public barChartLegend: boolean = true;
 
   public barChartData: any[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' }
+    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' }
   ];
 
   // Doughnut
   public doughnutChartLabels: string[] = [
-    'Download Sales',
-    'In-Store Sales',
-    'Mail-Order Sales'
   ];
-  public doughnutChartData: number[] = [350, 450, 100];
+  public doughnutChartData: number[] = [];
   public doughnutChartType: string = 'doughnut';
 
   // Pie
-  public pieChartLabels: string[] = [
-    'Download Sales',
-    'In-Store Sales',
-    'Mail Sales'
-  ];
-  public pieChartData: number[] = [300, 500, 100];
+  public pieChartLabels: string[] = [];
+  public pieChartData: number[] = [];
   public pieChartType: string = 'pie';
 
 
@@ -55,7 +53,7 @@ export class DashboardComponent implements OnInit {
   public chartClicked(e: any): void {
     // console.log(e);
   }
-n
+
   public chartHovered(e: any): void {
     // console.log(e);
   }
@@ -81,24 +79,75 @@ n
      * assign it;
      */
   }
+  public dataDoughtChart(requestpurposes) {
+    // console.log(this.requestpurposes[0]);
+   // console.log(Object.keys(this.requestpurposes[0]));
+    // this.doughnutChartLabels.push('coloquio academico  1');
+    // this.doughnutChartData.length = 0;
+    // this.doughnutChartLabels.length = 0;
+
+    for (const prop in this.requestpurposes[0]) {
+      this.doughnutChartData.push( Number (this.requestpurposes[0][prop]) );
+      this.doughnutChartLabels.push(prop );
+    }
+  }
+
+  public dataPieChart(requeststate) {
+    // console.log(this.requestpurposes[0]);
+    // console.log(Object.keys(this.requestpurposes[0]));
+    // this.doughnutChartLabels.push('coloquio academico  1');
+    //this.doughnutChartData.length = 0;
+    //this.doughnutChartLabels.length = 0;
+
+    for (const prop in this.requeststate[0]) {
+      this.pieChartData.push( Number (this.requeststate[0][prop]) );
+      this.pieChartLabels.push(prop );
+    }
+  }
+
+  constructor(private requestService: RequestService ) {
+    this.requestService.getDataRequestByPurposes()
+      .subscribe((response) => {
+        this.requestpurposes.push(response);
+        this.dataDoughtChart(this.requestpurposes[0]);
+
+      });
+    this.requestService.getDataRequestByState()
+      .subscribe((response) => {
+        this.requeststate.push(response);
+        this.dataPieChart(this.requeststate[0]);
+
+      });
+  }
+
   downloadPDF() {
 
     html2canvas(document.getElementById('timerequest')).then(function(canvas) {
       const self = this;
 
       const doc = new jsPDF();
-      doc.text(50, 10, 'page 1');
+      doc.text(80, 20, 'Proposito de peticiones');
       const img = canvas.toDataURL('image/png');
-      doc.addImage(img, 'JPEG', 10, 10);
-      doc.addPage();
-      doc.text(50, 100, 'page 2')
-      doc.save('TimeRequest.pdf');
+      doc.addImage(img, 'JPEG', 10, 40, 190, 110);
+      doc.save('GeneralData.pdf');
     });
     // doc.save('test.pdf');//fails to add image to pdf
   }
-  constructor() { }
 
-  ngOnInit() {}
+  // servicios
+
+  getDataRequestByPurposes_Filtered(): void {
+
+    this.requestService.getDataRequestByPurposes_Filtered()
+      .subscribe((response) => {
+        this.requestpurposes.push(response);
+        this.dataDoughtChart(this.requestpurposes[0]);
+
+      });
+  }
+
+  ngOnInit() {
+  }
 
 
 }
