@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import {InboxRequest} from '../models/inboxrequest';
-import {Observable} from 'rxjs/Observable';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
-import { MessageService } from './message.service';
-import {Mail} from '../models/mail';
+import {  InboxRequest  } from '../models/inboxrequest';
+import {  Observable  } from 'rxjs/Observable';
+import {  HttpClient, HttpHeaders } from '@angular/common/http';
+import {  catchError, map, tap  } from 'rxjs/operators';
+import {  MessageService  } from './message.service';
+import {  Mail  } from '../models/mail';
+import {  SpecificRequest } from '../models/specific_request';
 
 import { of } from 'rxjs/observable/of';
 const httpOptions = {
@@ -32,10 +33,20 @@ export class RequestService {
   //////// Save methods //////////
 
   /** POST: add a new mail to the server */
-  addRequest (request): Observable<Mail> {
-    return this.http.post<Mail>(this.AllRequestUrl, request, httpOptions).pipe(
-      tap(_ => this.log(`added mail w/ id=${request}`)),
-      catchError(this.handleError<Mail>('addMail'))
+  addRequest (request): Observable<SpecificRequest> 
+  {
+    console.log("in addRequest service")
+    return this.http.post<SpecificRequest>(this.AllRequestUrl, request, httpOptions).
+    map(
+      result => {
+        console.log("add Resquest service sucessful")
+        // console.log(localStorage.getItem('token'))
+        return result;
+      },
+      err => {
+        alert("Error in add REquesr service")
+        console.log("Error occured  in add REquesr service");
+      }
     );
   }
   /** PUT: update the request on the server validate answer */

@@ -10,7 +10,7 @@
 -->
 
 
-<form class="col-xl-12 col-lg-12" (submit)="logForm(facultyForm)"  #facultyForm="ngForm"  enctype="multipart/form-data" >
+<form class="col-xl-12 col-lg-12" (submit)="logForm(requestForm)"  #requestForm="ngForm"  enctype="multipart/form-data" >
 
   <div class="md-form"  class="col-xl-6 col-lg-6"  *ngIf="getSubjects">
 
@@ -43,7 +43,7 @@
 
   </div>-->
 
-    <datetime-list [datetimes]="datetimes$ | async" (onCreateDatetime)="createDatetime($event)" ></datetime-list>
+    <datetime-list id="datetimes" name="datetimes" [datetimes]="datetimes$ | async" (onCreateDatetime)="createDatetime($event)" ></datetime-list>
 
   <button type="submit" class="btn btn-default" >Registrar</button>
 
