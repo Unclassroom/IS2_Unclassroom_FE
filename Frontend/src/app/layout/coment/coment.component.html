@@ -5,31 +5,55 @@
 </div>
 
 <hr class=" px-4 ">
-<form class="col-xl-7 col-lg-7" (submit)="logForm(buildingForm)"  #buildingForm="ngForm"
-      enctype="multipart/form-data" >
+<form class="col-md-10" (submit)="registerClient()" enctype="multipart/form-data" 
+      action="http://localhost:3000/opinions" method="post">
   
   <div class="row">
-  <label mdbActive  for="" class="text-muted">Edificio:</label>
+  <label mdbActive  for="bl" class="text-muted">Edificio:</label>
   <div class="md-form"> <!--*ngIf="getSubjects"-->
-    <select class="form-control" id="bl" name="" ngModel >
+    <select class="form-control" id="bl" name="student_id" ngModel >
       <option value=""></option>
-      <option  *ngFor="" value="{{building.id}}">{{building.name}}</option>
+      <option value=1>Marblewald Campus</option>
+      <option value=2>Falconholt Campus</option>
+      <option value=3>Falconholt Campus</option>
+      <option value=4>Clearcourt Campus</option>
+      <option value=5>Brookville Campus</option>
+      <option value=6>Brookville Campus</option>
+      <option value=7>Marblewald Campus</option>
+      <option value=8></option>
+      <option value=9></option>
+      <!--option  *ngFor="" value="{{building.id}}">{{building.name}}</option-->
     </select>
   </div>
 
-
-  <label mdbActive  for="" class="text-muted">Salón:</label>
+  <label mdbActive  for="room" class="text-muted">Salón:</label>
   <div class="md-form"> <!--*ngIf="getSubjects"-->
-    <select class="form-control" id="room" name="" ngModel >
-      <option value=""></option>
-      <option  *ngFor="" value="{{building.id}}">{{building.name}}</option>
+    <select class="form-control" id="room" name="classroom_id" ngModel >
+        <option value=""></option>
+        <option value=1>101</option>
+        <option value=2>102</option>
+        <option value=3>103</option>
+        <option value=4>104</option>
+        <option value=5>105</option>
+        <option value=6>201</option>
+        <option value=7>202</option>
+        <option value=8>204</option>
+        <option value=9>206</option>
+        <option value=10>301</option>
+        <option value=11>302</option>
+        <option value=12>304</option>
+        <option value=13>306</option>
+        <option value=14>401</option>
+        <option value=15>404</option>
+      <option></option>
     </select>
   </div>
 </div>
 <div class="row">
-  <label mdbActive  for=""  class="text-muted">Estado del Salón: </label>
+  <label mdbActive  for="st"  class="text-muted">Estado del Salón: </label>
   <div class="md-form">
     <select class="form-control" id="st" ngModel>
+      <option value=""></option>
       <option>Malo</option>
       <option>Regular</option>
       <option>Aceptable</option>
@@ -39,19 +63,13 @@
 </div>
   <label mdbActive  for="observation"  class="text-muted"> Observación</label>
   <div class="md-form">
-    <textarea mdbActive type="text" id="motive" class="md-textarea" id="motive" name="motive" ngModel></textarea>
+    <textarea mdbActive type="text" id="motive" class="md-textarea" id="observation" name="description" ngModel></textarea>
   </div>
 
-  <!--
-  <div class="md-form">
-    <input type="file" id="file" name="file" ngModel (change)="getFiles($event)" #fileInput>
-
-  </div>-->
-
   <div class="row">
-    <button type="submit" class="btn btn-default" >Cancelar</button>
     <button type="submit" class="btn btn-default" >Eviar comentario</button>
   </div>
 </form>
 <!--/.Panel-->
+
 

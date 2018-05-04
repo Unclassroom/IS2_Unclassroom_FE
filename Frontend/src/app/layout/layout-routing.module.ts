@@ -5,6 +5,7 @@ import { PurposeClassroomModule} from './purpose-classroom/purpose-classroom.mod
 import { AuthGuard, ManagerGuard } from './../_guards/index';
 import { ProfileComponent} from './profile/profile.component';
 import { ComentComponent } from './coment/coment.component';
+import { LoadrequestComponent } from './loadrequest/loadrequest.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,8 @@ const routes: Routes = [
       // Solicitudes
       { path: 'requestbag', loadChildren: './requestbag/requestbag.module#RequestbagModule' },
       { path: 'coment', component: ComentComponent},
+      { path: 'loadrequest', component: LoadrequestComponent},
+
       // Sin clasificar
       { path: 'history', loadChildren: './history/history.module#HistoryModule' },
       { path: 'classroom', loadChildren: './classroom/classroom.module#ClassroomModule' },
