@@ -7,7 +7,8 @@
       <span><i class="fa fa-bar-chart-o fa-fw"></i>Profile</span>
     </a>
     <!-- Dashboard -->
-    <a *ngSwitchCase="'manager'" routerLink="/layout/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
+    <a *ngSwitchCase="'manager'" routerLink="/layout/dashboard" [routerLinkActive]="['router-link-active']"
+       class="list-group-item">
       <span><i class="fa fa-bar-chart-o fa-fw"></i>Dashboard</span>
     </a>
     <!-- Recursos -->
@@ -83,7 +84,7 @@
       </li>
     </div>
     <!-- Historial -->
-    <a *ngSwitchCase="'manager'" class="list-group-item more-themes" href="" >
+    <a *ngSwitchCase="'manager'" class="list-group-item more-themes" >
       <span><i class="fa fa-hdd-o fa-fw"></i>Historial</span>
     </a>
     <!-- Solicitudes -->
@@ -97,6 +98,9 @@
             <a  routerLink="/layout/requestbag"><span>Lista Solicitudes</span></a>
           </li>
           <li>
+            <a  routerLink="/layout/loadrequest"><span>Cargar solicitud</span></a>
+          </li>
+          <li>
             <a  routerLink="/layout/requestbag/register"><span>Crear Solicitud</span></a>
           </li>
         </ul>
@@ -105,7 +109,7 @@
      <!-- Comentarios -->
      <div class="nested-menu">
       <a class="list-group-item" (click)="addExpandClass('pages')">
-        <span><i class="fa fa-users fa-fw"></i>Comentarios</span>
+        <span><i class="fas fa-comments fa-fw"></i>Comentarios</span>
       </a>
       <li class="nested" [class.expand]="showMenu === 'pages'">
         <ul class="submenu">

@@ -40,7 +40,8 @@ export class RegisterComponent implements OnInit {
   purposesclassroom: PurposeClassroom[];
   typeclassrooms: TypeClassroom[];
   private router: Router;
-  constructor(private requestService: RequestService, private purposeClassroomService: PurposeClassroomService, private typeClassroomService: TypeClassroomService, private datetimeService: DatetimeService) { }
+  constructor(private requestService: RequestService, private purposeClassroomService: PurposeClassroomService,
+               private typeClassroomService: TypeClassroomService, private datetimeService: DatetimeService) { }
   ngOnInit() {
     this.getSubjects();
     this.getTypesClassroom();

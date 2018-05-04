@@ -26,6 +26,7 @@ import {TypeClassroomService} from './services/type-classroom.service';
 import { SampleModule } from 'angular-pdf-generator';
 import { ProfileComponent } from './profile/profile.component';
 import { ComentComponent } from './coment/coment.component';
+import { LoadrequestComponent } from './loadrequest/loadrequest.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,7 @@ import { ComentComponent } from './coment/coment.component';
     HeaderComponent, 
     SidebarComponent, 
     BreadcrumbComponent, 
-    ProfileComponent, ComentComponent],
+    ProfileComponent, ComentComponent, LoadrequestComponent],
   providers: [
     FalcultyService,
     HeadBuildingService,
