@@ -107,7 +107,7 @@ export class RegisterComponent implements OnInit {
         ]
       }
     ]
-    console.log(this.filestring);
+    console.log("antes del add");
     this.add();
   }
 
