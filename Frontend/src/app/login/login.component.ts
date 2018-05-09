@@ -16,6 +16,7 @@ import { UserService } from '../_services/index';
 interface Token {
   "jwt": string;
 }
+
 interface UserCreate {
   "id": number;
 }
@@ -45,6 +46,7 @@ export class LoginComponent implements OnInit {
   loading = false;
   returnUrl: string;
   clickstwo: boolean;
+  herror: boolean;
   constructor(
   //  private ngRedux: NgRedux<AppState>,
     private fb: FormBuilder,
@@ -111,6 +113,7 @@ export class LoginComponent implements OnInit {
                     this.router.navigate(["/layout"]);
                   },
                   error => {
+                    this.herror=true;
                     console.log("Error occured");
                   }
               );
@@ -143,12 +146,14 @@ export class LoginComponent implements OnInit {
                   this.clickstwo=true;
                   }
                   console.log("Error occured");
+                  this.herror=true;
                   this.loading = false;
                 }
             );
           },
         error =>{
           console.log("Error occured");
+          this.herror=true;
         }
       );
   }

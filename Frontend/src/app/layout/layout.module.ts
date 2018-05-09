@@ -27,6 +27,7 @@ import { SampleModule } from 'angular-pdf-generator';
 import { ProfileComponent } from './profile/profile.component';
 import { ComentComponent } from './coment/coment.component';
 import { LoadrequestComponent } from './loadrequest/loadrequest.component';
+import { DamagerecordComponent } from './damagerecord/damagerecord.component';
 
 @NgModule({
   imports: [
@@ -41,7 +42,7 @@ import { LoadrequestComponent } from './loadrequest/loadrequest.component';
     HeaderComponent,
     SidebarComponent,
     BreadcrumbComponent,
-    ProfileComponent, ComentComponent, LoadrequestComponent],
+    ProfileComponent, ComentComponent, LoadrequestComponent, DamagerecordComponent],
   providers: [
     FalcultyService,
     HeadBuildingService,

@@ -5,6 +5,8 @@ import { AuthGuard, ManagerGuard } from './../_guards/index';
 import { ProfileComponent} from './profile/profile.component';
 import { ComentComponent } from './coment/coment.component';
 import { LoadrequestComponent } from './loadrequest/loadrequest.component';
+import { RegisterComponent } from './coment/register/register.component';
+import { DamagerecordComponent } from './damagerecord/damagerecord.component';
 
 const routes: Routes = [
   {
@@ -22,6 +24,7 @@ const routes: Routes = [
       { path: 'calendarevent', loadChildren: './calendarevent/calendarevent.module#CalendareventModule', canActivate: [ManagerGuard]},
       // Parametrización
       { path: 'parametrization', loadChildren: './parametrization/parametrization.module#ParametrizationModule', canActivate: [ManagerGuard]},
+      { path: 'loadrequest', component: LoadrequestComponent},
       // Administración
       { path: 'users', loadChildren: './users/users.module#UsersModule', canActivate: [ManagerGuard] },
       { path: 'faculty', loadChildren: './faculty/faculty.module#FacultyModule', canActivate: [ManagerGuard] },
@@ -30,10 +33,10 @@ const routes: Routes = [
       { path: 'group', loadChildren: './group/group.module#GroupModule', canActivate: [ManagerGuard]},
       { path: 'purpose-classroom', loadChildren: './purpose-classroom/purpose-classroom.module#PurposeClassroomModule', canActivate: [ManagerGuard] },
       // Solicitudes
-      { path: 'requestbag', loadChildren: './requestbag/requestbag.module#RequestbagModule' },
+      { path: 'requestbag', loadChildren: './requestbag/requestbag.module#RequestbagModule', canActivate: [ManagerGuard]},
+      //Comentarios
       { path: 'coment', component: ComentComponent},
-      { path: 'loadrequest', component: LoadrequestComponent},
-
+      { path: 'damagerecord', component: DamagerecordComponent},
       // Sin clasificar
       { path: 'history', loadChildren: './history/history.module#HistoryModule' },
       { path: 'classroom', loadChildren: './classroom/classroom.module#ClassroomModule' }
