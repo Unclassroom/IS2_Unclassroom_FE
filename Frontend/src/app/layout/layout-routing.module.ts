@@ -7,6 +7,7 @@ import { ComentComponent } from './coment/coment.component';
 import { LoadrequestComponent } from './loadrequest/loadrequest.component';
 import { RegisterComponent } from './coment/register/register.component';
 import { DamagerecordComponent } from './damagerecord/damagerecord.component';
+import {MycalendarModule} from './mycalendar/mycalendar.module';
 
 const routes: Routes = [
   {
@@ -39,7 +40,9 @@ const routes: Routes = [
       { path: 'damagerecord', component: DamagerecordComponent},
       // Sin clasificar
       { path: 'history', loadChildren: './history/history.module#HistoryModule' },
-      { path: 'classroom', loadChildren: './classroom/classroom.module#ClassroomModule' }
+      { path: 'classroom', loadChildren: './classroom/classroom.module#ClassroomModule' },
+      { path: 'mycalendar', loadChildren: './mycalendar/mycalendar.module#MycalendarModule' },
+      { path: 'mycalendar', loadChildren: './mycalendar/mycalendar.module#MycalendarModule' },
 
       ]
   }
