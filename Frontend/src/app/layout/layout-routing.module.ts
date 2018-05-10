@@ -8,6 +8,7 @@ import { LoadrequestComponent } from './loadrequest/loadrequest.component';
 import { RegisterComponent } from './coment/register/register.component';
 import { DamagerecordComponent } from './damagerecord/damagerecord.component';
 import {MycalendarModule} from './mycalendar/mycalendar.module';
+import { ComentregComponent } from './comentreg/comentreg.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
       // Recursos
       { path: 'inbox', loadChildren: './inbox/inbox.module#InboxModule', canActivate: [ManagerGuard]},
       { path: 'calendarevent', loadChildren: './calendarevent/calendarevent.module#CalendareventModule', canActivate: [ManagerGuard]},
+      { path: 'comentreg', component: ComentregComponent},
       // Parametrización
       { path: 'parametrization', loadChildren: './parametrization/parametrization.module#ParametrizationModule', canActivate: [ManagerGuard]},
       { path: 'loadrequest', component: LoadrequestComponent},
