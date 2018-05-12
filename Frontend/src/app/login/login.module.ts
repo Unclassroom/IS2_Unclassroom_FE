@@ -8,6 +8,8 @@ import { LoginComponent } from './login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from 'angular5-social-login';
 import {MDBBootstrapModule} from 'angular-bootstrap-md/index';
+import {NavbarComponent} from '../landing/components/navbar/navbar.component';
+import {FooterComponent} from '../landing/components/footer/footer.component';
 // import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -22,7 +24,7 @@ import {MDBBootstrapModule} from 'angular-bootstrap-md/index';
   providers: [
     AuthService
   ],
-  declarations: [LoginComponent]
+  declarations: [LoginComponent, NavbarComponent, FooterComponent]
 })
 export class LoginModule { }
 
