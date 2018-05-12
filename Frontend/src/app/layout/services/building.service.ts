@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -21,14 +19,14 @@ export class BuildingService {
     private messageService: MessageService) { }
 
   /** GET faculties from the server */
-  getFaculties (): Observable<Building[]> {
+  getBuildings (): Observable<Building[]> {
     return this.http.get<Building[]>(this._Url);
   }
-  /** GET hero by id. Will 404 if id not found */
+
   getBuilding(id: number): Observable<Building> {
     const url = `${this._Url}/${id}`;
     return this.http.get<Building>(url).pipe(
-      tap(_ => this.log(`fetched Building id=${id}`)),
+      tap(_ => this.log(`fetched building id=${id}`)),
       catchError(this.handleError<Building>(`getBuilding id=${id}`))
     );
   }

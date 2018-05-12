@@ -4,25 +4,17 @@
   </div>
 </div>
 
+
 <hr class=" px-4 ">
-<form class="col-md-10" (submit)="registerClient()" enctype="multipart/form-data" 
+<form class="col-md-10" (submit)="logForm(requestForm)" enctype="multipart/form-data" 
       action="http://localhost:3000/opinions" method="post">
   
   <div class="row">
   <label mdbActive  for="bl" class="text-muted">Edificio:</label>
-  <div class="md-form"> <!--*ngIf="getSubjects"-->
-    <select class="form-control" id="bl" name="student_id" ngModel >
+  <div class="md-form" *ngIf="getBuildings"> <!--*ngIf="getBuildings"-->
+    <select class="form-control" id="bl" name="building_name" ngModel >
       <option value=""></option>
-      <option value=1>Marblewald Campus</option>
-      <option value=2>Falconholt Campus</option>
-      <option value=3>Falconholt Campus</option>
-      <option value=4>Clearcourt Campus</option>
-      <option value=5>Brookville Campus</option>
-      <option value=6>Brookville Campus</option>
-      <option value=7>Marblewald Campus</option>
-      <option value=8></option>
-      <option value=9></option>
-      <!--option  *ngFor="" value="{{building.id}}">{{building.name}}</option-->
+      <option *ngFor="let building of buildings" value="{{building.name}}">{{building.name}}</option>
     </select>
   </div>
 

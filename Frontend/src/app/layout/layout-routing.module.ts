@@ -5,7 +5,6 @@ import { AuthGuard, ManagerGuard } from './../_guards/index';
 import { ProfileComponent} from './profile/profile.component';
 import { ComentComponent } from './coment/coment.component';
 import { LoadrequestComponent } from './loadrequest/loadrequest.component';
-import { RegisterComponent } from './coment/register/register.component';
 import { DamagerecordComponent } from './damagerecord/damagerecord.component';
 import {MycalendarModule} from './mycalendar/mycalendar.module';
 import { ComentregComponent } from './comentreg/comentreg.component';

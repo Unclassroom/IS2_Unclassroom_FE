@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RegisterComponent } from './register/register.component';
 import { ComentRoutingModule } from './coment-routing.module';
 import { ComentComponent } from './coment.component';
 
@@ -9,6 +8,6 @@ import { ComentComponent } from './coment.component';
     CommonModule,
     ComentRoutingModule
   ],
-  declarations: [RegisterComponent, ComentModule]
+  declarations: [ ComentModule]
 })
 export class ComentModule { }
