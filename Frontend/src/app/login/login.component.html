@@ -84,6 +84,14 @@
             <!-- Content -->
           </div>
           <!-- Mask & flexbox options-->
+            <div class="options text-center text-md-right mt-1">
+                Not a member? <a [routerLink]="['/register']" >Sign Up</a>
+            </div>
+            <div *ngIf="herror">
+                    <p style="color: darkred;"> Usuario o contraseña incorrecto</p>
+            </div>
+            <p><a [routerLink]="['/landing']" style="font-size:25px;padding-top: 5%">
+                <i class="fa fa-home" aria-hidden="true" ></i></a></p>
         </div>
         <!-- Full Page Intro -->
       </header>

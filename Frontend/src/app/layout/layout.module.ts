@@ -27,6 +27,9 @@ import { SampleModule } from 'angular-pdf-generator';
 import { ProfileComponent } from './profile/profile.component';
 import { ComentComponent } from './coment/coment.component';
 import { LoadrequestComponent } from './loadrequest/loadrequest.component';
+import { DamagerecordComponent } from './damagerecord/damagerecord.component';
+import { ComentregComponent } from './comentreg/comentreg.component';
+import { OpinionService } from './services/opinion.service';
 
 @NgModule({
   imports: [
@@ -41,12 +44,11 @@ import { LoadrequestComponent } from './loadrequest/loadrequest.component';
     HeaderComponent,
     SidebarComponent,
     BreadcrumbComponent,
-    ProfileComponent, ComentComponent, LoadrequestComponent],
+    ProfileComponent, ComentComponent, LoadrequestComponent, DamagerecordComponent, ComentregComponent],
   providers: [
-    FalcultyService,
-    HeadBuildingService,
-    RequestService, BuildingService, ManagerService,
-    TeacherService, ExternalPersonService, DepartmentsService, ClassroomService, GroupService,
-    SubjectService, MessageService, PurposeClassroomService, EventService, TypeClassroomService]
+    FalcultyService, HeadBuildingService,  RequestService, BuildingService,
+    ManagerService, TeacherService, ExternalPersonService, DepartmentsService,
+    ClassroomService, GroupService, SubjectService, MessageService, EventService,
+    PurposeClassroomService, TypeClassroomService, OpinionService ]
 })
 export class LayoutModule { }
