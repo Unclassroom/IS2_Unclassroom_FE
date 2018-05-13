@@ -33,11 +33,33 @@ export class RequestService {
   //////// Save methods //////////
 
   /** POST: add a new mail to the server */
-  addRequest (request): Observable<SpecificRequest> 
+  addRequest (request: any)
   {
     console.log("in addRequest service")
-    return this.http.post<SpecificRequest>(this.AllRequestUrl, request, httpOptions).
-    map(
+    return this.http.post(this.AllRequestUrl, 
+      {
+      "teacher_id":request.teacher_id,
+      "purpose_classroom_id": request.purpose_classroom,
+      "type_classroom_id": request.type_classroom,
+      "state": "no readed",
+      "motive": request.motive,
+      "type_request": request.type_request,
+      "alternatives":[
+        {
+          "specific": [
+            {
+              "begin_at_hour": request.bah,
+              "begin_at_minute": request.bam,
+              "end_at_hour": request.eah,
+              "end_at_minute": request.eam,
+              "date": request.day
+            }
+            ]
+        }
+        ]
+    }
+    )
+    .map(
       result => {
         console.log("add Resquest service sucessful")
         // console.log(localStorage.getItem('token'))

@@ -1,32 +1,44 @@
-<table class="ui compact  definition table">
-  <thead>
-  <tr>
-    <th width="5px"></th>
-    <th>Dia</th>
-    <th>Hora Inicio</th>
-    <th>Hora Final</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let datetime of datetimes">
-    <td>1</td>
-    <td><input [(ngModel)]="day" type="date" id="day" name="day" class="form-control">
-    </td>
-    <td> <input [(ngModel)]="begin_hour" type="time" id="begin_hour" end="begin_hour" class="form-control">
-      </td>
-    <td> <input [(ngModel)]="end_hour" type="time" id="end_hour" name="end_hour" class="form-control">
-     </td>
-  </tr>
-  </tbody>
-  <tfoot class="full-width">
-  <tr>
-    <th></th>
+<!DOCTYPE html>
+<html ng-app="moment-picker">
+  <head>
+    <meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Angular Moment Picker - Basic demo</title>
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/styles/solarized_dark.min.css" rel="stylesheet">
+    <style>pre{padding:0}pre>code{padding:10px!important}</style>
+  </head>
+  <body style="margin:30px;" ng-cloak
+    ng-init="
+      input1='01.09.2015 18:00';
+      input2='01.09.2015 18:00'">
+    
+    <h3 class="page-header">
+      Using german default format
+      <small><code>L LT</code></small>
+    </h3>
+    
+    <p class="lead"
+         moment-picker="input1"
+         locale="de"
+         start-view="month">
+      
+      <i class="glyphicon glyphicon-calendar"></i>&nbsp;
+      {{ '01.09.2015 18:00' }}
+      
+    </p>
+    
 
-    <th colspan="4">
-      <div  class="btn btn-default"  (click)="createDatetime($event)">
-        <i class="user icon" ></i> +
-      </div>
-    </th>
-  </tr>
-  </tfoot>
-</table>
+  
+   
+    
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.js"></script>
+    <script src="//rawgit.com/indrimuska/angular-moment-picker/master/dist/angular-moment-picker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>

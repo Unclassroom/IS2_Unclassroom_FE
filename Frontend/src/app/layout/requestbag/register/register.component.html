@@ -9,30 +9,29 @@
 <form class="col-xl-7 col-lg-7" #form = "ngForm" (ngSubmit)="logForm(form)" enctype="multipart/form-data">
 -->
 
-
-<form class="col-xl-12 col-lg-12" (submit)="logForm(requestForm)"  #requestForm="ngForm"  enctype="multipart/form-data" >
-
+<form class="col-xl-12 col-lg-12"  #requestForm="ngForm"  enctype="multipart/form-data" >
+  <!-- Purpose classroom -->
   <div class="md-form"  class="col-xl-6 col-lg-6"  *ngIf="getSubjects">
     <label mdbActive  for="purpose_classroom" class="text-muted">Asunto</label>
-    <select id="purpose_classroom"  class="form-control " name="purpose_classroom_id" ngModel >
+    <select [(ngModel)]="request_specific.purpose_classroom" id="purpose_classroom"  class="form-control " name="purpose_classroom_id" ngModel >
       <option value=""></option>
       <option  *ngFor="let purposeclassroom of purposesclassroom" value="{{purposeclassroom.id}}">{{purposeclassroom.name}}</option>
     </select>
   </div>
-
+  <!-- Type classroom -->
   <div class="md-form"  class="col-xl-6 col-lg-6" *ngIf="getTypesClassroom">
 
     <label mdbActive  for="typeclassroom"  class="text-muted">Tipo Salón: </label>
-    <select  id="typeclassroom" name="type_classroom_id"   class="form-control " ngModel>
+    <select [(ngModel)]="request_specific.type_classroom" id="typeclassroom" name="type_classroom_id"   class="form-control " ngModel>
       <option value=""></option>
-      <option  *ngFor="let typeclassroom of typeclassrooms" value="{{typeclassroom.id}}">{{typeclassroom.name}}</option>
+      <option  *ngFor="let typeclassroom of typeclassrooms" value="{{typeclassroom.id}}">{{typeclassroom.name}}</option>purpose_classroom_id
     </select>
   </div>
 
   <div class="md-form"  class="col-xl-12 col-lg-12">
   <label mdbActive  for="motive"  class="text-muted"> Motivo</label>
   <div class="md-form">
-    <textarea mdbActive type="text" id="motive" class="md-textarea" id="motive" name="motive" ngModel></textarea>
+    <textarea [(ngModel)]="request_specific.motive" mdbActive type="text" id="motive" class="md-textarea" id="motive" name="motive" ngModel></textarea>
   </div>
   </div>
 
@@ -44,7 +43,7 @@
 
     <datetime-list id="datetimes" name="datetimes" [datetimes]="datetimes$ | async" (onCreateDatetime)="createDatetime($event)" ></datetime-list>
 
-  <button type="submit" class="btn btn-default" >Registrar</button>
+  <button (click)="logForm(ngForm)" class="btn btn-default" >Registrar</button>
 
 </form>
 <!--/.Panel-->

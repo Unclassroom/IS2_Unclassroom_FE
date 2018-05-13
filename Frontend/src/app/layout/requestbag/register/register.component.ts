@@ -22,7 +22,8 @@ export class RegisterComponent implements OnInit {
   private datetimes$: Observable<any[]>;
   files: FileList;
   filestring: string;
-  request: SpecificRequest
+  request: any = {
+  };
   currentUser: User
   myFilter = (d: Date): boolean => {
     const day = d.getDay();
@@ -43,15 +44,14 @@ export class RegisterComponent implements OnInit {
     private typeClassroomService: TypeClassroomService, 
     private datetimeService: DatetimeService
   ) 
-  {
-      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  }
+  { }
 
   ngOnInit() {
     this.getSubjects();
     this.getTypesClassroom();
     this.datetimes$  = this.datetimeService.getDatetimes();
     this.datetimeService.loadDummyData();
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   createDatetime(datetime) {
@@ -72,41 +72,36 @@ export class RegisterComponent implements OnInit {
     this.filestring = btoa(binaryString);  // Converting binary string data.
     console.log(this.filestring );
   }
+  request_specific: any = {
+  };
   logForm(form: NgForm) {
-    // console.log("purpose id"+form.value.purpose_classroom_id )
-    // console.log("type id"+form.value.type_classroom_id )
+    // console.log("purpose id"+form.controls['purpose_classroom_id'].value)
+    // console.log("type id"+this.request_specific.purpose_classroom )
     // console.log("currentUser"+this.currentUser.id)
-    // console.log("day "+ localStorage.getItem("day") )
-    // console.log("begin_at_hour "+ localStorage.getItem("begin_at_hour") )
-    // console.log("begin_at_minute "+ localStorage.getItem("begin_at_minute") )
-    // console.log("end_at_hour "+ localStorage.getItem("end_at_hour") )
-    // console.log("end_at_minute "+ localStorage.getItem("end_at_minute") )
+    console.log("day "+ localStorage.getItem("day") )
+    console.log("begin_at_hour "+ localStorage.getItem("begin_at_hour") )
+    console.log("begin_at_minute "+ localStorage.getItem("begin_at_minute") )
+    console.log("end_at_hour "+ localStorage.getItem("end_at_hour") )
+    console.log("end_at_minute "+ localStorage.getItem("end_at_minute") )
     let day = localStorage.getItem("day");
     let bah = localStorage.getItem("begin_at_hour");
     let bam = localStorage.getItem("begin_at_minute");
     let eah = localStorage.getItem("end_at_hour");
-    let eam = localStorage.getItem("end_at_minute")
-    this.request.teacher_id = this.currentUser.id;
-    this.request.purpose_classroom_id = form.value.purpose_classroom_id ;
-    this.request.type_classroom_id = form.value.type_classroom_id ;
-    this.request.state = 'pending' ;
-    this.request.motive = form.value.motive ;
-    this.request.type_request= 'specific' 
-    this.request.alternatives= 
-    [
-      {
-        "specific": 
-        [
-          {
-            "begin_at_hour": bah,
-            "begin_at_minute": bam,
-            "end_at_hour": eah,
-            "end_at_minute": eam,
-            "date": day
-          }
-        ]
-      }
-    ]
+    let eam = localStorage.getItem("end_at_minute");
+    console.log(bah)
+    console.log(bam)
+    console.log(eah)
+    console.log(eam)
+    this.request_specific.teacher_id = this.currentUser.id;
+    this.request_specific.state = 'pending';
+    this.request_specific.type_request= "specific" 
+    this.request_specific.bah= bah;
+    this.request_specific.bam= bam;
+    this.request_specific.eah= eah;
+    this.request_specific.eam= eam;
+    this.request_specific.day= day;
+         
+    console.log(this.request_specific)
     console.log("antes del add");
     this.add();
   }
@@ -116,11 +111,19 @@ export class RegisterComponent implements OnInit {
   }
 
   add(): void {
-
-    if (!this.request) { return; }
+    console.log(this.request_specific)
+    // if (!this.request) { return; }
     
-    this.requestService.addRequest(this.request)
-      .subscribe();
+    this.requestService.addRequest(this.request_specific)
+      .subscribe(
+        data => 
+          {
+            console.log("Create request");
+          },
+        error => {
+            console.log("Error occured");
+          }
+      );
   }
 
   getSubjects(): void {
