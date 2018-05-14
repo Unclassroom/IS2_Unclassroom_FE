@@ -8,6 +8,7 @@ import { LoadrequestComponent } from './loadrequest/loadrequest.component';
 import { DamagerecordComponent } from './damagerecord/damagerecord.component';
 import {MycalendarModule} from './mycalendar/mycalendar.module';
 import { ComentregComponent } from './comentreg/comentreg.component';
+import { DamageregComponent } from './damagereg/damagereg.component';
 
 const routes: Routes = [
   {
@@ -23,7 +24,7 @@ const routes: Routes = [
       // Recursos
       { path: 'inbox', loadChildren: './inbox/inbox.module#InboxModule', canActivate: [ManagerGuard]},
       { path: 'calendarevent', loadChildren: './calendarevent/calendarevent.module#CalendareventModule', canActivate: [ManagerGuard]},
-      { path: 'comentreg', component: ComentregComponent},
+    
       // Parametrización
       { path: 'parametrization', loadChildren: './parametrization/parametrization.module#ParametrizationModule', canActivate: [ManagerGuard]},
       { path: 'loadrequest', component: LoadrequestComponent},
@@ -38,7 +39,10 @@ const routes: Routes = [
       { path: 'requestbag', loadChildren: './requestbag/requestbag.module#RequestbagModule', canActivate: [ManagerGuard]},
       //Comentarios
       { path: 'coment', component: ComentComponent},
+      { path: 'comentreg', component: ComentregComponent},
+      //Daños
       { path: 'damagerecord', component: DamagerecordComponent},
+      { path: 'damagereg', component: DamageregComponent},
       // Sin clasificar
       { path: 'history', loadChildren: './history/history.module#HistoryModule' },
       { path: 'classroom', loadChildren: './classroom/classroom.module#ClassroomModule' },

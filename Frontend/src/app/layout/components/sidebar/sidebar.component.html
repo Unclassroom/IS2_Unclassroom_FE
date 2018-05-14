@@ -24,9 +24,6 @@
             <a  routerLink="/layout/inbox"><span>Buzon de entrada</span></a>
           </li>
           <li>
-            <a routerLink="/layout/comentreg"><span>Listado de comentarios y reportes de daños</span></a>
-          </li>
-          <li>
             <a routerLink="/layout/calendarevent"><span>Calendario</span></a>
           </li>
           <li>
@@ -127,15 +124,30 @@
           <li>
             <a  routerLink="/layout/coment"><span>Crear Comentario</span></a>
           </li>
-          <li>
-              <a  routerLink="/layout/damagerecord"><span>Generar registro de daños</span></a>
-            </li>
           <li *ngSwitchCase="'manager'">
-            <a  routerLink="/layout/coment/register"><span>Registro comentario</span></a>
+            <a  routerLink="/layout/comentreg"><span>Listado de comentarios</span></a>
           </li>
         </ul>
       </li>
     </div>
+    <!-- Daños -->
+    <div class="nested-menu">
+      <a class="list-group-item" (click)="addExpandClass('pages')">
+        <span><i class="fas fa-exclamation-triangle"></i>Reportar un daño</span>
+      </a>
+      <li class="nested" [class.expand]="showMenu === 'pages'">
+        <ul class="submenu">
+          <li>
+            <a  routerLink="/layout/damagerecord"><span>Generar reporte</span></a>
+          </li>
+          <li *ngSwitchCase="'manager'">
+              <a  routerLink="/layout/damagereg"><span>Listado de reportes</span></a>
+          </li>
+        </ul>
+      </li>
+    </div>
+
+
 
     <!-- About -->
     <a class="list-group-item more-themes" href="" >

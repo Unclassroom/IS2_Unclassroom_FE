@@ -30,6 +30,7 @@ import { LoadrequestComponent } from './loadrequest/loadrequest.component';
 import { DamagerecordComponent } from './damagerecord/damagerecord.component';
 import { ComentregComponent } from './comentreg/comentreg.component';
 import { OpinionService } from './services/opinion.service';
+import { DamageregComponent } from './damagereg/damagereg.component';
 
 @NgModule({
   imports: [
@@ -44,7 +45,7 @@ import { OpinionService } from './services/opinion.service';
     HeaderComponent,
     SidebarComponent,
     BreadcrumbComponent,
-    ProfileComponent, ComentComponent, LoadrequestComponent, DamagerecordComponent, ComentregComponent],
+    ProfileComponent, ComentComponent, LoadrequestComponent, DamagerecordComponent, ComentregComponent, DamageregComponent],
   providers: [
     FalcultyService, HeadBuildingService,  RequestService, BuildingService,
     ManagerService, TeacherService, ExternalPersonService, DepartmentsService,
