@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { AbstractControl, FormArray, FormBuilder, FormControl,
+  FormGroup, Validators } from '@angular/forms'
 
 @Component({
   selector: 'datetime-list',
@@ -7,6 +9,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DatetimeListComponent implements OnInit {
+  myForm: FormGroup;
   day : string;
   begin_hour : number;
   end_hour: number;
@@ -14,12 +17,40 @@ export class DatetimeListComponent implements OnInit {
   @Output() onCreateDatetime: EventEmitter<any> = new EventEmitter();
   @Output() onApproveAll: EventEmitter<any> = new EventEmitter();
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { 
+    
+  }
 
   ngOnInit() {
+    this.myForm = this.fb.group({
+      items: this.fb.array(
+        [
+          this.buildItem('aaa'), 
+          this.buildItem('')
+        ],
+        ItemsValidator.minQuantitySum(300)
+      )
+    })
+  }
+
+  submit() {
+    console.log("Reactive Form submitted: ", this.myForm)
+  }
+
+  buildItem(val: string) {
+    
+    return new FormGroup({
+      day: new FormControl(val, Validators.required),
+      begin_time: new FormControl(10),
+      end_time: new FormControl(12)
+    })
   }
 
   createDatetime() {
+    console.log(JSON.parse(this.myForm.value))
+    localStorage.setItem('Form', this.myForm.value);
+    let firstbegin_time = JSON.parse(localStorage.getItem("Form"))
+    console.log(firstbegin_time[1])
     let begin = String(this.begin_hour).split(":")
     let end = String(this.end_hour).split(":")
     localStorage.setItem('day', this.day);
@@ -34,5 +65,20 @@ export class DatetimeListComponent implements OnInit {
 
   approveAll() {
     this.onApproveAll.emit();
+  }
+}
+class ItemsValidator 
+{
+  static minQuantitySum(val: number) 
+  {
+    return (c: AbstractControl) => 
+    {
+      let sum = c.value
+        .map(item => item.begin_time)
+        .reduce((acc, cur) => acc + cur, 0 );
+        if (sum < val) {
+          return { minSum: val }
+        }
+    }
   }
 }

@@ -5,6 +5,10 @@ import {  TypeClassroomService} from '../../services/type-classroom.service';
 import {  PurposeClassroom} from '../../models/purpose-classroom';
 import {  PurposeClassroomService} from '../../services/purpose-classroom.service';
 import {  NgForm } from '@angular/forms';
+import { 
+  AbstractControl, FormArray, 
+  FormBuilder, FormControl,
+  FormGroup, Validators } from '@angular/forms'
 import {  Router } from '@angular/router';
 import {  Observable } from 'rxjs/Observable';
 import {  DatetimeService} from './datetime.service';
