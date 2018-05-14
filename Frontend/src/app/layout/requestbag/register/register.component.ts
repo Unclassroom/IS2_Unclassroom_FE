@@ -106,9 +106,8 @@ export class RegisterComponent implements OnInit {
     this.request_specific.day= day;
          
     console.log(this.request_specific)
-    
-    // console.log("antes del add");
-    // this.add();
+    console.log("antes del add");
+    this.add();
   }
 
   registerClient() {
