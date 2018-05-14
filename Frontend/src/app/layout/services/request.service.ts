@@ -74,6 +74,8 @@ export class RequestService {
   addRequest (request: any)
   {
     console.log("in addRequest service")
+    console.log(request.motive)
+    console.log(request.type_request)
     return this.http.post(this.AllRequestUrl, 
       {
       "teacher_id":request.teacher_id,
@@ -83,17 +85,7 @@ export class RequestService {
       "motive": request.motive,
       "type_request": request.type_request,
       "alternatives":[
-        {
-          "specific": [
-            {
-              "begin_at_hour": request.bah,
-              "begin_at_minute": request.bam,
-              "end_at_hour": request.eah,
-              "end_at_minute": request.eam,
-              "date": request.day
-            }
-            ]
-        }
+          request.specific
         ]
     }
     )

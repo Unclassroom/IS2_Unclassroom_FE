@@ -101,8 +101,10 @@ export class RegisterComponent implements OnInit {
     this.request_specific.eah= eah;
     this.request_specific.eam= eam;
     this.request_specific.day= day;
-         
-    console.log(this.request_specific)
+    let array = localStorage.getItem("schedule_options");
+    console.log(JSON.parse(array));
+    this.request_specific.specific = JSON.parse(array)
+    // console.log(this.request_specific);
     console.log("antes del add");
     this.add();
   }

@@ -14,7 +14,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpModule } from '@angular/http';
 
 //Services
-import { AuthGuard, ManagerGuard } from './_guards/index';
+import { AuthGuard, ManagerGuard, TeacherGuard } from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
 import { AuthenticationService, UserService } from './_services/index';
 import { Angular2TokenService } from 'angular2-token';
@@ -71,6 +71,7 @@ export function getAuthServiceConfigs() {
     HttpClientModule,
     AuthGuard,
     ManagerGuard,
+    TeacherGuard,
     AuthenticationService,
     UserService,
       {

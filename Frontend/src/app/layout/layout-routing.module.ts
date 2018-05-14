@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout.component';
-import { AuthGuard, ManagerGuard } from './../_guards/index';
+import { AuthGuard, ManagerGuard, TeacherGuard } from './../_guards/index';
 import { ProfileComponent} from './profile/profile.component';
 import { ComentComponent } from './coment/coment.component';
 import { LoadrequestComponent } from './loadrequest/loadrequest.component';
 import { DamagerecordComponent } from './damagerecord/damagerecord.component';
-import {MycalendarModule} from './mycalendar/mycalendar.module';
+import { MycalendarModule} from './mycalendar/mycalendar.module';
 import { ComentregComponent } from './comentreg/comentreg.component';
 
 const routes: Routes = [
@@ -35,7 +35,7 @@ const routes: Routes = [
       { path: 'group', loadChildren: './group/group.module#GroupModule', canActivate: [ManagerGuard]},
       { path: 'purpose-classroom', loadChildren: './purpose-classroom/purpose-classroom.module#PurposeClassroomModule', canActivate: [ManagerGuard] },
       // Solicitudes
-      { path: 'requestbag', loadChildren: './requestbag/requestbag.module#RequestbagModule', canActivate: [ManagerGuard]},
+      { path: 'requestbag', loadChildren: './requestbag/requestbag.module#RequestbagModule', canActivate: [TeacherGuard]},
       //Comentarios
       { path: 'coment', component: ComentComponent},
       { path: 'damagerecord', component: DamagerecordComponent},

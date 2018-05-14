@@ -3,18 +3,18 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" 
       integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
-  <div [ngSwitch]="currentUser.role" class="list-group">
+  <div [ngSwitch]="true" class="list-group">
     <!-- Profile -->
      <a routerLink="/layout/profile" [routerLinkActive]="['router-link-active']" class="list-group-item">
       <span><i class="fa fa-user-circle"></i>Profile</span>
     </a>
     <!-- Dashboard -->
-    <a *ngSwitchCase="'manager'" routerLink="/layout/dashboard" [routerLinkActive]="['router-link-active']"
+    <a *ngSwitchCase="currentUser.role === 'manager'" routerLink="/layout/dashboard" [routerLinkActive]="['router-link-active']"
        class="list-group-item">
       <span><i class="fa fa-bar-chart-o fa-fw"></i>Dashboard</span>
     </a>
     <!-- Recursos -->
-    <div *ngSwitchCase="'manager'"  class="nested-menu">
+    <div *ngSwitchCase="currentUser.role === 'manager'"  class="nested-menu">
       <a class="list-group-item" (click)="addExpandClass('pages')">
         <span><i class="fa fa-sort-amount-down "></i>&nbsp;Recursos</span>
       </a>
@@ -36,7 +36,7 @@
       </li>
     </div>
     <!-- Parametrización -->
-    <div *ngSwitchCase="'manager'" class="nested-menu">
+    <div *ngSwitchCase="currentUser.role === 'manager'" class="nested-menu">
       <a class="list-group-item" (click)="addExpandClass('pages')">
         <span><i class="fa fa-file-text"></i>Parametrización</span>
       </a>
@@ -50,7 +50,7 @@
     </div>
 
     <!-- Administración -->
-    <div *ngSwitchCase="'manager'" class="nested-menu">
+    <div *ngSwitchCase="currentUser.role === 'manager'" class="nested-menu">
       <a class="list-group-item" (click)="addExpandClass('pages')">
         <span><i class="fa fa-users fa-fw"></i>Administración</span>
       </a>
@@ -98,11 +98,11 @@
       </li>
     </div>
     <!-- Historial -->
-    <a *ngSwitchCase="'manager'" class="list-group-item more-themes" >
+    <a *ngSwitchCase="currentUser.role === 'manager'" class="list-group-item more-themes" >
       <span><i class="fa fa-history"></i>Historial</span>
     </a>
     <!-- Solicitudes -->
-    <div *ngSwitchCase="'manager'" class="nested-menu">
+    <div *ngSwitchCase="currentUser.role ==='teacher'" class="nested-menu">
       <a class="list-group-item" (click)="addExpandClass('pages')">
         <span><i class="fa fa-clipboard-list"></i>Solicitudes</span>
       </a>
@@ -118,7 +118,7 @@
       </li>
     </div>
      <!-- Comentarios -->
-     <div class="nested-menu">
+     <div *ngSwitchCase="currentUser.role ==='student' " class="nested-menu">
       <a class="list-group-item" (click)="addExpandClass('pages')">
         <span><i class="fas fa-comments fa-fw"></i>Comentarios</span>
       </a>
