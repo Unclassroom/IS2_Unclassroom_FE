@@ -105,6 +105,7 @@ export class LoginComponent implements OnInit {
                   data => 
                   {
                     // Create type user
+                    
                     this.model.first_name = fn[0]
                     this.model.last_name = fn[1]
                     this.model.id = JSON.stringify(data.id)
