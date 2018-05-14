@@ -61,8 +61,6 @@ export class ComentComponent implements OnInit {
       .subscribe();
   }
 
-
-
   getBuildings(): void {
     this.buildingService.getBuildings()
       .subscribe(buildings => this.buildings = buildings);
