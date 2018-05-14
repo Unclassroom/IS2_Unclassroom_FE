@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {ComentComponent} from './coment.component';
+import {MycalendarComponent} from './mycalendar.component';
 
 const routes: Routes = [
   {
-    path: '', component: ComentComponent
+    path: '', component: MycalendarComponent,
   }
 ];
 
@@ -13,6 +12,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-
-
-export class ComentRoutingModule { }
+export class MycalendarRoutingModule { }

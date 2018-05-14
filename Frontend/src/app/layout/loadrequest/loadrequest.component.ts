@@ -11,7 +11,9 @@ import { Router } from '@angular/router';
 export class LoadrequestComponent implements OnInit {
 
   constructor(private router:Router) {   }
- 
+  mi_alerta () {
+    alert ("Tu solicitus fue enviada exitosamente");
+    }
   ngOnInit() {
   }
 }

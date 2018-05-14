@@ -4,61 +4,61 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
-import { Faculty } from '../models/faculty';
+import { Opinion } from '../models/opinion';
 import { MessageService } from './message.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 @Injectable()
-export class FalcultyService {
-  private _Url = 'http://localhost:3000/faculties';
+export class OpinionService {
+  private _Url = 'http://localhost:3000/opinions';
   constructor(
     private http: HttpClient,
     private messageService: MessageService) { }
 
-  /** GET faculties from the server */
-  getFaculties (): Observable<Faculty[]> {
-    return this.http.get<Faculty[]>(this._Url);
+  /** GET opinions from the server */
+  getOpinions(): Observable<Opinion[]> {
+    return this.http.get<Opinion[]>(this._Url);
   }
   /** GET hero by id. Will 404 if id not found */
-  getFaculty(id: number): Observable<Faculty> {
+  getOpinion(id: number): Observable<Opinion> {
     const url = `${this._Url}/${id}`;
-    return this.http.get<Faculty>(url).pipe(
-      tap(_ => this.log(`fetched faculty id=${id}`)),
-      catchError(this.handleError<Faculty>(`getFaculty id=${id}`))
+    return this.http.get<Opinion>(url).pipe(
+      tap(_ => this.log(`fetched opinion id=${id}`)),
+      catchError(this.handleError<Opinion>(`getOpinion id=${id}`))
     );
   }
-  getFacultiesPagination (id: number): Observable<Faculty[]> {
-    return this.http.get<Faculty[]>(this._Url + '?page=' + id);
+  getOpinionsPagination (id: number): Observable<Opinion[]> {
+    return this.http.get<Opinion[]>(this._Url + '?page=' + id);
   }
 
   //////// Save methods //////////
 
   /** POST: add a new hero to the server */
-  addFaculty (faculty): Observable<Faculty> {
-    return this.http.post<Faculty>(this._Url, faculty, httpOptions).pipe(
-      tap(_ => this.log(`added faculty w/ id=${faculty}`)),
-      catchError(this.handleError<Faculty>('addFaculty'))
+  addOpinion (opinion): Observable<Opinion> {
+    return this.http.post<Opinion>(this._Url, opinion, httpOptions).pipe(
+      tap(_ => this.log(`added opinion w/ id=${opinion}`)),
+      catchError(this.handleError<Opinion>('addOpinion'))
     );
   }
 
   /** DELETE: delete the hero from the server */
-  deleteFaculty (faculty: Faculty | number): Observable<Faculty> {
-    const id = typeof faculty === 'number' ? faculty : faculty.id;
+  deleteOpinion (opinion: Opinion | number): Observable<Opinion> {
+    const id = typeof opinion === 'number' ? opinion : opinion.id;
     const url = `${this._Url}/${id}`;
 
-    return this.http.delete<Faculty>(url, httpOptions).pipe(
-      tap(_ => this.log(`deleted faculty id=${id}`)),
-      catchError(this.handleError<Faculty>('deleteFaculty'))
+    return this.http.delete<Opinion>(url, httpOptions).pipe(
+      tap(_ => this.log(`deleted opinion id=${id}`)),
+      catchError(this.handleError<Opinion>('deleteOpinion'))
     );
   }
 
   /** PUT: update the hero on the server */
-  updateFaculty (faculty: Faculty): Observable<any> {
-    return this.http.put(this._Url, faculty, httpOptions).pipe(
-      tap(_ => this.log(`updated faculty id=${faculty.id}`)),
-      catchError(this.handleError<any>('updateFaculty'))
+  updateOpinion (opinion: Opinion): Observable<any> {
+    return this.http.put(this._Url, opinion, httpOptions).pipe(
+      tap(_ => this.log(`updated opinion id=${opinion.id}`)),
+      catchError(this.handleError<any>('updateOpinion'))
     );
   }
 
@@ -80,5 +80,4 @@ export class FalcultyService {
       return of(result as T);
     };
   }
-
 }

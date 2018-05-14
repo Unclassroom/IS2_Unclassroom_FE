@@ -1,105 +1,104 @@
-<head>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.js"></script>
+<app-navbar></app-navbar>
+<main>
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+      <!-- Main navigation -->
+      <header>
+        <!-- Navbar -->
+        <!-- Navbar -->
+        <!-- Full Page Intro -->
 
-    <!-- font awesome css -->
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-</head>
-
-<div class="login-page" [@routerTransition]>
-    <div  *ngIf="loading">
-        <img src="../../assets/images/loader.gif">
-    </div>
-
-
-<!--===============================================================================================-->
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/countdowntime/countdowntime.js"></script>
-<!--===============================================================================================-->
-	<!--script src="js/main.js"></script-->
-    <img src="assets/images/logo.png" width="300px"  class="user-avatar" /> <br><br><br> 
-
-    <div class="row justify-content-md-center">
-        <div class="col-md-5">
-            <form role="form" (ngSubmit)="login()" #f="ngForm" >
-                <div class="form-content">
-                    <div class="md-form form-sm">
-                        <i class="fa fa-envelope prefix"></i>  
-                        <input mdbActive
-                            id="email"
-                            type="email"
-                            required
-                            [(ngModel)]="model.email"
-                            #email="ngModel"
-                            name="email"
-                            placeholder="Email">
-                            <label for="email">Your email</label>
-                    </div>
-                    
-                    <div class="md-form form-sm">
-                        <i class="fa fa-lock prefix"></i>  
-                        <input mdbActive 
-                            id="password"
-                            type="password"
-                            required
-                            [(ngModel)]="model.password"
-                            #password="ngModel"
-                            name="password"
-                            class="validate"
-                            placeholder="Password">
-                            <label for="password">Your password</label>
-                    </div>
+        <div class="view" style="background-image: url('../landing/assets/images/background1.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-gradient d-flex justify-content-center align-items-center">
+            <!-- Content -->
+            <div class="container">
+              <!--Grid row-->
+              <div class="row mt-5">
+                <!--Grid column-->
+                <div class="col-md-6 mb-5 mt-md-0 mt-5 white-text text-center text-md-left">
+                  <h1 class="h1-responsive font-weight-bold wow fadeInLeft" data-wow-delay="0.3s">Login now! </h1>
+                  <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s">
+                  <h6 class="mb-3 wow fadeInLeft" data-wow-delay="0.3s">Ingresa a la ahora y podras administrar, gestionar, comentar y reportar
+                    en tiempo real.
+                  Tu trabajo nunca fue tan sencillo</h6>
                 </div>
-            </form>
-            <div class="text-center mt-2">
-                    <button class="btn btn-info waves-light" 
-                        id="log"
-                        mdbRippleRadius
-                        type="submit"
-                        [disabled]="loading"
-                        [ngClass]="{'disabled': !(f.valid)}"
-                        class="btn rounded-btn"
-                        (click)="login()"> Log in <i class="fa fa-sign-in ml-1"></i>
-                    </button>
-                    or                                                                                                                                                                                                                                                                                                                
-                    <button class="btn btn-info waves-light" 
-                        id="gog"
-                        mdbRippleRadius
-                        type="submit"
-                        class="btn btn-danger"
-                        (click)="socialSignIn('google')"> Google <i class="fa fa-google-plus"></i>
-                    </button>                                                    
-                </div><br><br>
+                <!--Grid column-->
+                <!--Grid column-->
+                <div class="col-md-6 col-xl-5 mb-4 " >
+                  <form role="form" (ngSubmit)="login()" #f="ngForm" >
+                  <!--Form-->
+                  <div class="card wow fadeInRight rgba-black-strong" data-wow-delay="0.3s">
+                    <div class="card-body">
+                      <!--Header-->
+                      <div class="text-center">
+                        <h3 class="white-text">
+                          <i class="fa fa-user white-text"></i> Login:</h3>
+                        <hr class="hr-light">
+                      </div>
+                      <!--Body-->
+                      <div class="md-form">
+                        <i class="fa fa-envelope prefix white-text active"></i>
+                        <input type="email" id="form2" class="white-text form-control" [(ngModel)]="model.email"
+                               #email="ngModel"
+                               name="email">
+                        <label for="form2" class="active">Your email</label>
+                      </div>
+                      <div class="md-form">
+                        <i class="fa fa-lock prefix white-text active"></i>
+                        <input type="password" id="form4" class="white-text form-control" [(ngModel)]="model.password"
+                               #password="ngModel"
+                               name="password">
+                        <label for="form4" class="active">Your password</label>
+                      </div>
+                      <div class="text-center mt-4">
+                        <button class="btn btn-indigo"
+                                id="log"
+                                mdbRippleRadius
+                                type="submit"
+                                [disabled]="loading"
+                                [ngClass]="{'disabled': !(f.valid)}"
+                                (click)="login()">Login in</button>
+                        or
+                        <button class="btn btn-indigo"
+                                id="gog"
+                                mdbRippleRadius
+                                type="submit"
+                                class="btn btn-danger"
+                                (click)="socialSignIn('google')">Google</button>
+                        <hr class="hr-light mb-3 mt-4">
+                      </div>
+                    </div>
+                  </div>
+                  <!--/.Form-->
+                  </form>
+                </div>
 
+                <!--Grid column-->
+              </div>
+              <!--Grid row-->
+            </div>
+            <!-- Content -->
+          </div>
+          <!-- Mask & flexbox options-->
             <div class="options text-center text-md-right mt-1">
                 Not a member? <a [routerLink]="['/register']" >Sign Up</a>
             </div>
-            <div *ngIf="clickstwo">
-                    <p> Usuario o contraseña incorrecoto</p>
+            <div *ngIf="herror">
+                    <p style="color: darkred;"> Usuario o contraseña incorrecto</p>
             </div>
+            <p><a [routerLink]="['/landing']" style="font-size:25px;padding-top: 5%">
+                <i class="fa fa-home" aria-hidden="true" ></i></a></p>
         </div>
-    </div>  
-</div>
+        <!-- Full Page Intro -->
+      </header>
+      <!-- Main navigation -->
+    <!--Section: Features v.3-->
 
+
+
+</main>
+<app-footer></app-footer>

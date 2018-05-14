@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
   day : Date;
   begin_hour : TimeRanges;
   end_hour: TimeRanges;
-  
+
 
   constructor(
     private router: Router,

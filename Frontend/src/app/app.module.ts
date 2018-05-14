@@ -27,11 +27,11 @@ import { SocialLoginModule, AuthServiceConfig} from "angular5-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider} from "angular5-social-login";
 // import { LoginOpt } from "angular4-social-login";
 
-// Configs 
+// Configs
 export function getAuthServiceConfigs() {
   // const googleLoginOptions: LoginOpt = {
   //   hosted_domain: 'unal.edu.co'
-  // }; 
+  // };
   let config = new AuthServiceConfig(
       [
         {
@@ -48,7 +48,7 @@ export function getAuthServiceConfigs() {
 }
 
 @NgModule({
-  declarations: 
+  declarations:
   [
     AppComponent,
   ],
@@ -65,7 +65,7 @@ export function getAuthServiceConfigs() {
     MDBBootstrapModule.forRoot()
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: 
+  providers:
   [
     Angular2TokenService,
     HttpClientModule,

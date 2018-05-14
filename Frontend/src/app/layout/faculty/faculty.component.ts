@@ -8,12 +8,12 @@ import {Faculty} from '../models/faculty';
   styleUrls: ['./faculty.component.css']
 })
 export class FacultyComponent implements OnInit {
-
   faculties: Faculty[];
   constructor(private facultyService: FalcultyService) { }
 
   ngOnInit() {
     this.getFaculties();
+    console.log(this.faculties);
   }
 
   getFaculties(): void {
