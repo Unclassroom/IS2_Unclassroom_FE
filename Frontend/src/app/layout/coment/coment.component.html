@@ -1,46 +1,35 @@
+<!-- Titulo -->
 <div class="row">
   <div class="col-xl-9 col-lg-9">
     <h3 style="margin-top: 15px"  class="text-muted"> Comentarios </h3>
   </div>
 </div>
 
-
 <hr class=" px-4 ">
-<form class="col-md-10" (submit)="logForm(requestForm)" enctype="multipart/form-data" 
-      action="http://localhost:3000/opinions" method="post">
-  
+<form 
+  class="col-md-10"
+  #requestForm="ngForm"
+  >
+  <!-- Edificio -->
   <div class="row">
   <label mdbActive  for="bl" class="text-muted">Edificio:</label>
   <div class="md-form" *ngIf="getBuildings"> <!--*ngIf="getBuildings"-->
-    <select class="form-control" id="bl" name="building_name" ngModel >
-      <option value=""></option>
-      <option *ngFor="let building of buildings" value="{{building.name}}">{{building.name}}</option>
+    <select [(ngModel)]="opinion.building_id" class="form-control" id="bl" name="building_name" ngModel >
+        <option value=""></option>
+        <option *ngFor="let building of buildings" value="{{building.id}}">{{building.name}}</option>
     </select>
   </div>
-
+  <!-- Salon -->
   <label mdbActive  for="room" class="text-muted">Salón:</label>
-  <div class="md-form"> <!--*ngIf="getSubjects"-->
-    <select class="form-control" id="room" name="classroom_id" ngModel >
+  <div class="md-form" *ngIf="verify"> <!--*ngIf="getSubjects"-->
+    <select [(ngModel)]="opinion.classroom_id" class="form-control" id="room" name="classroom_id" ngModel >
         <option value=""></option>
-        <option value=1>101</option>
-        <option value=2>102</option>
-        <option value=3>103</option>
-        <option value=4>104</option>
-        <option value=5>105</option>
-        <option value=6>201</option>
-        <option value=7>202</option>
-        <option value=8>204</option>
-        <option value=9>206</option>
-        <option value=10>301</option>
-        <option value=11>302</option>
-        <option value=12>304</option>
-        <option value=13>306</option>
-        <option value=14>401</option>
-        <option value=15>404</option>
+        <option *ngFor="let classroom of classrooms" value="{{classroom.id}}">{{classroom.id}}</option>
       <option></option>
     </select>
   </div>
 </div>
+<!-- Estado del salon -->
 <div class="row">
   <label mdbActive  for="st"  class="text-muted">Estado del Salón: </label>
   <div class="md-form">
@@ -53,15 +42,22 @@
     </select>
   </div>
 </div>
+<!-- Observación -->
   <label mdbActive  for="observation"  class="text-muted"> Observación</label>
   <div class="md-form">
-    <textarea mdbActive type="text" id="motive" class="md-textarea" id="observation" name="description" ngModel></textarea>
+    <textarea [(ngModel)]="opinion.description" mdbActive type="text" id="motive" class="md-textarea" id="observation" name="description" ngModel></textarea>
   </div>
 
+  <!-- BOTONES -->
+  <!-- Enviar -->
   <div class="row">
-    <button type="submit" class="btn btn-default" >Eviar comentario</button>
+    <button 
+      (click)="logForm(ngForm)" 
+      class="btn btn-default" >Eviar comentario</button>
+  </div> 
+  <!-- Test -->
+   <div  
+    class="btn btn-default"  
+    (click)="verify()">Verificar cambios
   </div>
 </form>
-<!--/.Panel-->
-
-

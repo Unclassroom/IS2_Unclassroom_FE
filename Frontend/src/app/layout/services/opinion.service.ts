@@ -12,41 +12,59 @@ const httpOptions = {
 };
 @Injectable()
 export class OpinionService {
-  private _Url = 'http://localhost:3000/opinions';
+  private AllOpinionUrl = 'http://localhost:3000/opinions';
+
   constructor(
     private http: HttpClient,
     private messageService: MessageService) { }
 
   /** GET opinions from the server */
   getOpinions(): Observable<Opinion[]> {
-    return this.http.get<Opinion[]>(this._Url);
+    return this.http.get<Opinion[]>(this.AllOpinionUrl);
   }
   /** GET hero by id. Will 404 if id not found */
   getOpinion(id: number): Observable<Opinion> {
-    const url = `${this._Url}/${id}`;
+    const url = `${this.AllOpinionUrl}/${id}`;
     return this.http.get<Opinion>(url).pipe(
       tap(_ => this.log(`fetched opinion id=${id}`)),
       catchError(this.handleError<Opinion>(`getOpinion id=${id}`))
     );
   }
   getOpinionsPagination (id: number): Observable<Opinion[]> {
-    return this.http.get<Opinion[]>(this._Url + '?page=' + id);
+    return this.http.get<Opinion[]>(this.AllOpinionUrl + '?page=' + id);
   }
 
   //////// Save methods //////////
 
+
   /** POST: add a new hero to the server */
-  addOpinion (opinion): Observable<Opinion> {
-    return this.http.post<Opinion>(this._Url, opinion, httpOptions).pipe(
-      tap(_ => this.log(`added opinion w/ id=${opinion}`)),
-      catchError(this.handleError<Opinion>('addOpinion'))
+  addOpinion (opinion: any) {
+    console.log("in addRequest service")
+    return this.http.post(this.AllOpinionUrl, 
+    {
+      "student_id":opinion.student_id,
+      "classroom_id": opinion.classroom_id,
+      "description": opinion.description,
+    }
+    )
+    .map(
+      result => {
+        console.log("add Opinion service sucessful")
+        console.log("add Opinion service sucessful")
+        // console.log(localStorage.getItem('token'))
+        return result;
+      },
+      err => {
+        alert("Error in add opinion service")
+        console.log("Error in add opinion service");
+      }
     );
   }
 
   /** DELETE: delete the hero from the server */
   deleteOpinion (opinion: Opinion | number): Observable<Opinion> {
     const id = typeof opinion === 'number' ? opinion : opinion.id;
-    const url = `${this._Url}/${id}`;
+    const url = `${this.AllOpinionUrl}/${id}`;
 
     return this.http.delete<Opinion>(url, httpOptions).pipe(
       tap(_ => this.log(`deleted opinion id=${id}`)),
@@ -56,7 +74,7 @@ export class OpinionService {
 
   /** PUT: update the hero on the server */
   updateOpinion (opinion: Opinion): Observable<any> {
-    return this.http.put(this._Url, opinion, httpOptions).pipe(
+    return this.http.put(this.AllOpinionUrl, opinion, httpOptions).pipe(
       tap(_ => this.log(`updated opinion id=${opinion.id}`)),
       catchError(this.handleError<any>('updateOpinion'))
     );

@@ -79,9 +79,6 @@ export class RegisterComponent implements OnInit {
   request_specific: any = {
   };
   logForm(form: NgForm) {
-    // console.log("purpose id"+form.controls['purpose_classroom_id'].value)
-    // console.log("type id"+this.request_specific.purpose_classroom )
-    // console.log("currentUser"+this.currentUser.id)
     console.log("day "+ localStorage.getItem("day") )
     console.log("begin_at_hour "+ localStorage.getItem("begin_at_hour") )
     console.log("begin_at_minute "+ localStorage.getItem("begin_at_minute") )

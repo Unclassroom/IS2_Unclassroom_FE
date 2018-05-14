@@ -23,6 +23,7 @@ export class ClassroomService {
   getClassrooms (building_id: number): Observable<Classroom[]> {
     return this.http.get<Classroom[]>(this._Url+building_id);
   }
+  
 
   getClassroom(id: number): Observable<Classroom> {
     const url = `${this._Url}/${id}`;
