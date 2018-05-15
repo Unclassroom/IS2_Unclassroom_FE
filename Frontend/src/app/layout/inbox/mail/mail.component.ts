@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {InboxRequest} from '../../models/inboxrequest';
-import {RequestService} from '../../services/request.service';
+import { InboxRequest} from '../../models/inboxrequest';
+import { RequestService} from '../../services/request.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -16,14 +16,24 @@ export class MailComponent implements OnInit {
     'state': 'send'
   };
 
-  constructor(private requestService: RequestService, private route: ActivatedRoute) { }
+  constructor(
+    private requestService: RequestService, 
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getRequest();
   }
   getRequest(): void {
     this.requestService.getRequest(this.id)
-      .subscribe(request => this.request_mail = request);
+      .subscribe(
+        request => {
+          this.request_mail = request,
+          console.log(this.request_mail)
+        },
+        error =>{
+          console.log("Error ocurred")
+        }
+      );
   }
 
   save(): void {

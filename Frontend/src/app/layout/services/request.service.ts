@@ -48,21 +48,6 @@ export class RequestService {
   }
 
 
-  /* getDataRequestByPurposes() {
-     let promise = new Promise((resolve, reject) => {
-       let apiURL = `${this.DataRequestByPurposesUrl}`;
-       this.http.get(apiURL)
-         .toPromise()
-         .then(
-           res => { // Success
-             console.log(res.json());
-             resolve();
-           }
-         );
-     });
-     return promise;
-   }*/
-
   getRequest(id: number): Observable<InboxRequest> {
     // TODO: send the message _after_ fetching the hero
     return this.http.get<InboxRequest>(this.AllRequestUrl + '/' + id);
