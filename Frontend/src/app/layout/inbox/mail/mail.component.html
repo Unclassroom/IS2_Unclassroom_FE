@@ -34,14 +34,15 @@
       <div *ngIf="request_mail.times">
         <h3 >Horario:  </h3>
         <div *ngFor="let time of request_mail.times"  >
-          <div >
+          <div>
             <p class="card-text">Fecha: {{time.date}} </p>
             <p class="card-text">Desde = {{time.begin_at_hour}} : {{time.begin_at_minute}}</p>
             <p class="card-text">Hasta = {{time.end_at_hour}} : {{time.end_at_minute}}</p>
+            <a (click)="getClassroom(time)" class="btn btn-primary">Elegir salon</a>
           </div>
         </div>
       </div>
-      <a (click)="getClassroomAvailable()" class="btn btn-primary">Ver salones disponibles</a>
+      <!-- <a (click)="getClassroomAvailable()" class="btn btn-primary">Elegir salon</a> -->
       <a (click)="save()" class="btn btn-primary">Gestionar</a>
     </div>
   </div>
