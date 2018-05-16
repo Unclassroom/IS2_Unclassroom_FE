@@ -46,6 +46,7 @@ export class ComentComponent implements OnInit {
     this.opinion.student_id = this.currentUser.id;
     this.opinion.classroom_id = this.opinion.classroom_id ;
     this.opinion.description = this.opinion.description;
+    
 
     console.log("antes del add");
     this.add();

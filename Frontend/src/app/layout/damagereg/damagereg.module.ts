@@ -11,3 +11,4 @@ import { DamageregComponent } from './damagereg.component';
 })
 
 export class DamageregModule { }
+
