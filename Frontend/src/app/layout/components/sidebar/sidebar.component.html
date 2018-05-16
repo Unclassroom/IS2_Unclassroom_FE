@@ -115,7 +115,7 @@
       </li>
     </div>
      <!-- Comentarios -->
-     <div *ngSwitchCase="currentUser.role ==='student' " class="nested-menu">
+     <div class="nested-menu"><!--*ngSwitchCase="currentUser.role ==='student' "-->
       <a class="list-group-item" (click)="addExpandClass('pages')">
         <span><i class="fas fa-comments fa-fw"></i>Comentarios</span>
       </a>
@@ -124,7 +124,7 @@
           <li>
             <a  routerLink="/layout/coment"><span>Crear Comentario</span></a>
           </li>
-          <li *ngSwitchCase="'manager'">
+          <li *ngSwitchCase="currentUser.role ==='manager' ">
             <a  routerLink="/layout/comentreg"><span>Listado de comentarios</span></a>
           </li>
         </ul>
@@ -140,14 +140,12 @@
           <li>
             <a  routerLink="/layout/damagerecord"><span>Generar reporte</span></a>
           </li>
-          <li *ngSwitchCase="'manager'">
+          <li><!--*ngSwitchCase="'manager'"-->
               <a  routerLink="/layout/damagereg"><span>Listado de reportes</span></a>
           </li>
         </ul>
       </li>
     </div>
-
-
 
     <!-- About -->
     <a class="list-group-item more-themes" href="" >

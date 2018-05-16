@@ -72,7 +72,9 @@ export class DamagerecordComponent implements OnInit {
   logForm(form: NgForm) {
      
          console.log(this.currentUser.id);
-          this.report.student_id = this.currentUser.id;
+         this.report.user_id = this.currentUser.id;
+         this.report.user_type = this.currentUser.role;
+         
          console.log( this.report.student_id);
           this.report.classroom_id = form.value.classroom_id ;
           this.report.description = form.value.description ;

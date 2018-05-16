@@ -11,6 +11,8 @@
       <!--form class="col-md-10"  #requestForm="ngForm"-->
    <!-- Edificio -->
    <div class="row">
+      <input type="hidden" name="user_id" value="{{currentUser.id}}">
+      <input type="hidden" name="user_type" value="{{currentUser.role}}">
       <label mdbActive  for="bl" class="text-muted">Edificio:</label>
       <div class="md-form" *ngIf="getBuildings"> <!--*ngIf="getBuildings"-->
         <select  class="form-control" id="bl" name="building_name"><!--[(ngModel)]="report.building_id" ngModel-->

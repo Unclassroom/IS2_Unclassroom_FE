@@ -43,7 +43,8 @@ export class OpinionService {
     console.log("in addRequest service")
     return this.http.post(this.AllOpinionUrl, 
     {
-      "student_id":opinion.student_id,
+      "user_type":opinion.user_type,
+      "user_id":opinion.user_id,
       "classroom_id": opinion.classroom_id,
       "description": opinion.description,
     }
