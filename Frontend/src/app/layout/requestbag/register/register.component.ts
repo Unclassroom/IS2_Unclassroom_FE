@@ -79,30 +79,13 @@ export class RegisterComponent implements OnInit {
   request_specific: any = {
   };
   logForm(form: NgForm) {
-    console.log("day "+ localStorage.getItem("day") )
-    console.log("begin_at_hour "+ localStorage.getItem("begin_at_hour") )
-    console.log("begin_at_minute "+ localStorage.getItem("begin_at_minute") )
-    console.log("end_at_hour "+ localStorage.getItem("end_at_hour") )
-    console.log("end_at_minute "+ localStorage.getItem("end_at_minute") )
-    let day = localStorage.getItem("day");
-    let bah = localStorage.getItem("begin_at_hour");
-    let bam = localStorage.getItem("begin_at_minute");
-    let eah = localStorage.getItem("end_at_hour");
-    let eam = localStorage.getItem("end_at_minute");
-    console.log(bah)
-    console.log(bam)
-    console.log(eah)
-    console.log(eam)
     this.request_specific.teacher_id = this.currentUser.id;
     this.request_specific.state = 'pending';
     this.request_specific.type_request= "specific" 
-    this.request_specific.bah= bah;
-    this.request_specific.bam= bam;
-    this.request_specific.eah= eah;
-    this.request_specific.eam= eam;
-    this.request_specific.day= day;
-         
-    console.log(this.request_specific)
+    let array = localStorage.getItem("schedule_options");
+    console.log(JSON.parse(array));
+    this.request_specific.specific = JSON.parse(array)
+    // console.log(this.request_specific);
     console.log("antes del add");
     this.add();
   }
@@ -119,6 +102,7 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         data => 
           {
+            console.log(data)
             console.log("Create request");
           },
         error => {

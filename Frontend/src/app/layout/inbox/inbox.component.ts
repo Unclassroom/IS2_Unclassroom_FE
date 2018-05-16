@@ -14,12 +14,23 @@ export class InboxComponent implements OnInit {
 
   ngOnInit() {
     this.getAllRequest();
+    
   }
 
   getAllRequest(): void {
     this.requestService.getAllRequest()
-      .subscribe(requests => this.requests = requests);
+      .subscribe(
+        requests => 
+        {
+          // localStorage.setItem("id_request", requests.id);
+          console.log(requests[0].id)
+          console.log(requests)
+          this.requests = requests
+        },
+        errors=>{
 
+        }
+      );
   }
 
 }

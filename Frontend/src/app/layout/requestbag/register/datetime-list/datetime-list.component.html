@@ -1,66 +1,48 @@
-<table class="ui compact  definition table">
-  <thead>
-  <tr>
-    <th width="5px"></th>
-    <th>Dia</th>
-    <th>Hora Inicio</th>
-    <th>Hora Final</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let datetime of datetimes">
-    <td>1</td>
-    <td><input [(ngModel)]="day" type="date" id="day" name="day" class="form-control">
-    </td>
-    <td> <input [(ngModel)]="begin_hour" type="time" id="begin_hour" name="begin_hour" class="form-control">
-      </td>
-    <td> <input [(ngModel)]="end_hour" type="time" id="end_hour" name="end_hour" class="form-control">
-     </td>
-  </tr>
-  </tbody>
-  <tfoot class="full-width">
-  <tr>
-    <th></th>
-
-    <th colspan="4">
-      <div  class="btn btn-default"  (click)="createDatetime($event)">
-        <i class="user icon" ></i> +
-      </div>  
-    </th>
-  </tr>
-  </tfoot>
-</table>
-
 <form [formGroup]="myForm" (ngSubmit)="submit()">
   <h4>Horarios</h4>
   <hr>
-  <fieldset formArrayName="items">
-    <div *ngIf="myForm.get('items').hasError('minSum')">
-      You must buy a total sum of at least {{ myForm.get('items').getError('minSum') }}.
-    </div>
+  <fieldset formArrayName="specific">
     <div class="form-group row"
-         *ngFor="let item of myForm.get('items').controls; let i=index"
+         *ngFor="let item of myForm.get('specific').controls; let i=index"
          [formGroup]="item">
-      <div class="col-sm-5">
-        <label [attr.for]="'day'+i">Dia</label>
+      <div class="col-sm-4">
+        <label [attr.for]="'date'+i">Dia</label>
         <input type="date" class="form-control"
-               [attr.id]="'day'+i" formControlName="day">
+               [attr.id]="'date'+i" formControlName="date">
       </div>
       <div class="col-sm-3">
-        <label [attr.for]="'begin_time'+i">Hora inico</label>
-        <input type="time" class="form-control"
-               [attr.id]="'begin_time'+i" formControlName="begin_time">
+          <p> Inicio</p>
+          <div class="col-sm-6">
+              <label [attr.for]="'begin_at_hour'+i">HH</label>
+              <input type="text" class="form-control"
+                     [attr.id]="'begin_at_hour'+i" formControlName="begin_at_hour">
+            </div>
+            <div class="col-sm-6">
+              <label [attr.for]="'begin_at_minute'+i">MM</label>
+              <input type="text" class="form-control"
+                     [attr.id]="'begin_at_minute'+i" formControlName="begin_at_minute">
+            </div>
       </div>
       <div class="col-sm-3">
-          <label [attr.for]="'end_time'+i">Hora final</label>
-          <input type="time" class="form-control"
-                 [attr.id]="'end_time'+i" formControlName="end_time">
-        </div>
+          <p> Fin</p>
+          <div class="col-sm-6">
+              <label [attr.for]="'end_at_hour'+i">HH</label>
+              <input type="text" class="form-control"
+                     [attr.id]="'end_at_hour'+i" formControlName="end_at_hour">
+            </div>
+            <div class="col-sm-6">
+              <label [attr.for]="'end_at_minute'+i">MM</label>
+              <input type="text" class="form-control"
+                     [attr.id]="'end_at_minute'+i" formControlName="end_at_minute">
+          </div>
+
+      </div>
+
       <!-- Esta es QUITAR -->
       <div class="col-sm-1 py-1">
         <div  
           class="btn btn-default"  
-          (click)="myForm.get('items').removeAt(i)">-
+          (click)="myForm.get('specific').removeAt(i)">-
         </div>
       </div>
     </div>
@@ -76,16 +58,13 @@
   <th colspan="4">
     <div  
       class="btn btn-default"  
-      (click)="myForm.get('items').push(buildItem(''))">+
+      (click)="myForm.get('specific').push(buildItem(''))">+
     </div>
   </th>
-
-  <!-- Submit -->
-  <!-- <div class="form-group">
-    <input type="submit" class="form-control"
-           value="Submit" [disabled]="myForm?.invalid">
-  </div> -->
+  <th colspan="4">
+    <div  
+      class="btn btn-default"  
+      (click)="test()">Asignar horarios
+    </div>
+  </th>
 </form>
-<!-- Info -->
-<h6 class="mt-3">FormGroup Model (<code>myForm.value</code>)</h6>
-<div><pre><code>{{ myForm?.value | json }}</code></pre></div>
