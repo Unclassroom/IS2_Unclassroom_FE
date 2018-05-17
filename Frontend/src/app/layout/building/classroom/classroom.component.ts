@@ -15,10 +15,10 @@ export class ClassroomComponent implements OnInit {
   constructor(private classroomService: ClassroomService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getClassrooms();
+    this.getClassroomsBuilding();
   }
-  getClassrooms(): void {
-    this.classroomService.getClassroom(this.id)
+  getClassroomsBuilding(): void {
+    this.classroomService.getClassroomsBuilding(this.id)
       .subscribe(classrooms => this.classrooms = classrooms);
 
   }
