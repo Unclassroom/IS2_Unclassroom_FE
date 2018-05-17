@@ -11,6 +11,10 @@ import { ClassroomService } from '../../services/classroom.service';
 })
 
 export class MailComponent implements OnInit {
+  specific_schedule:any={}
+  cyclic_schedule:any={}
+  ini_date = String
+  end_date = String
   request_mail: InboxRequest;
   id = +this.route.snapshot.paramMap.get('id');
   request = {
@@ -39,10 +43,21 @@ export class MailComponent implements OnInit {
       );
   }
   getClassroom(time){
+    this.ini_date = time.date.concat(" ").concat(time.begin_at_hour).concat(":").concat(time.begin_at_minute)
+    this.end_date = time.date.concat(" ").concat(time.end_at_hour).concat(":").concat(time.end_at_minute)
+    this.specific_schedule.ini_date = this.ini_date
+    this.specific_schedule.end_date = this.end_date
     console.log(this.request_mail)
-    console.log(time)
-    // this.classroomService.getClassroomsAvailable(time, this.request_mail)
-    //   .subscribe();
+    console.log(this.specific_schedule)
+    this.classroomService.getClassroomsAvailable(this.specific_schedule)
+      .subscribe(
+        response => {
+          alert(response);
+        },
+        error => {
+          alert("Error")
+        }
+      );
 
   }
   save(): void {

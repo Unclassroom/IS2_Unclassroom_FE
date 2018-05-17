@@ -18,9 +18,9 @@
       <div >
         <h3 >Remitente:  </h3>
         <div >
-          <p class="card-text">Nombre:   {{request_mail.teacher.first_name +' '+ request_mail.teacher.last_name}} </p>
-          <p class="card-text">E-mail:   {{request_mail.teacher.email}} </p>
-          <p class="card-text">Cargo:  {{request_mail.teacher.role}} </p>
+          <p class="card-text">Nombre:   {{request_mail.requestable.first_name +' '+ request_mail.requestable.last_name}} </p>
+          <p class="card-text">E-mail:   {{request_mail.requester_email}} </p>
+          <p class="card-text">Cargo:  {{request_mail.user_type}} </p>
         </div>
       </div>
       <div >

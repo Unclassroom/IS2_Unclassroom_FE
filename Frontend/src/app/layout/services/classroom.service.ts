@@ -28,10 +28,18 @@ export class ClassroomService {
   }
 
   /** GET faculties from the server */
-  getClassroomsAvailable (schedule, options): Observable<Classroom[]> 
+  getClassroomsAvailable (schedule): any
   {
-
-    return this.http.get<Classroom[]>(this.AllClassroomUrl);
+    return this.http.get<Classroom[]>(this.AllClassroomUrl,{
+      params: {
+        ini_date: schedule.ini_date,
+        end_date: schedule.end_date
+      }
+    }).subscribe(
+      response => {
+      console.log(response);
+    })
+    ;
   }
   
 
