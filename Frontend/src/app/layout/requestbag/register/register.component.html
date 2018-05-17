@@ -10,7 +10,7 @@
 -->
 
 <form class="col-xl-12 col-lg-12"  #requestForm="ngForm"  enctype="multipart/form-data" >
-  <!-- Purpose classroom -->
+  <!-- Purpose schedule -->
   <div class="md-form"  class="col-xl-6 col-lg-6"  *ngIf="getSubjects">
     <label mdbActive  for="purpose_classroom" class="text-muted">Asunto</label>
     <select [(ngModel)]="request_specific.purpose_classroom" id="purpose_classroom"  class="form-control " name="purpose_classroom_id" ngModel >
@@ -18,7 +18,7 @@
       <option  *ngFor="let purposeclassroom of purposesclassroom" value="{{purposeclassroom.id}}">{{purposeclassroom.name}}</option>
     </select>
   </div>
-  <!-- Type classroom -->
+  <!-- Type schedule -->
   <div class="md-form"  class="col-xl-6 col-lg-6" *ngIf="getTypesClassroom">
 
     <label mdbActive  for="typeclassroom"  class="text-muted">Tipo Salón: </label>
@@ -43,7 +43,7 @@
 
     <datetime-list id="datetimes" name="datetimes" [datetimes]="datetimes$ | async" (onCreateDatetime)="createDatetime($event)" ></datetime-list>
 
-    
+
   <button (click)="logForm(ngForm)" class="btn btn-default" >Registrar</button>
 
 </form>

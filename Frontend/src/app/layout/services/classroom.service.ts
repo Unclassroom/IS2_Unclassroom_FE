@@ -21,15 +21,15 @@ export class ClassroomService {
 
   /** GET faculties from the server */
   getClassrooms (building_id: number): Observable<Classroom[]> {
-    return this.http.get<Classroom[]>(this._Url+building_id);
+    return this.http.get<Classroom[]>(this._Url + building_id);
   }
-  
 
-  getClassroom(id: number): Observable<Classroom> {
+
+  getClassroom(id: number): Observable<Classroom[]> {
     const url = `${this._Url}/${id}`;
-    return this.http.get<Classroom>(url).pipe(
+    return this.http.get<Classroom[]>(url).pipe(
       tap(_ => this.log(`fetched Classroom id=${id}`)),
-      catchError(this.handleError<Classroom>(`getClassroom id=${id}`))
+      catchError(this.handleError<Classroom[]>(`getClassroom id=${id}`))
     );
   }
 

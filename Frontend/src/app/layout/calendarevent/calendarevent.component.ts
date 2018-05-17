@@ -13,7 +13,11 @@ export class CalendareventComponent implements OnInit {
   calendarOptions: Options;
   displayEvent: any;
   @ViewChild(CalendarComponent) ucCalendar: CalendarComponent;
-  constructor(protected calendareventService: CalendareventService) { }
+  constructor(protected calendareventService: CalendareventService) {
+
+    const dateObj = new Date();
+    console.log(dateObj.getUTCFullYear() + ' ' + (dateObj.getUTCMonth() + 1));
+  }
 
   ngOnInit() {
     this.calendareventService.getEvents().subscribe(data => {

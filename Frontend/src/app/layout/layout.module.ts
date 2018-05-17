@@ -30,6 +30,7 @@ import { LoadrequestComponent } from './loadrequest/loadrequest.component';
 import { DamagerecordComponent } from './damagerecord/damagerecord.component';
 import { ComentregComponent } from './comentreg/comentreg.component';
 import { OpinionService } from './services/opinion.service';
+import { ScheduleService } from './services/schedule.service';
 
 @NgModule({
   imports: [
@@ -49,6 +50,6 @@ import { OpinionService } from './services/opinion.service';
     FalcultyService, HeadBuildingService,  RequestService, BuildingService,
     ManagerService, TeacherService, ExternalPersonService, DepartmentsService,
     ClassroomService, GroupService, SubjectService, MessageService, EventService,
-    PurposeClassroomService, TypeClassroomService, OpinionService ]
+    PurposeClassroomService, TypeClassroomService, OpinionService, ScheduleService ]
 })
 export class LayoutModule { }

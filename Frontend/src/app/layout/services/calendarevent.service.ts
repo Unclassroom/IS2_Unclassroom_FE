@@ -13,9 +13,9 @@ export class CalendareventService {
       start: yearMonth + '-01'
     },
       {
-        title: 'Long Event',
-        start: yearMonth + '-07',
-        end: yearMonth + '-10'
+        title: 'Tipo de la solicitud concatenado con el tipo del usuario',
+        start: '2018-01-09T12:30:00',
+        end:   '2018-01-09T14:30:00'
       },
       {
         id: 999,
@@ -23,9 +23,9 @@ export class CalendareventService {
         start: yearMonth + '-09T16:00:00'
       },
       {
-        id: 999,
-        title: 'Repeating Event',
-        start: yearMonth + '-16T16:00:00'
+        id: 12,
+        title: 'Data Example Event',
+        start: yearMonth + '09T12:30:00'
       },
       {
         title: 'Conference',

@@ -8,6 +8,7 @@ import { LoadrequestComponent } from './loadrequest/loadrequest.component';
 import { DamagerecordComponent } from './damagerecord/damagerecord.component';
 import {MycalendarModule} from './mycalendar/mycalendar.module';
 import { ComentregComponent } from './comentreg/comentreg.component';
+import {BuildingModule} from './building/building.module';
 
 const routes: Routes = [
   {
@@ -36,14 +37,15 @@ const routes: Routes = [
       { path: 'purpose-classroom', loadChildren: './purpose-classroom/purpose-classroom.module#PurposeClassroomModule', canActivate: [ManagerGuard] },
       // Solicitudes
       { path: 'requestbag', loadChildren: './requestbag/requestbag.module#RequestbagModule', canActivate: [ManagerGuard]},
-      //Comentarios
+      // Comentarios
       { path: 'coment', component: ComentComponent},
       { path: 'damagerecord', component: DamagerecordComponent},
       // Sin clasificar
       { path: 'history', loadChildren: './history/history.module#HistoryModule' },
-      { path: 'classroom', loadChildren: './classroom/classroom.module#ClassroomModule' },
       { path: 'mycalendar', loadChildren: './mycalendar/mycalendar.module#MycalendarModule' },
       { path: 'mycalendar', loadChildren: './mycalendar/mycalendar.module#MycalendarModule' },
+      { path: 'building', loadChildren: './building/building.module#BuildingModule' },
+      { path: 'schedule', loadChildren: './schedule/schedule.module#ScheduleModule' },
 
       ]
   }

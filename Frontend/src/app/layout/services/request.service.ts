@@ -20,7 +20,7 @@ export class RequestService {
   private AllRequestUrl = 'http://localhost:3000/requests';  // URL to web api
   private DataRequestByPurposesUrl = 'http://localhost:3000/request_count_by_purpose';  // URL to web api
   private DataRequestByStateUrl = 'http://localhost:3000/request_count_by_state';  // URL to web api
-  private DataRequestByPurposesUrlFiltered = 'http://localhost:3000/request_count_by_purpose?end_date="03-23-2018"&begin_date="02-23-2017"';  // URL to web api
+  private DataRequestByPurposesUrlFiltered = 'http://localhost:3000/request_count_by_purpose?end_date="03-23-2018"&begin_date="01-23-2018"';  // URL to web api
 
   constructor(
     private http: HttpClient,
