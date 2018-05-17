@@ -20,7 +20,8 @@ export class RequestService {
   private AllRequestUrl = 'http://localhost:3000/requests';  // URL to web api
   private DataRequestByPurposesUrl = 'http://localhost:3000/request_count_by_purpose';  // URL to web api
   private DataRequestByStateUrl = 'http://localhost:3000/request_count_by_state';  // URL to web api
-  private DataRequestByPurposesUrlFiltered = 'http://localhost:3000/request_count_by_purpose?end_date="03-23-2018"&begin_date="01-23-2018"';  // URL to web api
+  private DataRequestByMonthUrl = 'http://localhost:3000/request_count_by_month';  // URL to web api
+  private DataRequestByPurposesUrlFiltered = 'http://localhost:3000/request_count_by_purpose';  // URL to web api
 
   constructor(
     private http: HttpClient,
@@ -32,8 +33,8 @@ export class RequestService {
     return this.http.get<InboxRequest[]>(this.AllRequestUrl);
   }
 
-  getDataRequestByPurposes_Filtered (): Observable<Response> {
-    return this.http.get<Response>(this.DataRequestByPurposesUrlFiltered);
+  getDataRequestByPurposes_Filtered (model: any): Observable<Response> {
+    return this.http.get<Response>(this.DataRequestByPurposesUrlFiltered + '?end_date=' + model.end_date + '&begin_date=' +  model.begin_date);
   }
 
   /** GET Request from the server */
@@ -46,6 +47,13 @@ export class RequestService {
   getDataRequestByState (): Observable<Response> {
     return this.http.get<Response>(this.DataRequestByStateUrl);
   }
+
+
+  /** GET Request from the server */
+  getDataRequestByMonth (): Observable<Response> {
+    return this.http.get<Response>(this.DataRequestByMonthUrl);
+  }
+
 
 
   getRequest(id: number): Observable<InboxRequest> {
@@ -61,7 +69,7 @@ export class RequestService {
     console.log("in addRequest service")
     console.log(request.motive)
     console.log(request.type_request)
-    return this.http.post(this.AllRequestUrl, 
+    return this.http.post(this.AllRequestUrl,
       {
       "teacher_id":request.teacher_id,
       "purpose_classroom_id": request.purpose_classroom,

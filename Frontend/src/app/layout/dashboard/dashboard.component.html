@@ -23,19 +23,21 @@
     <!-- /.col-lg-8 -->
 
     <div class="col col-sm-12">
+
+      <form role="form" (ngSubmit)="getDataRequestByPurposes_Filtered()"  #filterpurposesForm="ngForm">
       <div class="col col-sm-4">
-      <input mdbActive type="text" id="from" class="form-control" name="from" required placeholder="From">
+      <input mdbActive type="text" id="from" class="form-control" name="from" required placeholder="From"  [(ngModel)]="model.begin_date">
 
       </div>
       <div class="col col-sm-4">
-      <input mdbActive type="text" id="to" class="form-control" name="to" required placeholder="To">
+      <input mdbActive type="text" id="to" class="form-control" name="to" required placeholder="To"  [(ngModel)]="model.end_date">
 
       </div>
       <div class="col col-sm-4">
-      <a class="btn btn-info" (click)="getDataRequestByPurposes_Filtered()" >
-        Search
-      </a>
+        <button type="submit" class="btn btn-info"  [disabled]="!filterpurposesForm.form.valid">Search</button>
+
       </div>
+      </form>
     </div>
     <div class="col col-sm-12">
       <div class="card mb-3">

@@ -33,7 +33,14 @@ export class ScheduleComponent implements OnInit {
       },
       events:  this.scheduledata[0],
       defaultView: 'agendaWeek',
-      businessHours: true
+      businessHours:  {
+        // days of week. an array of zero-based day of week integers (0=Sunday)
+        dow: [ 0, 1, 2, 3, 4, 5, 6], // Sunday - Saturday
+
+        start: '07:00', // a start time (7am in this example)
+        end: '22:00', // an end time (22pm in this example)
+      }
+
     };
   }
   getSchedule(): void {

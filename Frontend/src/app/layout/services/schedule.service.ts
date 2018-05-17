@@ -11,7 +11,7 @@ const httpOptions = {
 
 @Injectable()
 export class ScheduleService {
-  private _Url = 'http://localhost:3000/classroom_taken_schedules?id=87&ini="2018-05-8"&fin="2018-05-25"';
+  private _Url = 'http://localhost:3000/classroom_taken_schedules?id=1&ini="2018-05-8"&fin="2018-05-25"';
   constructor(
     private http: HttpClient,
     private messageService: MessageService) { }
