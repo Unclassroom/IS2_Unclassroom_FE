@@ -79,7 +79,8 @@ export class RegisterComponent implements OnInit {
   request_specific: any = {
   };
   logForm(form: NgForm) {
-    this.request_specific.teacher_id = this.currentUser.id;
+    this.request_specific.user_id = this.currentUser.id;
+    this.request_specific.user_type = this.currentUser.role;
     this.request_specific.state = 'pending';
     this.request_specific.type_request= "specific" 
     let array = localStorage.getItem("schedule_options");
@@ -96,6 +97,7 @@ export class RegisterComponent implements OnInit {
 
   add(): void {
     console.log(this.request_specific)
+    console.log(this.request_specific.specific.specific)
     // if (!this.request) { return; }
     
     this.requestService.addRequest(this.request_specific)
@@ -103,10 +105,10 @@ export class RegisterComponent implements OnInit {
         data => 
           {
             console.log(data)
-            console.log("Create request");
+            alert("Create request");
           },
         error => {
-            console.log("Error occured");
+            alert("Error occured");
           }
       );
   }

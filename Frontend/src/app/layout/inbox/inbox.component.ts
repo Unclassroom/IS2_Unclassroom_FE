@@ -24,6 +24,7 @@ export class InboxComponent implements OnInit {
         {
           // localStorage.setItem("id_request", requests.id);
           console.log(requests[0].id)
+          console.log(requests[0].type_classroom)
           console.log(requests)
           this.requests = requests
         },
