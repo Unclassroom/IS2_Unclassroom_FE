@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import {RouterModule, Routes} from '@angular/router';
-import {ComentComponent} from './coment.component';
+import { DamageregComponent } from './damagereg.component';
+
 
 const routes: Routes = [
   {
-    path: '', component: ComentComponent
+    path: '', component: DamageregComponent
   }
 ];
 
@@ -14,4 +16,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 
-export class ComentRoutingModule { }
+export class DamageregRoutingModule { }
+

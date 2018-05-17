@@ -1,4 +1,4 @@
-<h3> Registro de comentarios </h3>
+<h3> Reporte de daños </h3>
 <hr class=" px-4 ">
 <!--Grid row-->
 <div class="row mt-6 ml-6 ">
@@ -20,19 +20,21 @@
         <tr>
           <th class="mr-2"><label  class="th-lg label-table">No.</label>
           </th>
-          <th class="th-lg"><a href="">Comentario<i class="fa fa-sort ml-1"></i></a></th>
-          <th class="th-lg"><a href="">Edificio<i class="fa fa-sort ml-1"></i></a></th>
-          <th class="th-lg"><a href="">Salón<i class="fa fa-sort ml-1"></i></a></th>
+          <th class="th-lg">Descripción<i class="fa fa-sort ml-1"></i></th>
+          <th class="th-lg">Edificio<i class="fa fa-sort ml-1"></i></th>
+          <th class="th-lg">Salón<i class="fa fa-sort ml-1"></i></th>
+          <th class="th-lg">Imagen<i class="fa fa-sort ml-1"></i></th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let opinion of opinions">
+        <tr *ngFor="let report of reports">
           <th scope="row">
-            <label  class="label-table">{{opinion.id}}</label>
+            <label  class="label-table">{{report.id}}</label>
           </th>
-          <td>{{opinion.description}}</td>
-          <td>{{opinion.classroom_id}}</td>
-          <td>{{opinion.user_id}}</td>
+          <td>{{report.description}}</td>
+          <td>{{report.building_id}}</td>
+          <td>{{report.classroom_id}}</td>
+          <td><a target="_blank" href="http://localhost:3000/reports/{{report.image.url}}" class="btn btn-info" role="button">Ver imagen</a></td>
         </tr>
         </tbody>
         <!--Table body-->
@@ -54,7 +56,7 @@
         <ul class="pagination pagination-circle pg-blue mb-0">
 
           <!--First-->
-          <li class="page-item disabled"><a class="page-link" (click)="onChangeOpinion(1)">First</a></li>
+          <li class="page-item disabled"><a class="page-link" (click)="onChangeReport(1)">First</a></li>
 
           <!--Arrow left-->
           <li class="page-item disabled">
@@ -65,18 +67,18 @@
           </li>
 
           <!--Numbers-->
-          <li class="page-item active" (click)="onChangeOpinion(1)"><a class="page-link" >1</a></li>
-          <li  (click)="onChangeOpinion(2)"><a class="page-link" >2</a></li>
-          <li  (click)="onChangeOpinion(3)"><a class="page-link" >3</a></li>
-          <li  (click)="onChangeOpinion(4)"><a class="page-link" >4</a></li>
-          <li  (click)="onChangeOpinion(5)"><a class="page-link" >5</a></li>
-          <li  (click)="onChangeOpinion(6)"><a class="page-link" >6</a></li>
+          <li class="page-item active" (click)="onChangeReport(1)"><a class="page-link" >1</a></li>
+          <li  (click)="onChangeReport(2)"><a class="page-link" >2</a></li>
+          <li  (click)="onChangeReport(3)"><a class="page-link" >3</a></li>
+          <li  (click)="onChangeReport(4)"><a class="page-link" >4</a></li>
+          <li  (click)="onChangeReport(5)"><a class="page-link" >5</a></li>
+          <li  (click)="onChangeReport(6)"><a class="page-link" >6</a></li>
 
           <!--Arrow right-->
           <li class="page-item">
             <a class="page-link" aria-label="Next">
               <span aria-hidden="true">&raquo;</span>
-              <span class="sr-only"  (click)="onChangeOpinion(6)">Next</span>
+              <span class="sr-only"  (click)="onChangeReport(6)">Next</span>
             </a>
           </li>
 
@@ -92,3 +94,4 @@
 
   </div>
 </div>
+

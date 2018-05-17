@@ -3,28 +3,25 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css"
       integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
-  <div [ngSwitch]="currentUser.role" class="list-group">
+  <div [ngSwitch]="true" class="list-group">
     <!-- Profile -->
      <a routerLink="/layout/profile" [routerLinkActive]="['router-link-active']" class="list-group-item">
       <span><i class="fa fa-user-circle"></i>Profile</span>
     </a>
     <!-- Dashboard -->
-    <a *ngSwitchCase="'manager'" routerLink="/layout/dashboard" [routerLinkActive]="['router-link-active']"
+    <a *ngSwitchCase="currentUser.role === 'manager'" routerLink="/layout/dashboard" [routerLinkActive]="['router-link-active']"
        class="list-group-item">
       <span><i class="fa fa-bar-chart-o fa-fw"></i>Dashboard</span>
     </a>
     <!-- Recursos -->
-    <div *ngSwitchCase="'manager'"  class="nested-menu">
-      <a class="list-group-item" (click)="addExpandClass('resources')"  >
+    <div *ngSwitchCase="currentUser.role === 'manager'"  class="nested-menu">
+      <a class="list-group-item" (click)="addExpandClass('resources')">
         <span><i class="fa fa-sort-amount-down "></i>&nbsp;Recursos</span>
       </a>
       <li class="nested" [class.expand]="showMenu === 'resources'">
         <ul class="submenu">
           <li>
             <a  routerLink="/layout/inbox" ><span>Buzon de entrada</span></a>
-          </li>
-          <li>
-            <a routerLink="/layout/comentreg"><span>Listado de comentarios y reportes de daños</span></a>
           </li>
           <li>
             <a routerLink="/layout/calendarevent"><span>Calendario</span></a>
@@ -39,8 +36,8 @@
       </li>
     </div>
     <!-- Parametrización -->
-    <div *ngSwitchCase="'manager'" class="nested-menu">
-      <a class="list-group-item" (click)="addExpandClass('parametrization')"  [routerLinkActive]="['router-link-active']">
+    <div *ngSwitchCase="currentUser.role === 'manager'" class="nested-menu">
+      <a class="list-group-item"  (click)="addExpandClass('parametrization')"  [routerLinkActive]="['router-link-active']">
         <span><i class="fa fa-file-text"></i>Parametrización</span>
       </a>
         <li class="nested" [class.expand]="showMenu === 'parametrization'">
@@ -53,8 +50,8 @@
     </div>
 
     <!-- Administración -->
-    <div *ngSwitchCase="'manager'" class="nested-menu">
-      <a class="list-group-item" (click)="addExpandClass('administration')"  [routerLinkActive]="['router-link-active']">
+    <div *ngSwitchCase="currentUser.role === 'manager'" class="nested-menu">
+      <a class="list-group-item"  (click)="addExpandClass('administration')"  [routerLinkActive]="['router-link-active']">
         <span><i class="fa fa-users fa-fw"></i>Administración</span>
       </a>
       <li class="nested" [class.expand]="showMenu === 'administration'">
@@ -81,11 +78,11 @@
       </li>
     </div>
     <!-- Historial -->
-    <a *ngSwitchCase="'manager'" class="list-group-item more-themes"  [routerLinkActive]="['router-link-active']">
-      <span><i class="fa fa-history"  ></i>Historial</span>
+    <a *ngSwitchCase="currentUser.role === 'manager'" [routerLinkActive]="['router-link-active']" >
+      <span><i class="fa fa-history"></i>Historial</span>
     </a>
     <!-- Solicitudes -->
-    <div *ngSwitchCase="'manager'" class="nested-menu">
+    <div *ngSwitchCase="currentUser.role ==='teacher'" class="nested-menu">
       <a class="list-group-item" (click)="addExpandClass('history')"  [routerLinkActive]="['router-link-active']">
         <span><i class="fa fa-clipboard-list"></i>Solicitudes</span>
       </a>
@@ -101,7 +98,7 @@
       </li>
     </div>
      <!-- Comentarios -->
-     <div class="nested-menu">
+     <div class="nested-menu"><!--*ngSwitchCase="currentUser.role ==='student' "-->
       <a class="list-group-item" (click)="addExpandClass('coments')"  [routerLinkActive]="['router-link-active']">
         <span><i class="fas fa-comments fa-fw"></i>Comentarios</span>
       </a>
@@ -110,11 +107,24 @@
           <li>
             <a  routerLink="/layout/coment"><span>Crear Comentario</span></a>
           </li>
+          <li *ngSwitchCase="currentUser.role ==='manager' ">
+            <a  routerLink="/layout/comentreg"><span>Listado de comentarios</span></a>
+          </li>
+        </ul>
+      </li>
+    </div>
+    <!-- Daños -->
+    <div class="nested-menu">
+      <a class="list-group-item" (click)="addExpandClass('pages')">
+        <span><i class="fas fa-exclamation-triangle"></i>Reportar un daño</span>
+      </a>
+      <li class="nested" [class.expand]="showMenu === 'pages'">
+        <ul class="submenu">
           <li>
-              <a  routerLink="/layout/damagerecord"><span>Generar registro de daños</span></a>
-            </li>
-          <li *ngSwitchCase="'manager'">
-            <a  routerLink="/layout/coment/register"><span>Registro comentario</span></a>
+            <a  routerLink="/layout/damagerecord"><span>Generar reporte</span></a>
+          </li>
+          <li><!--*ngSwitchCase="'manager'"-->
+              <a  routerLink="/layout/damagereg"><span>Listado de reportes</span></a>
           </li>
         </ul>
       </li>

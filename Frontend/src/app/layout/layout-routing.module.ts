@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout.component';
-import { AuthGuard, ManagerGuard } from './../_guards/index';
+import { AuthGuard, ManagerGuard, TeacherGuard } from './../_guards/index';
 import { ProfileComponent} from './profile/profile.component';
 import { ComentComponent } from './coment/coment.component';
 import { LoadrequestComponent } from './loadrequest/loadrequest.component';
 import { DamagerecordComponent } from './damagerecord/damagerecord.component';
-import {MycalendarModule} from './mycalendar/mycalendar.module';
+import { MycalendarModule} from './mycalendar/mycalendar.module';
 import { ComentregComponent } from './comentreg/comentreg.component';
-import {BuildingModule} from './building/building.module';
+import { DamageregComponent } from './damagereg/damagereg.component';
 
 const routes: Routes = [
   {
@@ -24,7 +24,7 @@ const routes: Routes = [
       // Recursos
       { path: 'inbox', loadChildren: './inbox/inbox.module#InboxModule', canActivate: [ManagerGuard]},
       { path: 'calendarevent', loadChildren: './calendarevent/calendarevent.module#CalendareventModule', canActivate: [ManagerGuard]},
-      { path: 'comentreg', component: ComentregComponent},
+
       // Parametrización
       { path: 'parametrization', loadChildren: './parametrization/parametrization.module#ParametrizationModule', canActivate: [ManagerGuard]},
       { path: 'loadrequest', component: LoadrequestComponent},
@@ -36,10 +36,13 @@ const routes: Routes = [
       { path: 'group', loadChildren: './group/group.module#GroupModule', canActivate: [ManagerGuard]},
       { path: 'purpose-classroom', loadChildren: './purpose-classroom/purpose-classroom.module#PurposeClassroomModule', canActivate: [ManagerGuard] },
       // Solicitudes
-      { path: 'requestbag', loadChildren: './requestbag/requestbag.module#RequestbagModule', canActivate: [ManagerGuard]},
-      // Comentarios
+      { path: 'requestbag', loadChildren: './requestbag/requestbag.module#RequestbagModule', canActivate: [TeacherGuard]},
+      //Comentarios
       { path: 'coment', component: ComentComponent},
+      { path: 'comentreg', component: ComentregComponent},
+      //Daños
       { path: 'damagerecord', component: DamagerecordComponent},
+      { path: 'damagereg', component: DamageregComponent},
       // Sin clasificar
       { path: 'history', loadChildren: './history/history.module#HistoryModule' },
       { path: 'mycalendar', loadChildren: './mycalendar/mycalendar.module#MycalendarModule' },

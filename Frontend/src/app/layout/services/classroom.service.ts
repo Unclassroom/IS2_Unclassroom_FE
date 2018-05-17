@@ -14,22 +14,30 @@ const httpOptions = {
 @Injectable()
 export class ClassroomService {
 
-  private _Url = 'http://localhost:3000/building_classrooms/';
+  private AllClassroomUrl = 'http://localhost:3000/classrooms/';
+  private classroomByBuildingUrl = 'http://localhost:3000/building_classrooms/';
+  private classroomAvaByScheduleUrl = 'http://localhost:3000/classrooms/';
+
   constructor(
     private http: HttpClient,
     private messageService: MessageService) { }
 
   /** GET faculties from the server */
-  getClassrooms (building_id: number): Observable<Classroom[]> {
-    return this.http.get<Classroom[]>(this._Url + building_id);
+  getClassrooms (classroom_id: number): Observable<Classroom[]> {
+    return this.http.get<Classroom[]>(this.classroomByBuildingUrl+ classroom_id);
   }
 
+  /** GET faculties from the server */
+  getClassroomsAvailable (schedule, options): Observable<Classroom[]> {
 
-  getClassroom(id: number): Observable<Classroom[]> {
-    const url = `${this._Url}/${id}`;
-    return this.http.get<Classroom[]>(url).pipe(
+    return this.http.get<Classroom[]>(this.AllClassroomUrl);
+  }
+
+  getClassroom(id: number): Observable<Classroom> {
+    const url = `${this.classroomByBuildingUrl}/${id}`;
+    return this.http.get<Classroom>(url).pipe(
       tap(_ => this.log(`fetched Classroom id=${id}`)),
-      catchError(this.handleError<Classroom[]>(`getClassroom id=${id}`))
+      catchError(this.handleError<Classroom>(`getClassroom id=${id}`))
     );
   }
 
@@ -37,7 +45,7 @@ export class ClassroomService {
 
   /** POST: add a new hero to the server */
   addClassroom (Classroom): Observable<Classroom> {
-    return this.http.post<Classroom>(this._Url, Classroom, httpOptions).pipe(
+    return this.http.post<Classroom>(this.classroomByBuildingUrl, Classroom, httpOptions).pipe(
       tap(_ => this.log(`added Classroom w/ id=${Classroom}`)),
       catchError(this.handleError<Classroom>('addClassroom'))
     );
@@ -46,7 +54,7 @@ export class ClassroomService {
   /** DELETE: delete the hero from the server */
   deleteClassroom (Classroom: Classroom | number): Observable<Classroom> {
     const id = typeof Classroom === 'number' ? Classroom : Classroom.id;
-    const url = `${this._Url}/${id}`;
+    const url = `${this.classroomByBuildingUrl}/${id}`;
 
     return this.http.delete<Classroom>(url, httpOptions).pipe(
       tap(_ => this.log(`deleted Classroom id=${id}`)),
@@ -56,7 +64,7 @@ export class ClassroomService {
 
   /** PUT: update the hero on the server */
   updateClassroom (Classroom: Classroom): Observable<any> {
-    return this.http.put(this._Url, Classroom, httpOptions).pipe(
+    return this.http.put(this.classroomByBuildingUrl, Classroom, httpOptions).pipe(
       tap(_ => this.log(`updated Classroom id=${Classroom.id}`)),
       catchError(this.handleError<any>('updateClassroom'))
     );
@@ -64,7 +72,7 @@ export class ClassroomService {
 
 
   private log(message: string) {
-    this.messageService.add('RequestService: ' + message);
+    this.messageService.add('ClassroomService: ' + message);
   }
 
   private handleError<T> (operation = 'operation', result?: T) {
@@ -80,7 +88,4 @@ export class ClassroomService {
       return of(result as T);
     };
   }
-
 }
-
-
