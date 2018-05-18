@@ -24,7 +24,7 @@ const routes: Routes = [
       // Recursos
       { path: 'inbox', loadChildren: './inbox/inbox.module#InboxModule', canActivate: [ManagerGuard]},
       { path: 'calendarevent', loadChildren: './calendarevent/calendarevent.module#CalendareventModule', canActivate: [ManagerGuard]},
-    
+
       // Parametrización
       { path: 'parametrization', loadChildren: './parametrization/parametrization.module#ParametrizationModule', canActivate: [ManagerGuard]},
       { path: 'loadrequest', component: LoadrequestComponent},
@@ -45,9 +45,10 @@ const routes: Routes = [
       { path: 'damagereg', component: DamageregComponent},
       // Sin clasificar
       { path: 'history', loadChildren: './history/history.module#HistoryModule' },
-      { path: 'classroom', loadChildren: './classroom/classroom.module#ClassroomModule' },
       { path: 'mycalendar', loadChildren: './mycalendar/mycalendar.module#MycalendarModule' },
       { path: 'mycalendar', loadChildren: './mycalendar/mycalendar.module#MycalendarModule' },
+      { path: 'building', loadChildren: './building/building.module#BuildingModule' },
+      { path: 'schedule', loadChildren: './schedule/schedule.module#ScheduleModule' },
 
       ]
   }

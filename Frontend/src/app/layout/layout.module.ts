@@ -30,6 +30,7 @@ import { LoadrequestComponent } from './loadrequest/loadrequest.component';
 import { DamagerecordComponent } from './damagerecord/damagerecord.component';
 import { ComentregComponent } from './comentreg/comentreg.component';
 import { OpinionService } from './services/opinion.service';
+import { ScheduleService } from './services/schedule.service';
 import { DamageregComponent } from './damagereg/damagereg.component';
 import { ReportService } from './services/report.service';
 import { UserslistComponent } from './userslist/userslist.component';
@@ -52,6 +53,6 @@ import { UserslistComponent } from './userslist/userslist.component';
     FalcultyService, HeadBuildingService,  RequestService, BuildingService,
     ManagerService, TeacherService, ExternalPersonService, DepartmentsService,
     ClassroomService, GroupService, SubjectService, MessageService, EventService,
-    PurposeClassroomService, TypeClassroomService, OpinionService, ReportService ]
+    PurposeClassroomService, TypeClassroomService, OpinionService, ReportService, ScheduleService ]
 })
 export class LayoutModule { }
