@@ -13,12 +13,12 @@ export class DamageregComponent implements OnInit {
 
   ngOnInit() {
     this.getReports();
-    console.log(this.reports);
   }
 
   getReports(): void {
     this.reportService.getReports()
-      .subscribe(reports => this.reports = reports);
+      .subscribe(reports => {console.log(this.reports)
+        this.reports = reports});
 
   }
   onChangeReport(id: number): void {

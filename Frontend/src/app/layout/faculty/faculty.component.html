@@ -35,7 +35,7 @@
 
   <div class="px-4">
 
-    <div class="table-wrapper"  *ngIf="getOpinions">
+    <div class="table-wrapper"  *ngIf="getFaculties">
       <!--Table-->
       <table class="table table-hover mb-0">
 
@@ -51,7 +51,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let opinion of opinion">
+        <tr *ngFor="let faculty of faculties">
           <th scope="row">
             <label  class="label-table">{{faculty.id}}</label>
           </th>
