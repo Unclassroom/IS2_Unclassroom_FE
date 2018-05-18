@@ -17,7 +17,8 @@ const httpOptions = {
 @Injectable()
 export class RequestService {
 
-  private AllRequestUrl = 'http://localhost:3000/requests';  // URL to web api
+  private AllRequestUrl = 'http://localhost:3000/requests'; // URL to web api
+  private requestByUserUrl = 'http://localhost:3000/teacher_requests';  
   private DataRequestByPurposesUrl = 'http://localhost:3000/request_count_by_purpose';  // URL to web api
   private DataRequestByStateUrl = 'http://localhost:3000/request_count_by_state';  // URL to web api
   private DataRequestByPurposesUrlFiltered = 'http://localhost:3000/request_count_by_purpose?end_date="03-23-2018"&begin_date="02-23-2017"';  // URL to web api
@@ -30,6 +31,10 @@ export class RequestService {
   /** GET Request from the server */
   getAllRequest (): Observable<InboxRequest[]> {
     return this.http.get<InboxRequest[]>(this.AllRequestUrl);
+  }
+
+  getRequestByUser (user_id): Observable<InboxRequest[]> {
+    return this.http.get<InboxRequest[]>(this.requestByUserUrl+"/"+ user_id);
   }
 
   getDataRequestByPurposes_Filtered (): Observable<Response> {
