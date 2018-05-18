@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { InboxRequest} from '../../models/inboxrequest';
-import { RequestService} from '../../services/request.service';
+import { Router} from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+// Models
+import { InboxRequest} from '../../models/inboxrequest';
+// Services
+import { RequestService} from '../../services/request.service';
 import { ClassroomService } from '../../services/classroom.service';
 
 @Component({
@@ -11,6 +14,7 @@ import { ClassroomService } from '../../services/classroom.service';
 })
 
 export class MailComponent implements OnInit {
+  class_ava: any = {}
   specific_schedule:any={}
   cyclic_schedule:any={}
   ini_date = String
@@ -24,7 +28,8 @@ export class MailComponent implements OnInit {
   constructor(
     private requestService: RequestService, 
     private route: ActivatedRoute,
-    private classroomService: ClassroomService
+    private classroomService: ClassroomService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -50,15 +55,10 @@ export class MailComponent implements OnInit {
     console.log(this.request_mail)
     console.log(this.specific_schedule)
     this.classroomService.getClassroomsAvailable(this.specific_schedule)
-      .subscribe(
-        response => {
-          alert(response);
-        },
-        error => {
-          alert("Error")
-        }
-      );
-
+      .subscribe();
+    this.class_ava = JSON.parse(localStorage.getItem("class_ava"))
+    console.log(this.class_ava)
+    this.router.navigateByUrl('/layout/inbox/mail/{{request_mail.id}}/class-ava');
   }
   save(): void {
     this.requestService.updateRequest(this.request, this.request_mail.id)

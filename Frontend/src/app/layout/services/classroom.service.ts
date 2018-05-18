@@ -35,10 +35,16 @@ export class ClassroomService {
         ini_date: schedule.ini_date,
         end_date: schedule.end_date
       }
-    }).subscribe(
+    }).map(
       response => {
-      console.log(response);
-    })
+        localStorage.setItem("class_ava", JSON.stringify(response))
+        // alert(response[0].id)
+        // console.log(response);
+    },
+    error => {
+      alert("No hay salones")
+    }
+  )
     ;
   }
   

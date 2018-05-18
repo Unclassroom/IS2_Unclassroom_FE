@@ -1,0 +1,48 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/gadrielag/.nvm/versions/node/v5.0.0/bin/node',
+1 verbose cli   '/home/gadrielag/.nvm/versions/node/v5.0.0/bin/npm',
+1 verbose cli   'view',
+1 verbose cli   'angular-cli',
+1 verbose cli   'version' ]
+2 info using npm@3.3.6
+3 info using node@v5.0.0
+4 silly mapToRegistry name angular-cli
+5 silly mapToRegistry using default registry
+6 silly mapToRegistry registry https://registry.npmjs.org/
+7 silly mapToRegistry uri https://registry.npmjs.org/angular-cli
+8 verbose request uri https://registry.npmjs.org/angular-cli
+9 verbose request no auth needed
+10 info attempt registry request try #1 at 10:06:33 AM
+11 verbose request id 8d6b7f749e46b202
+12 http request GET https://registry.npmjs.org/angular-cli
+13 info retry will retry, error on last attempt: Error: tunneling socket could not be established, cause=getaddrinfo ENOTFOUND proxyapp.unal.edu.co proxyapp.unal.edu.co:8080
+14 info attempt registry request try #2 at 10:06:43 AM
+15 http request GET https://registry.npmjs.org/angular-cli
+16 info retry will retry, error on last attempt: Error: tunneling socket could not be established, cause=getaddrinfo ENOTFOUND proxyapp.unal.edu.co proxyapp.unal.edu.co:8080
+17 info attempt registry request try #3 at 10:07:43 AM
+18 http request GET https://registry.npmjs.org/angular-cli
+19 verbose stack Error: tunneling socket could not be established, cause=getaddrinfo ENOTFOUND proxyapp.unal.edu.co proxyapp.unal.edu.co:8080
+19 verbose stack     at ClientRequest.onError (/home/gadrielag/.nvm/versions/node/v5.0.0/lib/node_modules/npm/node_modules/tunnel-agent/index.js:174:17)
+19 verbose stack     at ClientRequest.g (events.js:260:16)
+19 verbose stack     at emitOne (events.js:77:13)
+19 verbose stack     at ClientRequest.emit (events.js:169:7)
+19 verbose stack     at TLSSocket.socketErrorListener (_http_client.js:265:9)
+19 verbose stack     at emitOne (events.js:77:13)
+19 verbose stack     at TLSSocket.emit (events.js:169:7)
+19 verbose stack     at connectErrorNT (net.js:996:8)
+19 verbose stack     at doNTCallback2 (node.js:450:9)
+19 verbose stack     at process._tickCallback (node.js:364:17)
+20 verbose cwd /run/media/gadrielag/Data/Documents/UNclassroomG2/IS2_Unclassroom_FE
+21 error Linux 4.15.3-1-ARCH
+22 error argv "/home/gadrielag/.nvm/versions/node/v5.0.0/bin/node" "/home/gadrielag/.nvm/versions/node/v5.0.0/bin/npm" "view" "angular-cli" "version"
+23 error node v5.0.0
+24 error npm  v3.3.6
+25 error code ECONNRESET
+26 error network tunneling socket could not be established, cause=getaddrinfo ENOTFOUND proxyapp.unal.edu.co proxyapp.unal.edu.co:8080
+26 error network This is most likely not a problem with npm itself
+26 error network and is related to network connectivity.
+26 error network In most cases you are behind a proxy or have bad network settings.
+26 error network
+26 error network If you are behind a proxy, please make sure that the
+26 error network 'proxy' config is set properly.  See: 'npm help config'
+27 verbose exit [ 1, true ]
