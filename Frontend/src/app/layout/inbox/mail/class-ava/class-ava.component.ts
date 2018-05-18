@@ -1,26 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import {EventService} from '../../../services/event.service';
-import {Event} from '../../..//models/event';
+// Models
+import { InboxRequest} from '../../../models/inboxrequest';
+
 @Component({
   selector: 'app-class-ava',
   templateUrl: './class-ava.component.html',
   styleUrls: ['./class-ava.component.css']
 })
 export class ClassAvaComponent implements OnInit {
+  class_ava: any = {}
+  specific_schedule:any={}
+  cyclic_schedule:any={}
+  request_mail: InboxRequest;
 
-  events: Event[];
   constructor(
-    private eventService: EventService
   ) { }
 
-  ngOnInit() {
-    this.getEvents();
-  }
-
-  getEvents(): void {
-    this.eventService.getEvents()
-      .subscribe(events => this.events = events);
-
+  ngOnInit() 
+  {
+    this.class_ava = JSON.parse(localStorage.getItem("class_ava"))
+    this.specific_schedule = JSON.parse(localStorage.getItem("specific_schedule"))
+    this.request_mail = JSON.parse(localStorage.getItem("request_mail"))
+    console.log(this.class_ava)
+    console.log(this.specific_schedule)
+    console.log(this.request_mail)
   }
 
 }

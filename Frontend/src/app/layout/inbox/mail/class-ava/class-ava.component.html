@@ -1,26 +1,28 @@
-<h3> Eventos </h3>
+<h1> Salones disponibles </h1>
+<div class="row">
+  <div class="col-xl-9 col-lg-9">
+    <h2 style="margin-top: 15px"> Peticion no:  {{request_mail.id}} </h2>
+    <h3 class="card-text">Proposito:  {{request_mail.purpose_classroom}} </h3>
+    <h3 class="card-text">Motivo : {{request_mail.motive}} </h3>
+  </div>
+</div>
 <hr class=" px-4 ">
 <!--Grid row-->
 <div class="row mt-6 ml-6 ">
 
   <!--Grid column-->
-  <div class="col-lg-6 col-md-6" style="margin-bottom: 15px">
+  <!-- <div class="col-lg-6 col-md-6" style="margin-bottom: 15px">
 
     <form class="form-inline mt-6 ml-6 px-4">
       <input class="form-control my-0 py-0" type="text" placeholder="Search" style="width: 80%;">
       <button class="btn btn-sm btn-info ml-2 px-15"><i class="fa fa-search"></i>  </button>
     </form>
 
-  </div>
+  </div> -->
   <!--Grid column-->
   <!--Grid column-->
   <div class="col-lg-4 col-md-4" style="margin-bottom: 15px">
 
-
-  </div>
-  <div class="col-lg-2 col-md-2" style="margin-bottom: 15px">
-
-    <a  routerLink="/layout/inbox/mail/{{request_mail.id}}/class-ava" class="btn btn-info">Regresar</a>
 
   </div>
   <!--Grid column-->
@@ -29,33 +31,48 @@
 
 </div>
 <!--Top Table UI-->
-
 <div class="card card-cascade narrower">
   <!--/Card image-->
 
   <div class="px-4">
 
-    <div class="table-wrapper"  *ngIf="getEvents">
+    <div class="table-wrapper" >
       <!--Table-->
       <table class="table table-hover mb-0">
 
         <!--Table head-->
         <thead>
         <tr>
-          <th class="mr-2">
+          <th class="mr-5">
             <label  class="th-lg label-table">No.</label>
           </th>
-          <th class="th-lg"><a href="">Nombre<i class="fa fa-sort ml-1"></i></a></th>
-          <th class="th-lg"><a href="">Editar<i class="fa fa-sort ml-1"></i></a></th>
-          <th class="th-lg"><a href="">Eliminar<i class="fa fa-sort ml-1"></i></a></th>
+          <th class="mr-2">
+            <label  class="th-lg label-table">Tipo de salon</label>
+          </th>
+          <th class="mr-2">
+            <label  class="th-lg label-table">Edificio</label>
+          </th>
+          <th class="mr-2">
+            <label  class="th-lg label-table">Facultad</label>
+          </th>
+          <th class="th-lg"><a href="">Asignar<i class="fa fa-sort ml-1"></i></a></th>
+          <!-- <th class="th-lg"><a href="">Nombre<i class="fa fa-sort ml-1"></i></a></th>
+          
+          <th class="th-lg"><a href="">Eliminar<i class="fa fa-sort ml-1"></i></a></th> -->
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let event of events">
-          <th scope="row">
-            <label  class="label-table">{{event.id}}</label>
-          </th>
-          <td>{{event.name}}</td>
+        <tr *ngFor="let classroom of class_ava">
+          <td>{{classroom.id}}</td>
+          <td>{{classroom.type_classroom.name}}</td>
+          <td>{{classroom.building.name}}</td>
+          <td>{{classroom.department.name}}</td>
+          <td>
+            <a   
+            
+             class="btn btn-warning">Asignar</a></td>
+          <td>
+          <!-- <td>{{request_mail.}}</td>
           <td>{{event.description}}</td>
           <td>
 
@@ -63,7 +80,7 @@
           <td>
 
             <a  routerLink="/layout/event/register/" class="btn btn-danger">X</a></td>
-        </tr>
+        </tr> -->
         </tbody>
         <!--Table body-->
       </table>
@@ -118,6 +135,8 @@
 
     </div>
     <!--Bottom Table UI-->
-
+    <div class="col-lg-2 col-md-2" style="margin-bottom: 15px">
+      <a  routerLink="/layout/inbox/mail/{{request_mail.id}}" class="btn btn-info">Regresar</a>
+    </div>
   </div>
 </div>

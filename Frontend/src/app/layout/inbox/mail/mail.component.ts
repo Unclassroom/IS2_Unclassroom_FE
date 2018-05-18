@@ -57,6 +57,8 @@ export class MailComponent implements OnInit {
     this.classroomService.getClassroomsAvailable(this.specific_schedule)
       .subscribe();
     this.class_ava = JSON.parse(localStorage.getItem("class_ava"))
+    localStorage.setItem("request_mail", JSON.stringify(this.request_mail))
+    localStorage.setItem("specific_schedule", JSON.stringify(this.specific_schedule))
     console.log(this.class_ava)
     this.router.navigateByUrl('/layout/inbox/mail/{{request_mail.id}}/class-ava');
   }
