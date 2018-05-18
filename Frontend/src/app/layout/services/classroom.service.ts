@@ -118,8 +118,7 @@ export class ClassroomService {
     error => {
       alert("No se asigno salon al evento")
     }
-  )
-    ;
+  );
   }  
 
   setStatusRequest (request_id, classroom_event_id): any

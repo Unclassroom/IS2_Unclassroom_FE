@@ -69,11 +69,11 @@ export class ClassAvaComponent implements OnInit {
     this.classroomEvent = JSON.parse(localStorage.getItem("classroom_event"))
     console.log(this.classroomEvent)
     console.log(this.classroomEvent.id)
-    // this.classroomService.setStatusRequest
-    // (
-    //   this.request_mail.id,
-    //   this.classroomEvent.id
-    // ).subscribe();
+    this.classroomService.setStatusRequest
+    (
+      this.request_mail.id,
+      this.classroomEvent.id
+    ).subscribe();
   }
 
   save(): void {
