@@ -75,12 +75,12 @@ export class DamagerecordComponent implements OnInit {
          this.report.user_id = this.currentUser.id;
          this.report.user_type = this.currentUser.role;
          
-         console.log( this.report.student_id);
+         //console.log( this.report.student_id);
           this.report.classroom_id = form.value.classroom_id ;
           this.report.description = form.value.description ;
      
-         console.log("antes del add");
-         this.add();
+         console.log(this.report);
+         //this.add();
        }
      
        registerClient() {

@@ -27,8 +27,20 @@ export class ClassroomService {
     private messageService: MessageService) { }
 
   /** GET faculties from the server */
+  getClassroomsBuilding (building_id: number): Observable<Classroom[]> {
+    return this.http.get<Classroom[]>(this.classroomByBuildingUrl + building_id);
+  }
+
+  getClassroomBuilding(id: number): Observable<Classroom> {
+    const url = `${this.classroomByBuildingUrl}/${id}`;
+    return this.http.get<Classroom>(url).pipe(
+      tap(_ => this.log(`fetched Classroom id=${id}`)),
+      catchError(this.handleError<Classroom>(`getClassroom id=${id}`))
+    );
+  }
+
   getClassrooms (classroom_id: number): Observable<Classroom[]> {
-    return this.http.get<Classroom[]>(this.classroomByBuildingUrl+classroom_id);
+    return this.http.get<Classroom[]>(this.classroomByBuildingUrl + classroom_id);
   }
 
   /** GET faculties from the server */

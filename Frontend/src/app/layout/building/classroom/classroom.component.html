@@ -1,4 +1,5 @@
-<h3> Facultades </h3>
+<div *ngIf="getClassroomsBuilding">
+<h3>Salones - {{ classrooms[0].building.name }}</h3>
 <hr class=" px-4 ">
 <!--Grid row-->
 <div class="row mt-6 ml-6 ">
@@ -8,19 +9,14 @@
 
     <form class="form-inline mt-6 ml-6 px-4">
       <input class="form-control my-0 py-0" type="text" placeholder="Search" style="width: 80%;">
-      <button class="btn btn-sm btn-info ml-2 px-15"><i class="fa fa-search"></i>  </button>
+      <button class="btn btn-sm btn-primary ml-2 px-15"><i class="fa fa-search"></i>  </button>
     </form>
 
   </div>
   <!--Grid column-->
   <!--Grid column-->
-  <div class="col-lg-4 col-md-4" style="margin-bottom: 15px">
+  <div class="col-lg-6 col-md-6" style="margin-bottom: 15px">
 
-
-  </div>
-  <div class="col-lg-2 col-md-2" style="margin-bottom: 15px">
-
-    <a  routerLink="/layout/faculty/register/" class="btn btn-info">Nuevo</a>
 
   </div>
   <!--Grid column-->
@@ -30,12 +26,12 @@
 </div>
 <!--Top Table UI-->
 
-<div class="card card-cascade narrower">
+<div class="card card-cascade narrower" >
   <!--/Card image-->
 
   <div class="px-4">
 
-    <div class="table-wrapper"  *ngIf="getFaculties">
+    <div class="table-wrapper"  >
       <!--Table-->
       <table class="table table-hover mb-0">
 
@@ -43,23 +39,21 @@
         <thead>
         <tr>
           <th class="mr-2">
-            <label  class="th-lg label-table">No.</label>
+            <label  class="th-lg label-table">#</label>
           </th>
-          <th class="th-lg"><a href="">Nombre<i class="fa fa-sort ml-1"></i></a></th>
-          <th class="th-lg"><a href="">Editar<i class="fa fa-sort ml-1"></i></a></th>
-          <th class="th-lg"><a href="">Eliminar<i class="fa fa-sort ml-1"></i></a></th>
+          <th class="th-lg"><a># <i class="fa fa-sort ml-1"></i></a></th>
+          <th class="th-lg"><a>Tipo de salon <i class="fa fa-sort ml-1"></i></a></th>
+          <th class="th-lg"><a href="">Opciones<i class="fa fa-sort ml-1"></i></a></th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let faculty of faculties">
+        <tr *ngFor="let classroom of classrooms">
           <th scope="row">
-            <label  class="label-table">{{faculty.id}}</label>
+            <label  class="label-table">{{classroom.id}}</label>
           </th>
-          <td>{{faculty.name}}</td>
+          <td>{{classroom.type_classroom.name}}</td>
           <td>
-            <a  routerLink="/layout/faculty/register/" class="btn btn-warning">Editar</a></td>
-          <td>
-            <a  routerLink="/layout/faculty/register/" class="btn btn-danger">X</a></td>
+            <a  routerLink="/layout/schedule" class="btn btn-warning">Selection</a></td>
         </tr>
         </tbody>
         <!--Table body-->
@@ -81,7 +75,7 @@
         <ul class="pagination pagination-circle pg-blue mb-0">
 
           <!--First-->
-          <li class="page-item disabled"><a class="page-link" (click)="onChangeFaculty(1)">First</a></li>
+          <li class="page-item disabled"><a class="page-link">First</a></li>
 
           <!--Arrow left-->
           <li class="page-item disabled">
@@ -92,18 +86,17 @@
           </li>
 
           <!--Numbers-->
-          <li class="page-item active" (click)="onChangeFaculty(1)"><a class="page-link" >1</a></li>
-          <li  (click)="onChangeFaculty(2)"><a class="page-link" >2</a></li>
-          <li  (click)="onChangeFaculty(3)"><a class="page-link" >3</a></li>
-          <li  (click)="onChangeFaculty(4)"><a class="page-link" >4</a></li>
-          <li  (click)="onChangeFaculty(5)"><a class="page-link" >5</a></li>
-          <li  (click)="onChangeFaculty(6)"><a class="page-link" >6</a></li>
+          <li class="page-item active"><a class="page-link">1</a></li>
+          <li class="page-item"><a class="page-link">2</a></li>
+          <li class="page-item"><a class="page-link">3</a></li>
+          <li class="page-item"><a class="page-link">4</a></li>
+          <li class="page-item"><a class="page-link">5</a></li>
 
           <!--Arrow right-->
           <li class="page-item">
             <a class="page-link" aria-label="Next">
               <span aria-hidden="true">&raquo;</span>
-              <span class="sr-only"  (click)="onChangeFaculty(6)">Next</span>
+              <span class="sr-only">Next</span>
             </a>
           </li>
 
@@ -118,4 +111,5 @@
     <!--Bottom Table UI-->
 
   </div>
+</div>
 </div>

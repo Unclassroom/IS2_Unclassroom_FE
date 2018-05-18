@@ -3,7 +3,6 @@ import { routerTransition } from '../../router.animations';
 import * as jsPDF from 'jspdf';
 import * as html2canvas from 'html2canvas';
 import {RequestService} from '../services/request.service';
-import {Faculty} from '../models/faculty';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,35 +10,41 @@ import {Faculty} from '../models/faculty';
   styleUrls: ['./dashboard.component.css'],
   animations: [routerTransition()]
 })
+
 export class DashboardComponent implements OnInit {
 
   requestpurposes = [];
   requeststate = [];
+  requestsmonth = [];
+  requestpurposesLabelsFunction = [];
+  requestpurposesDataFunction = [];
 
+  requeststateLabelsFunction = [];
+  requeststateDataFunction = [];
+
+  requestsmonthLabelsFunction = [];
+  requestsmonthDataFunction = [];
   // bar chart
   public barChartOptions: any = {
     scaleShowVerticalLines: false,
     responsive: true
   };
-  public barChartLabels: string[] = [
-    '2006',
-    '2007',
-    '2008',
-    '2009',
-    '2010',
-    '2011',
-    '2012'
-  ];
+  public barChartLabels: string[] = [];
   public barChartType: string = 'bar';
   public barChartLegend: boolean = true;
 
+
+
   public barChartData: any[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' }
+    { data: [], label: 'Solicitudes a travez del tiempo' }
   ];
 
   // Doughnut
-  public doughnutChartLabels: string[] = [
-  ];
+  // public doughnutChartLabels: string[] = [];
+
+  // Doughnut
+  public doughnutChartLabels: string[] = [];
+
   public doughnutChartData: number[] = [];
   public doughnutChartType: string = 'doughnut';
 
@@ -47,8 +52,45 @@ export class DashboardComponent implements OnInit {
   public pieChartLabels: string[] = [];
   public pieChartData: number[] = [];
   public pieChartType: string = 'pie';
+  public _backgroundColors = [{backgroundColor: [
+      'rgba(231, 233, 237,0.4)',
+      'rgba(255, 99, 132,0.4)',
+      'rgba(54, 162, 235,0.4)',
+      'rgba(255, 206, 86,0.4)',
+      'rgba(75, 192, 192,0.4)',
+      'rgba(151, 187, 205,0.4)',
+      'rgba(220, 220, 220,0.4)',
+      'rgba(247, 70, 74,0.4)',
+      'rgba(70, 191, 189,0.4)',
+      'rgba(253, 180, 92,0.4)',
+      'rgba(148, 159, 177,0.4)',
+      'rgba(77, 83, 96,0.4)',
+      'rgba(54, 162, 235,0.4)',
+      'rgba(255, 206, 86,0.4)',
+      'rgba(231, 233, 237,0.4)',
+      'rgba(75, 192, 192,0.4)',
+      'rgba(151, 187, 205,0.4)',
+      'rgba(220, 220, 220,0.4)',
+      'rgba(247, 70, 74,0.4)',
+      'rgba(70, 191, 189,0.4)',
+      'rgba(253, 180, 92,0.4)',
+      'rgba(148, 159, 177,0.4)',
+      'rgba(77, 83, 96,0.4)'
+    ]}];
 
 
+  model: any = {
+  };
+
+  constructor(private requestService: RequestService ) {
+
+  }
+
+  ngOnInit() {
+    this.getdoughnutChartData();
+    this.getpieChartData();
+    this.getbarChartData();
+  }
   // events
   public chartClicked(e: any): void {
     // console.log(e);
@@ -80,38 +122,63 @@ export class DashboardComponent implements OnInit {
      */
   }
   public dataDoughtChart(requestpurposes) {
-    // console.log(this.requestpurposes[0]);
-   // console.log(Object.keys(this.requestpurposes[0]));
-    // this.doughnutChartLabels.push('coloquio academico  1');
-    // this.doughnutChartData.length = 0;
-    // this.doughnutChartLabels.length = 0;
-
+     this.requestpurposesDataFunction.length = 0;
+     this.requestpurposesLabelsFunction.length = 0;
     for (const prop in this.requestpurposes[0]) {
-      this.doughnutChartData.push( Number (this.requestpurposes[0][prop]) );
-      this.doughnutChartLabels.push(prop );
+      if (prop) {
+      this.requestpurposesDataFunction.push( Number (this.requestpurposes[0][prop]) );
+      this.requestpurposesLabelsFunction.push(prop);
+       }
     }
+    this.doughnutChartLabels = this.requestpurposesLabelsFunction;
+    setTimeout( () => {
+      this.doughnutChartData = this.requestpurposesDataFunction;
+    }, 1500 );
   }
 
   public dataPieChart(requeststate) {
-    // console.log(this.requestpurposes[0]);
-    // console.log(Object.keys(this.requestpurposes[0]));
-    // this.doughnutChartLabels.push('coloquio academico  1');
-    //this.doughnutChartData.length = 0;
-    //this.doughnutChartLabels.length = 0;
+    this.requeststateDataFunction.length = 0;
+    this.requeststateLabelsFunction.length = 0;
 
     for (const prop in this.requeststate[0]) {
-      this.pieChartData.push( Number (this.requeststate[0][prop]) );
-      this.pieChartLabels.push(prop );
+      this.requeststateDataFunction.push( Number (this.requeststate[0][prop]) );
+      this.requeststateLabelsFunction.push(prop );
     }
+
+    this.pieChartLabels = this.requeststateLabelsFunction;
+    setTimeout( () => {
+      this.pieChartData = this.requeststateDataFunction;
+    }, 1500 );
+  }
+  public dataBarChart(requestsmonth) {
+    this.requestsmonthDataFunction.length = 0;
+    this.requestsmonthLabelsFunction.length = 0;
+
+    for (const prop in this.requestsmonth[0]) {
+      this.requestsmonthDataFunction.push( Number (this.requestsmonth[0][prop]) );
+      this.requestsmonthLabelsFunction.push(prop );
+    }
+
+    this.barChartLabels = this.requestsmonthLabelsFunction;
+    setTimeout( () => {
+      const data =  this.requestsmonthDataFunction;
+      const clone = JSON.parse(JSON.stringify(this.barChartData));
+      clone[0].data = data;
+      this.barChartData = clone;
+    }, 1500 );
+
   }
 
-  constructor(private requestService: RequestService ) {
+  getdoughnutChartData(): void {
     this.requestService.getDataRequestByPurposes()
       .subscribe((response) => {
         this.requestpurposes.push(response);
         this.dataDoughtChart(this.requestpurposes[0]);
 
       });
+  }
+
+  getpieChartData(): void {
     this.requestService.getDataRequestByState()
       .subscribe((response) => {
         this.requeststate.push(response);
@@ -120,6 +187,14 @@ export class DashboardComponent implements OnInit {
       });
   }
 
+  getbarChartData(): void {
+    this.requestService.getDataRequestByMonth()
+      .subscribe((response) => {
+        this.requestsmonth.push(response);
+        this.dataBarChart(this.requestsmonth[0]);
+
+      });
+  }
   downloadPDF() {
 
     html2canvas(document.getElementById('timerequest')).then(function(canvas) {
@@ -138,16 +213,11 @@ export class DashboardComponent implements OnInit {
 
   getDataRequestByPurposes_Filtered(): void {
 
-    this.requestService.getDataRequestByPurposes_Filtered()
+    this.requestService.getDataRequestByPurposes_Filtered(this.model)
       .subscribe((response) => {
-        this.requestpurposes.push(response);
+        this.requestpurposes[0] = response;
         this.dataDoughtChart(this.requestpurposes[0]);
 
       });
   }
-
-  ngOnInit() {
-  }
-
-
 }

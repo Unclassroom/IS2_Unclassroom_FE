@@ -1,6 +1,6 @@
 <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css"
       integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
   <div [ngSwitch]="true" class="list-group">
@@ -15,13 +15,13 @@
     </a>
     <!-- Recursos -->
     <div *ngSwitchCase="currentUser.role === 'manager'"  class="nested-menu">
-      <a class="list-group-item" (click)="addExpandClass('pages')">
+      <a class="list-group-item" (click)="addExpandClass('resources')">
         <span><i class="fa fa-sort-amount-down "></i>&nbsp;Recursos</span>
       </a>
-      <li class="nested" [class.expand]="showMenu === 'pages'">
+      <li class="nested" [class.expand]="showMenu === 'resources'">
         <ul class="submenu">
           <li>
-            <a  routerLink="/layout/inbox"><span>Buzon de entrada</span></a>
+            <a  routerLink="/layout/inbox" ><span>Buzon de entrada</span></a>
           </li>
           <li>
             <a routerLink="/layout/calendarevent"><span>Calendario</span></a>
@@ -29,15 +29,18 @@
           <li>
             <a routerLink="/layout/mycalendar"><span>MyCalendar</span></a>
           </li>
+          <li>
+            <a routerLink="/layout/building"><span>Edificios</span></a>
+          </li>
         </ul>
       </li>
     </div>
     <!-- Parametrización -->
     <div *ngSwitchCase="currentUser.role === 'manager'" class="nested-menu">
-      <a class="list-group-item" (click)="addExpandClass('pages')">
+      <a class="list-group-item"  (click)="addExpandClass('parametrization')"  [routerLinkActive]="['router-link-active']">
         <span><i class="fa fa-file-text"></i>Parametrización</span>
       </a>
-        <li class="nested" [class.expand]="showMenu === 'pages'">
+        <li class="nested" [class.expand]="showMenu === 'parametrization'">
         <ul class="submenu">
           <li>
             <a  routerLink="/layout/loadrequest"><span>Cargue Semestral</span></a>
@@ -48,46 +51,26 @@
 
     <!-- Administración -->
     <div *ngSwitchCase="currentUser.role === 'manager'" class="nested-menu">
-      <a class="list-group-item" (click)="addExpandClass('pages')">
+      <a class="list-group-item"  (click)="addExpandClass('administration')"  [routerLinkActive]="['router-link-active']">
         <span><i class="fa fa-users fa-fw"></i>Administración</span>
       </a>
-      <li class="nested" [class.expand]="showMenu === 'pages'">
+      <li class="nested" [class.expand]="showMenu === 'administration'">
         <ul class="submenu">
           <li>
             <a  routerLink="/layout/users"><span>Encargados</span></a>
           </li>
-        </ul>
-      </li>
-      <li class="nested" [class.expand]="showMenu === 'pages'">
-        <ul class="submenu">
           <li>
             <a  routerLink="/layout/faculty"><span>Facultad</span></a>
           </li>
-        </ul>
-      </li>
-      <li class="nested" [class.expand]="showMenu === 'pages'">
-        <ul class="submenu">
           <li>
             <a  routerLink="/layout/event"><span>Evento</span></a>
           </li>
-        </ul>
-      </li>
-      <li class="nested" [class.expand]="showMenu === 'pages'">
-        <ul class="submenu">
           <li>
             <a  routerLink="/layout/subject"><span>Asignatura</span></a>
           </li>
-        </ul>
-      </li>
-      <li class="nested" [class.expand]="showMenu === 'pages'">
-        <ul class="submenu">
           <li>
             <a  routerLink="/layout/group"><span>Grupo</span></a>
           </li>
-        </ul>
-      </li>
-      <li class="nested" [class.expand]="showMenu === 'pages'">
-        <ul class="submenu">
           <li>
             <a  routerLink="/layout/purpose-classroom"><span>Proposito salon</span></a>
           </li>
@@ -95,15 +78,15 @@
       </li>
     </div>
     <!-- Historial -->
-    <a *ngSwitchCase="currentUser.role === 'manager'" class="list-group-item more-themes" >
+    <a *ngSwitchCase="currentUser.role === 'manager'" [routerLinkActive]="['router-link-active']" class="list-group-item">
       <span><i class="fa fa-history"></i>Historial</span>
     </a>
     <!-- Solicitudes -->
     <div *ngSwitchCase="currentUser.role ==='teacher'" class="nested-menu">
-      <a class="list-group-item" (click)="addExpandClass('pages')">
+      <a class="list-group-item" (click)="addExpandClass('history')"  [routerLinkActive]="['router-link-active']">
         <span><i class="fa fa-clipboard-list"></i>Solicitudes</span>
       </a>
-      <li class="nested" [class.expand]="showMenu === 'pages'">
+      <li class="nested" [class.expand]="showMenu === 'history'">
         <ul class="submenu">
           <li>
             <a  routerLink="/layout/requestbag"><span>Lista Solicitudes</span></a>
@@ -116,10 +99,10 @@
     </div>
      <!-- Comentarios -->
      <div class="nested-menu"><!--*ngSwitchCase="currentUser.role ==='student' "-->
-      <a class="list-group-item" (click)="addExpandClass('pages')">
+      <a class="list-group-item" (click)="addExpandClass('coments')"  [routerLinkActive]="['router-link-active']">
         <span><i class="fas fa-comments fa-fw"></i>Comentarios</span>
       </a>
-      <li class="nested" [class.expand]="showMenu === 'pages'">
+      <li class="nested" [class.expand]="showMenu === 'coments'">
         <ul class="submenu">
           <li>
             <a  routerLink="/layout/coment"><span>Crear Comentario</span></a>
@@ -148,7 +131,7 @@
     </div>
 
     <!-- About -->
-    <a class="list-group-item more-themes" href="" >
+    <a class="list-group-item more-themes" href=""  [routerLinkActive]="['router-link-active']">
       <span><i class="fa fa-question-circle fa-fw"></i>About</span>
     </a>
   </div>
