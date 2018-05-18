@@ -15,6 +15,10 @@ const httpOptions = {
 export class ClassroomService {
 
   private AllClassroomUrl = 'http://localhost:3000/classrooms/';
+  private eventUrl = 'http://localhost:3000/events';
+  private specificScheduleUrl = 'http://localhost:3000/specific_schedules';
+  private classroomEventUrl = 'http://localhost:3000/classroom_events';
+  private setStatusRequestUrl = 'http://localhost:3000/request_set_status';
   private classroomByBuildingUrl = 'http://localhost:3000/building_classrooms/';
   private classroomAvaByScheduleUrl = 'http://localhost:3000/classrooms/';
 
@@ -40,9 +44,119 @@ export class ClassroomService {
   }
 
   /** GET faculties from the server */
-  getClassroomsAvailable (schedule, options): Observable<Classroom[]> {
+  getClassroomsAvailable (schedule): any
+  {
+    return this.http.get<Classroom[]>(this.AllClassroomUrl,{
+      params: {
+        ini_date: schedule.ini_date,
+        end_date: schedule.end_date
+      }
+    }).map(
+      response => {
+        localStorage.setItem("class_ava", JSON.stringify(response))
+        // alert(response[0].id)
+        // console.log(response);
+    },
+    error => {
+      alert("No hay salones")
+    }
+  )
+    ;
+  }
 
-    return this.http.get<Classroom[]>(this.AllClassroomUrl);
+  createEvent (name, description): any
+  { 
+    return this.http.post(this.eventUrl,
+      {
+        "name": name,
+        "description": description
+      }  
+    ).map(
+      response => {
+        localStorage.setItem("event", JSON.stringify(response))
+        alert("Se creo el evento")
+        console.log(response);
+    },
+    error => {
+      alert("Error en crear evento")
+    }
+  )
+    ;
+  }
+  
+  createSpecificSchedule (date, begin_at_hour, begin_at_minute, end_at_hour, end_at_minute): any
+  { 
+    return this.http.post(this.specificScheduleUrl,
+    {
+        "specific_schedule":
+      {
+        "date": date,
+        "begin_at_hour": begin_at_hour,
+        "begin_at_minute": begin_at_minute,
+        "end_at_hour": end_at_hour,
+        "end_at_minute": end_at_minute
+      }
+    }
+    ).map(
+      response => {
+        localStorage.setItem("s_schedule", JSON.stringify(response))
+        alert("Se creo el horario especifico")
+        console.log(response);
+    },
+    error => {
+      alert("Error en crear horario especifico")
+    }
+  )
+    ;
+  }  
+  
+  createClassroomEvent (event_id, specific_id, classroom_id): any
+  { 
+    return this.http.post(this.classroomEventUrl,
+      {
+        "classroom_event":
+      {
+        "event_id":event_id,
+        "specific_schedule_id": specific_id,
+        "classroom_id": classroom_id
+      }
+    }
+    ).map(
+      response => {
+        localStorage.setItem("classroom_event", JSON.stringify(response))
+        alert("Se asigno salon al  evento")
+        console.log(response);
+    },
+    error => {
+      alert("No se asigno salon al evento")
+    }
+  );
+  }  
+
+  setStatusRequest (request_id, classroom_event_id): any
+  { 
+    return this.http.post(this.setStatusRequestUrl,
+      {
+        "request_id":request_id,
+        "new_state": "assigned",
+        "assign_specific":
+        [
+          {
+            "classroom_event_id": classroom_event_id
+          }
+        ]
+      }  
+    ).map(
+      response => {
+        // localStorage.setItem("class_ava", JSON.stringify(response))
+        alert("Cambio solicitud de estado")
+        console.log(response);
+    },
+    error => {
+      alert("Sin actualizar estado solicitud")
+    }
+  )
+    ;
   }
 
   getClassroom(id: number): Observable<Classroom> {

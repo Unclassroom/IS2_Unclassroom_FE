@@ -17,7 +17,8 @@ const httpOptions = {
 @Injectable()
 export class RequestService {
 
-  private AllRequestUrl = 'http://localhost:3000/requests';  // URL to web api
+  private AllRequestUrl = 'http://localhost:3000/requests'; // URL to web api
+  private requestByUserUrl = 'http://localhost:3000/teacher_requests';  
   private DataRequestByPurposesUrl = 'http://localhost:3000/request_count_by_purpose';  // URL to web api
   private DataRequestByStateUrl = 'http://localhost:3000/request_count_by_state';  // URL to web api
   private DataRequestByMonthUrl = 'http://localhost:3000/request_count_by_month';  // URL to web api
@@ -33,6 +34,13 @@ export class RequestService {
     return this.http.get<InboxRequest[]>(this.AllRequestUrl);
   }
 
+  getRequestByUser (user_id): Observable<InboxRequest[]> {
+    return this.http.get<InboxRequest[]>(this.requestByUserUrl+"/"+ user_id);
+  }
+
+  // getDataRequestByPurposes_Filtered (): Observable<Response> {
+  //   return this.http.get<Response>(this.DataRequestByPurposesUrlFiltered);
+  // }
   getDataRequestByPurposes_Filtered (model: any): Observable<Response> {
     return this.http.get<Response>(this.DataRequestByPurposesUrlFiltered + '?end_date=' + model.end_date + '&begin_date=' +  model.begin_date);
   }
@@ -69,17 +77,24 @@ export class RequestService {
     console.log("in addRequest service")
     console.log(request.motive)
     console.log(request.type_request)
-    return this.http.post(this.AllRequestUrl,
-      {
-      "teacher_id":request.teacher_id,
+  return this.http.post(this.AllRequestUrl, 
+    {
+      "user_type": request.user_type,
+      "user_id":request.user_id,
       "purpose_classroom_id": request.purpose_classroom,
       "type_classroom_id": request.type_classroom,
       "state": "no readed",
       "motive": request.motive,
-      "type_request": request.type_request,
-      "alternatives":[
-          request.specific
-        ]
+      "alternatives":
+      [
+        {
+          "type_request": request.type_request,
+            "specific": 
+            // It is necessary fix this, because an object calling other object doesnt match or it isnt good.
+             request.specific.specific
+            
+        }  
+      ]
     }
     )
     .map(

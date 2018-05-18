@@ -13,8 +13,6 @@ const routes: Routes = [
   { path: 'edit', component: EditComponent }
 ];
 
-
-
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]

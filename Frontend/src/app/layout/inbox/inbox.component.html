@@ -5,9 +5,9 @@
 <div class="card w-100"  *ngFor="let request of requests" style="margin-bottom: 10px">
   <div class="card-body">
     <h3 class="card-title">Solicitud #  {{request.id}}</h3>
-    <p class="card-text">From: {{request.teacher.first_name +' '+ request.teacher.last_name}}</p>
-    <p class="card-text">E-mail: {{request.teacher.email}}</p>
-    <p class="card-text">Cargo: {{request.teacher.role}}</p>
+    <p class="card-text">From: {{request.requestable.first_name +' '+ request.requestable.last_name}}</p>
+    <p class="card-text">E-mail: {{request.requester_email}}</p>
+    <p class="card-text">Cargo: {{request.user_type}}</p>
     <p class="card-text">Tipo de salon: {{request.type_classroom}}</p>
     <p class="card-text">Proposito de salon: {{request.purpose_classroom}}</p>
     <div *ngIf="request.times != -1">

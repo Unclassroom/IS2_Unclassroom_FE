@@ -4,6 +4,7 @@ import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 import {MailRoutingModule} from './mail-routing.module';
 import {MailComponent} from './mail.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ClassAvaComponent } from './class-ava/class-ava.component';
 
 @NgModule({
   imports: [
@@ -13,6 +14,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
-  declarations: [MailComponent]
+  declarations: [MailComponent, ClassAvaComponent]
 })
 export class MailModule { }
