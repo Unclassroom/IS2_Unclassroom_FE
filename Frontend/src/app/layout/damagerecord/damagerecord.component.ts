@@ -28,7 +28,7 @@ export class DamagerecordComponent implements OnInit {
     private reportService: ReportService,
     private router:Router,
     private buildingService: BuildingService,
-    private classroomService: ClassroomService) { 
+    private classroomService: ClassroomService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
@@ -56,12 +56,12 @@ export class DamagerecordComponent implements OnInit {
   add(): void {
     this.reportService.addReport(this.report)
       .subscribe(
-        data => 
+        data =>
           {
             alert("Reporte enviado")
             console.log("Create report");
           },
-        error => 
+        error =>
           {
             alert("Error occurred")
             console.log("Error occurred");
@@ -70,31 +70,31 @@ export class DamagerecordComponent implements OnInit {
   }*/
 
   logForm(form: NgForm) {
-     
+
          console.log(this.currentUser.id);
          this.report.user_id = this.currentUser.id;
          this.report.user_type = this.currentUser.role;
-         
+
          //console.log( this.report.student_id);
           this.report.classroom_id = form.value.classroom_id ;
           this.report.description = form.value.description ;
-     
+
          console.log(this.report);
          //this.add();
        }
-     
+
        registerClient() {
          this.router.initialNavigation();
        }
-     
+
        add(): void {
-     
+
          if (! this.report) { return; }
-         
+
           this.reportService.addReport( this.report)
            .subscribe();
        }
-     
+
 
   getBuildings(): void {
     this.buildingService.getBuildings()
@@ -102,18 +102,18 @@ export class DamagerecordComponent implements OnInit {
   }
 
   verify(): void{
-    // console.log(this.opinion.building_id)
+     console.log(this.report.building_id)
     this.getClassrooms(this.report.building_id)
     // console.log(this.classrooms)
     this.classrooms = JSON.parse(localStorage.getItem("ct"))
-    // console.log(this.classrooms)
+     console.log(this.classrooms);
   }
 
-  getClassrooms(id:number) 
+  getClassrooms(id:number)
   {
     this.classroomService.getClassrooms(id)
       .subscribe(
-          classrooms => 
+          classrooms =>
           {
             //console.log(classrooms[0].id),
             this.classrooms = classrooms

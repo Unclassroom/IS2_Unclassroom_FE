@@ -5,18 +5,20 @@ import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Building } from '../models/building';
 import { MessageService } from './message.service';
+import {UrloriginService} from './urlorigin.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
+const relativeModule = 'buildings';
 @Injectable()
 export class BuildingService {
-
-  private _Url = 'http://localhost:3000/buildings';
+  private _Url = this.urloriginService.getUrl(relativeModule);
   constructor(
     private http: HttpClient,
-    private messageService: MessageService) { }
+    private messageService: MessageService,
+    private urloriginService: UrloriginService) { }
 
   /** GET faculties from the server */
   getBuildings (): Observable<Building[]> {

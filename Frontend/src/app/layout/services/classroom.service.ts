@@ -6,6 +6,7 @@ import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Classroom } from '../models/classroom';
 import { MessageService } from './message.service';
+import {UrloriginService} from './urlorigin.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -14,17 +15,17 @@ const httpOptions = {
 @Injectable()
 export class ClassroomService {
 
-  private AllClassroomUrl = 'http://localhost:3000/classrooms/';
-  private eventUrl = 'http://localhost:3000/events';
-  private specificScheduleUrl = 'http://localhost:3000/specific_schedules';
-  private classroomEventUrl = 'http://localhost:3000/classroom_events';
-  private setStatusRequestUrl = 'http://localhost:3000/request_set_status';
-  private classroomByBuildingUrl = 'http://localhost:3000/building_classrooms/';
-  private classroomAvaByScheduleUrl = 'http://localhost:3000/classrooms/';
+  private AllClassroomUrl = this.urloriginService.getUrl('classrooms/');
+  private eventUrl = this.urloriginService.getUrl('events');
+  private specificScheduleUrl = this.urloriginService.getUrl('specific_schedules');
+  private classroomEventUrl = this.urloriginService.getUrl('classroom_events');
+  private setStatusRequestUrl = this.urloriginService.getUrl('request_set_status/');
+  private classroomByBuildingUrl = this.urloriginService.getUrl('building_classrooms/');
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService) { }
+    private messageService: MessageService,
+    private urloriginService: UrloriginService) { }
 
   /** GET faculties from the server */
   getClassroomsBuilding (building_id: number): Observable<Classroom[]> {
@@ -65,12 +66,12 @@ export class ClassroomService {
   }
 
   createEvent (name, description): any
-  { 
+  {
     return this.http.post(this.eventUrl,
       {
         "name": name,
         "description": description
-      }  
+      }
     ).map(
       response => {
         localStorage.setItem("event", JSON.stringify(response))
@@ -83,9 +84,9 @@ export class ClassroomService {
   )
     ;
   }
-  
+
   createSpecificSchedule (date, begin_at_hour, begin_at_minute, end_at_hour, end_at_minute): any
-  { 
+  {
     return this.http.post(this.specificScheduleUrl,
     {
         "specific_schedule":
@@ -108,10 +109,10 @@ export class ClassroomService {
     }
   )
     ;
-  }  
-  
+  }
+
   createClassroomEvent (event_id, specific_id, classroom_id): any
-  { 
+  {
     return this.http.post(this.classroomEventUrl,
       {
         "classroom_event":
@@ -131,10 +132,10 @@ export class ClassroomService {
       alert("No se asigno salon al evento")
     }
   );
-  }  
+  }
 
   setStatusRequest (request_id, classroom_event_id): any
-  { 
+  {
     return this.http.post(this.setStatusRequestUrl,
       {
         "request_id":request_id,
@@ -145,7 +146,7 @@ export class ClassroomService {
             "classroom_event_id": classroom_event_id
           }
         ]
-      }  
+      }
     ).map(
       response => {
         // localStorage.setItem("class_ava", JSON.stringify(response))

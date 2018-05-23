@@ -6,16 +6,19 @@ import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Faculty } from '../models/faculty';
 import { MessageService } from './message.service';
+import {UrloriginService} from './urlorigin.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
+const relativeModule = 'faculties';
 @Injectable()
 export class FalcultyService {
-  private _Url = 'http://localhost:3000/faculties';
+  private _Url = this.urloriginService.getUrl(relativeModule);
   constructor(
     private http: HttpClient,
-    private messageService: MessageService) { }
+    private messageService: MessageService,
+    private urloriginService: UrloriginService) { }
 
   /** GET faculties from the server */
   getFaculties (): Observable<Faculty[]> {

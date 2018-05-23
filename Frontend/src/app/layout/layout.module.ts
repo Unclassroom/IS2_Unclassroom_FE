@@ -34,6 +34,7 @@ import { ScheduleService } from './services/schedule.service';
 import { DamageregComponent } from './damagereg/damagereg.component';
 import { ReportService } from './services/report.service';
 import { UserslistComponent } from './userslist/userslist.component';
+import {UrloriginService} from './services/urlorigin.service';
 
 @NgModule({
   imports: [
@@ -53,6 +54,6 @@ import { UserslistComponent } from './userslist/userslist.component';
     FalcultyService, HeadBuildingService,  RequestService, BuildingService,
     ManagerService, TeacherService, ExternalPersonService, DepartmentsService,
     ClassroomService, GroupService, SubjectService, MessageService, EventService,
-    PurposeClassroomService, TypeClassroomService, OpinionService, ReportService, ScheduleService ]
+    PurposeClassroomService, TypeClassroomService, OpinionService, ReportService, ScheduleService, UrloriginService ]
 })
 export class LayoutModule { }
