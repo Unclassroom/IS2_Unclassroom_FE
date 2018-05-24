@@ -7,6 +7,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Classroom } from '../models/classroom';
 import { MessageService } from './message.service';
 import {UrloriginService} from './urlorigin.service';
+import Swal from 'sweetalert2'
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -59,7 +60,7 @@ export class ClassroomService {
         // console.log(response);
     },
     error => {
-      alert("No hay salones")
+      Swal('Oops...', 'No hay salones disponibles!', 'error')
     }
   )
     ;
@@ -75,11 +76,11 @@ export class ClassroomService {
     ).map(
       response => {
         localStorage.setItem("event", JSON.stringify(response))
-        alert("Se creo el evento")
+        // Swal('Se creo el evento')
         console.log(response);
     },
     error => {
-      alert("Error en crear evento")
+      Swal('Oops...', 'Error en el servidor: Creando el evento!', 'error')
     }
   )
     ;
@@ -101,11 +102,11 @@ export class ClassroomService {
     ).map(
       response => {
         localStorage.setItem("s_schedule", JSON.stringify(response))
-        alert("Se creo el horario especifico")
+        // alert("Se creo el horario especifico")
         console.log(response);
     },
     error => {
-      alert("Error en crear horario especifico")
+      Swal('Oops...', 'Error en el servidor: Creando horario especifico!', 'error')
     }
   )
     ;
@@ -125,11 +126,11 @@ export class ClassroomService {
     ).map(
       response => {
         localStorage.setItem("classroom_event", JSON.stringify(response))
-        alert("Se asigno salon al  evento")
+        Swal('Asignación exitosa')
         console.log(response);
     },
     error => {
-      alert("No se asigno salon al evento")
+      Swal('Oops...', 'Error en el servidor: Sin asignar salon al evento', 'error')
     }
   );
   }
@@ -149,12 +150,13 @@ export class ClassroomService {
       }
     ).map(
       response => {
+
         // localStorage.setItem("class_ava", JSON.stringify(response))
-        alert("Cambio solicitud de estado")
+        // Swal('Se cambio el estado de la  solicitud')
         console.log(response);
     },
     error => {
-      alert("Sin actualizar estado solicitud")
+      Swal('Oops...', 'Error en el servidor: Actualizando estado solicitud!', 'error')
     }
   )
     ;

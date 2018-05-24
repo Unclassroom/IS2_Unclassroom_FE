@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {  Router, RouterModule, Routes,  ActivatedRoute } from '@angular/router';
 // Models
 import { InboxRequest} from '../../../models/inboxrequest';
 // Services
@@ -20,15 +21,18 @@ export class ClassAvaComponent implements OnInit {
   request_mail: InboxRequest;
   event:any ={}
   classroomEvent:any ={}
+  loading:boolean;
 
 
   constructor(
     private requestService: RequestService,
-    private classroomService: ClassroomService
+    private classroomService: ClassroomService,
+    private router: Router,
   ) { }
 
   ngOnInit() 
   {
+    this.loading = false
     this.class_ava = JSON.parse(localStorage.getItem("class_ava"))
     this.specific_schedule = JSON.parse(localStorage.getItem("specific_schedule"))
     this.specific_schedule_separate = JSON.parse(localStorage.getItem("specific_schedule_separate"))
@@ -41,6 +45,7 @@ export class ClassAvaComponent implements OnInit {
 
   assignClassroom(classroom_id)
   {
+    this.loading = true;
     console.log(classroom_id)
     this.classroomService.createEvent
     (
@@ -73,8 +78,12 @@ export class ClassAvaComponent implements OnInit {
     (
       this.request_mail.id,
       this.classroomEvent.id
+      
     ).subscribe();
+    this.loading = false;
+    // this.router.navigate(["/layout/inbox/mail"]);
   }
+  
 
   save(): void {
     this.requestService.updateRequest(this.request_mail, this.request_mail.id)
