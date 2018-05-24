@@ -1,0 +1,66 @@
+<!-- Titulo -->
+<div class="row">
+    <div class="col-xl-9 col-lg-9">
+      <h3 style="margin-top: 15px"  class="text-muted"> Reporte de daños </h3>
+    </div>
+  </div>
+
+  <hr class=" px-4 ">
+  <form class="col-md-10" (submit)="logForm(requestForm)" enctype="multipart/form-data"
+      action="http://localhost:3000/reports" method="post"><!--(submit)="registerClient()"-->
+      <!--form class="col-md-10"  #requestForm="ngForm"-->
+   <!-- Edificio -->
+   <div class="row">
+      <input type="hidden" name="user_id" value="{{currentUser.id}}">
+      <input type="hidden" name="user_type" value="{{currentUser.role}}">
+      <label mdbActive  for="bl" class="text-muted">Edificio:</label>
+      <div class="md-form" *ngIf="getBuildings"> <!--*ngIf="getBuildings"-->
+        <select  [(ngModel)]="report.building_id" class="form-control" id="bl" name="building_name"><!--[(ngModel)]="report.building_id" ngModel-->
+            <option value=""></option>
+            <option *ngFor="let building of buildings" value="{{building.id}}"  (click)="verify()">{{building.name}}</option>
+        </select>
+      </div>
+      <!-- Salon -->
+      <label mdbActive  for="room" class="text-muted">Salón:</label>
+      <div class="md-form" *ngIf="verify"> <!--*ngIf="getSubjects"-->
+        <select [(ngModel)]="report.classroom_id" class="form-control" id="room" name="classroom_id"><!--[(ngModel)]="report.classroom_id" ngModel-->
+            <option value=""></option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <!--*<option *ngFor="let classroom of classrooms" value="{{classroom.id}}">{{classroom.id}}</option>-->
+
+        </select>
+      </div>
+    </div>
+
+
+  <div class="row">
+    <label mdbActive  for="st"  class="text-muted">Elemento Dañado: </label>
+    <div class="md-form">
+      <select class="form-control" id="st" ngModel>
+        <option value=""></option>
+        <option>Tablero</option>
+        <option>Video Beam</option>
+        <option>Pantalla</option>
+        <option>Escritorio</option>
+      </select>
+    </div>
+  </div>
+
+  <label mdbActive  for="observation"  class="text-muted"> Observación</label>
+  <div class="md-form">
+    <textarea [(ngModel)]="report.description" mdbActive type="text" id="motive" class="md-textarea" id="observation" name="description" ngModel></textarea>
+  </div>
+
+    <div class="input-group image-preview">
+      <div class="form-group  col-md-12">
+          <label for="exampleFormControlFile1">Añadir imagen</label>
+          <input type="file" name="file" [(ngModel)]="report.image" name="image" class="form-control-file" id="exampleFormControlFile1">
+      </div>
+      </div>
+      <div class="row">
+          <button type="submit"
+            class="btn btn-default" >Eviar reporte</button> <!--(click)="logForm(ngForm)"-->
+        </div>
+
+  </form>

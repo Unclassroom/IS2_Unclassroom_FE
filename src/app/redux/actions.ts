@@ -1,4 +1,24 @@
-export const ADD_SESSION = 'ADD_SESSION';
-export const REMOVE_SESSION = 'REMOVE_SESSION';
-export const ADD_REGISTER = 'ADD_REGISTER';
-export const REMOVE_REGISTER = 'REMOVE_REGISTER';
+export const SET_LOGIN_PENDING = 'SET_LOGIN_PENDING';
+export const SET_LOGIN_SUCCESS = 'SET_LOGIN_SUCCESS';
+export const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
+
+export function setLoginPending(isLoginPending) {
+  return {
+    type: SET_LOGIN_PENDING,
+    isLoginPending
+  };
+}
+
+export function setLoginSuccess(isLoginSuccess) {
+  return {
+    type: SET_LOGIN_SUCCESS,
+    isLoginSuccess
+  };
+}
+
+export function setLoginError(loginError) {
+  return {
+    type: SET_LOGIN_ERROR,
+    loginError
+  }
+}

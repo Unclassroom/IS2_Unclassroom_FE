@@ -20,29 +20,65 @@
   </div>
   <hr />
   <div class="row">
-    <div class="col-lg-8">
-      <div class="card card-default">
-        <div class="card-header">
-          <i class="fa fa-clock-o fa-fw"></i> Razones de solicitud
-        </div>
-        <!-- /.card-header -->
-        <!-- /.card-body -->
-      </div>
-      <!-- /.card -->
-    </div>
     <!-- /.col-lg-8 -->
-    <div class="col-lg-4">
-      <div class="card card-default mb-3">
-        <div class="card-header">
-          <i class="fa fa-bell fa-fw"></i> Cambios en los salones
-        </div>
-        <!-- /.card-header -->
-        <!-- /.card-body -->
-      </div>
-      <!-- /.card -->
 
-      <!-- /.card .chat-card -->
+    <div class="col col-sm-12">
+
+      <form role="form" (ngSubmit)="getDataRequestByPurposes_Filtered()"  #filterpurposesForm="ngForm">
+      <div class="col col-sm-4">
+      <input mdbActive type="text" id="from" class="form-control" name="from" required placeholder="From"  [(ngModel)]="model.begin_date">
+
+      </div>
+      <div class="col col-sm-4">
+      <input mdbActive type="text" id="to" class="form-control" name="to" required placeholder="To"  [(ngModel)]="model.end_date">
+
+      </div>
+      <div class="col col-sm-4">
+        <button type="submit" class="btn btn-info"  [disabled]="!filterpurposesForm.form.valid">Search</button>
+
+      </div>
+      </form>
     </div>
-    <!-- /.col-lg-4 -->
+    <div class="col col-sm-12">
+      <div class="card mb-3">
+        <div class="card-header">
+          <div class="col col-sm-9">
+          <i class="fa fa-clock-o fa-fw" style="font-size: 20px"></i>Propositos de solicitud
+          </div>
+          <button (click)="downloadPDF()" class="btn btn-warning ">Download results</button>
+        </div>
+        <div class="card-body">
+          <canvas baseChart height="180px"  [colors]="_backgroundColors" id="timerequest"[data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+          </canvas>
+        </div>
+      </div>
+    </div>
+    <!-- /.col-lg-4  [colors]="chartColors"  -->
+    <div class="col col-sm-12">
+      <div class="card mb-3">
+        <div class="card-header">
+          Estados de la solicitud
+        </div>
+        <div class="card-body">
+          <canvas baseChart height="180px"  [colors]="_backgroundColors" [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+          </canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col col-sm-12">
+      <div class="card mb-3">
+        <div class="card-header">
+          <div class="col col-sm-10">
+          Cantidad Solicitudes por mes
+          </div>
+        </div>
+        <div class="card-body">
+          <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+          </canvas>
+        </div>
+      </div>
+    </div>
+
   </div>
+
 </div>

@@ -1,4 +1,4 @@
-<div class="view intro hm-white-light" style="background-image: url(assets/images/background1.jpg); 
+<div class="view intro hm-white-light" style="background-image: url(assets/images/background1.jpg);
             background-attachment: fixed; height: 1200px;">
   <div class="full-bg-img">
     <div class="container">
@@ -11,12 +11,12 @@
               <!-- Content -->
               <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
                 <div>
-                  <h1 class="display-1 mb-2 wow fadeInDown  font-bold" data-wow-delay="0.3s" 
+                  <h1 class="display-1 mb-2 wow fadeInDown  font-bold" data-wow-delay="0.3s"
                       style="color: #f5f5f5 !important;">UN <a class="indigo-text font-bold" style="color: #3EA5B9 !important;">
                         Classroom</a></h1>
                   <h5 class="font-up mb-3 mt-1 font-bold wow fadeIn" data-wow-delay="0.4s" style="color: #FFFFFF !important;">Plataforma desarrollada para la gestión de recursos de la planta fisica en la Universidad</h5>
 
-                  <a class="btn  waves-light" style="background-color: #3EA5B9;"  (click)="form.show()"  mdbRippleRadius>
+                  <a class="btn  waves-light" style="background-color: #3EA5B9;" routerLink="/login"  mdbRippleRadius>
                     <i class="fa fa-clone left"></i> Login</a>
                 </div>
               </div>
@@ -29,51 +29,6 @@
     </div>
   </div>
 </div>
-<!--Modal: Login Form-->
-<div mdbModal  #form="mdb-modal"   class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog cascading-modal" role="document">
-    <!--Content-->
-    <div class="modal-content">
-
-      <!--Header-->
-      <div class="modal-header light-blue darken-3 white-text">
-        <h4 class="title"><i class="fa fa-user"></i> Log in</h4>
-        <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="form.hide()">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <!--Body-->
-      <div class="modal-body">
-        <div class="md-form form-sm">
-          <i class="fa fa-envelope prefix"></i>
-          <input mdbActive type="text" id="form30" class="form-control">
-          <label for="form30">Your email</label>
-        </div>
-
-        <div class="md-form form-sm">
-          <i class="fa fa-lock prefix"></i>
-          <input mdbActive type="password" id="form31" class="form-control">
-          <label for="form31">Your password</label>
-        </div>
-
-        <div class="text-center mt-2">
-          <button class="btn btn-info waves-light" mdbRippleRadius>Log in <i class="fa fa-sign-in ml-1"></i></button>
-        </div>
-
-      </div>
-      <!--Footer-->
-      <div class="modal-footer">
-        <div class="options text-center text-md-right mt-1">
-          <p>Not a member? <a href="#">Sign Up</a></p>
-          <p>Forgot <a href="#">Password?</a></p>
-        </div>
-        <button type="button" class="btn btn-outline-info ml-auto" data-dismiss="modal" (click)="form.hide()" mdbRippleRadius>Close</button>
-      </div>
-    </div>
-    <!--/.Content-->
-  </div>
-</div>
-<!--Modal: Login Form-->
 
 
 

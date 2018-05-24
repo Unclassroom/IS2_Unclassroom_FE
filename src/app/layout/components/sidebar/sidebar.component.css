@@ -2,7 +2,7 @@
   border-radius: 0;
   position: fixed;
   z-index: 1000;
-  top: 75px;
+  top: 70px;
   left: 235px;
   width: 235px;
   margin-left: -235px;
@@ -116,6 +116,13 @@
   padding: 10px;
   display: block;
 }
+.nested-menu .expand ul.submenu li a:active {
+  color: #FFFFFF;
+  padding: 10px;
+  display: block;
+}
+
+
 @media screen and (max-width: 992px) {
   .sidebar {
     top: 54px;

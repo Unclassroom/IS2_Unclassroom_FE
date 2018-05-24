@@ -43,7 +43,7 @@
       <li>
         <h5>Registrate y empieza a comentar</h5>
       </li>
-      <li><a class="btn btn-light-green waves-light" mdbRippleRadius  (click)="form_register.show()">Sign up!</a></li>
+      <li><a class="btn btn-light-green waves-light" routerLink="/register">Sign up!</a></li>
     </ul>
   </div>
   <!--/.Call to action-->
@@ -73,53 +73,4 @@
 </footer>
 <!--/.Footer-->
 
-<!--Modal: Register Form-->
-<div mdbModal #form_register="mdb-modal" class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog cascading-modal" role="document">
-    <!--Content-->
-    <div class="modal-content">
-
-      <!--Header-->
-      <div class="modal-header light-blue darken-3 white-text">
-        <h4 class="title"><i class="fa fa-user-plus"></i> Register</h4>
-        <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="form_register.hide()">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <!--Body-->
-      <div class="modal-body">
-        <div class="md-form form-sm">
-          <i class="fa fa-envelope prefix"></i>
-          <input mdbActive type="text" id="form32" class="form-control">
-          <label for="form32">Your email</label>
-        </div>
-
-        <div class="md-form form-sm">
-          <i class="fa fa-lock prefix"></i>
-          <input mdbActive type="password" id="form33" class="form-control">
-          <label for="form33">Your password</label>
-        </div>
-
-        <div class="md-form form-sm">
-          <i class="fa fa-lock prefix"></i>
-          <input mdbActive type="password" id="form34" class="form-control">
-          <label for="form34">Repeat password</label>
-        </div>
-
-        <div class="text-center mt-2">
-          <button class="btn btn-info waves-light" mdbRippleRadius>Sign up <i class="fa fa-sign-in ml-1"></i></button>
-        </div>
-
-      </div>
-      <!--Footer-->
-      <div class="modal-footer">
-        <div class="options text-center text-md-right mt-1">
-          <p>Already have an account? <a href="#">Log In</a></p>
-        </div>
-        <button type="button" class="btn btn-outline-info ml-auto" data-dismiss="modal" (click)="form_register.hide()" mdbRippleRadius>Close</button>
-      </div>
-    </div>
-    <!--/.Content-->
-  </div>
-</div>
 <!--Modal: Register Form-->

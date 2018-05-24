@@ -1,0 +1,17 @@
+
+.about-name {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin: 25px 0 0;
+  color: #8AAB49 !important;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.about-title {
+  font-size: 14px !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 20px;
+}

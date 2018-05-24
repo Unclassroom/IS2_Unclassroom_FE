@@ -1,146 +1,68 @@
-:host {
-    display: block;
-}
-.login-page {
-    background-image: url("/assets/images/plaza.png");
-    background-size: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow: auto;
-    text-align: center;
-    color: rgb(219, 206, 206);
-    padding: 3em;
-}
-.row{
-    position: static;
-    left:10;
-    align-content: center;
-}
-    .col-lg-4 {
-        padding: 0;
-    }
-    .input-lg {
-        height: 46px;
-        padding: 10px 16px;
-        font-size: 18px;
-        line-height: 1.3333333;
-        border-radius: 0;
-    }
-    .input-underline {
-        background: 0 0;
-        border: none;
-        box-shadow: none;
-        border-bottom: 2px solid rgba(58, 53, 53, 0.363);
-        color: rgb(101, 233, 226);
-        border-radius: 0;
-    }
-    .input-underline:focus {
-        border-bottom: 2px solid rgb(54, 47, 47);
-        box-shadow: none;
-    }
-    #reg, #log:hover{
-        background: #3EA5B9;
-    }
-    #log, #reg:hover{
-        background: #95B452;
-    }
-    #goo{
-        background: rgba(165, 15, 15, 0.932);
-    }
-    .rounded-btn {
-        color: rgba(31, 27, 27, 0.8);
-        border: 2px solid rgba(255, 255, 255, 0.8);
-        font-size: 18px;
-        line-height: 40px;
-        padding: 0 25px;
-        width: 200px;
-        margin: 20px
-    }
-    .rounded-btn:hover,
-    .rounded-btn:focus,
-    .rounded-btn:active,
-    .rounded-btn:visited {
-            margin-top: 10px;
-            background-color: #95B452;
-            border: none;
-            color: white;
-            padding: 5px 5px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            transition-duration: 0.4s;
-            cursor: pointer;
-            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);     
-    }
-    .button.red {
-        background-color: #D14836;
-        border: 1px solid transparent;
-        color: white;
-        text-shadow: 0 1px rgba(0, 0, 0, 0.1);
-    }
-    
-    .button.red:hover {
-        background-color: rgb(129, 28, 17);	
-    }
-    
-    h1 {
-        font-weight: 300;
-        margin-top: 20px;
-        margin-bottom: 10px;
-        font-size: 36px;
-    }
-        input:-moz-placeholder {
-            /* Firefox 18- */
-            color: rgba(255, 255, 255, 0.6) !important;
-        }
 
-        input::-moz-placeholder {
-            /* Firefox 19+ */
-            color: rgba(255, 255, 255, 0.6) !important;
-        }
+/* Required for full background image */
 
-        input:-ms-input-placeholder {
-            color: rgba(255, 255, 255, 0.6) !important;
-        }
-    .form-content {
-        padding: 40px 0;
-    }
-    .user-avatar {
-        -webkit-border-radius: 10%;
-        border-radius: 10%;
-    }
+html,
+body,
+header,
+.view {
+  height: 700px;
+  background-image: url(../landing/assets/images/background1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
 
-    @font-face {
-        font-family: 'icomoon';
-        src:  url('fonts/icomoon.eot?k2xrn5');
-        src:  url('fonts/icomoon.eot?k2xrn5#iefix') format('embedded-opentype'),
-          url('fonts/icomoon.ttf?k2xrn5') format('truetype'),
-          url('fonts/icomoon.woff?k2xrn5') format('woff'),
-          url('fonts/icomoon.svg?k2xrn5#icomoon') format('svg');
-        font-weight: normal;
-        font-style: normal;
-      }
-      
-      [class^="icon-"], [class*=" icon-"] {
-        /* use !important to prevent issues with browser extensions that change fonts */
-        font-family: 'icomoon' !important;
-        speak: none;
-        font-style: normal;
-        font-weight: normal;
-        font-variant: normal;
-        text-transform: none;
-        line-height: 1;
-      
-        /* Better Font Rendering =========== */
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-      }
-      
-      .icon-google2:before {
-        content: "\ea89";
-      }
-      
+}
+
+@media (max-width: 740px) {
+  html,
+  body,
+  header,
+  .view {
+    height: 1000px;
+  }
+}
+@media (min-width: 800px) and (max-width: 850px) {
+  html,
+  body,
+  header,
+  .view {
+    height: 650px;
+  }
+}
+
+.top-nav-collapse {
+  background-color: #3f51b5 !important;
+}
+
+.navbar:not(.top-nav-collapse) {
+  background: transparent !important;
+}
+
+@media (max-width: 768px) {
+  .navbar:not(.top-nav-collapse) {
+    background: #3f51b5 !important;
+  }
+}
+@media (min-width: 800px) and (max-width: 850px) {
+  .navbar:not(.top-nav-collapse) {
+    background: #3f51b5 !important;
+  }
+}
+
+.rgba-gradient {
+  background: -webkit-linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%);
+  background: -webkit-gradient(linear, 45deg, from(rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%)));
+  background: linear-gradient(to 45deg, rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%);
+}
+
+.card {
+  background-color: rgba(126, 123, 215, 0.2);
+}
+
+.md-form label {
+  color: #ffffff;
+}
+
+h6 {
+  line-height: 1.7;
+}

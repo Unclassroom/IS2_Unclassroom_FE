@@ -1,3 +1,52 @@
-<p>
-  detallemensaje works!
-</p>
+<div class="row">
+  <div class="col-xl-9 col-lg-9">
+    <h3 style="margin-top: 15px"> Peticion no:  {{request_mail.id}} </h3>
+  </div>
+  <div class="col-xl-3 col-lg-3" style="align-content: right;">
+    <a   class="btn btn-warning" >{{request_mail.state}}</a>
+  </div>
+</div>
+<hr class=" px-4 ">
+<!--Panel-->
+<div >
+  <div class="card w-100"   style="margin-bottom: 10px">
+    <div class="card-body">
+      <!-- <h3 class="card-title">Remitente: {{request_mail.teacher.first_name +' '+ request_mail.teacher.last_name}} </h3> -->
+      
+      <!-- <p class="card-text">Remitente:    </p> -->
+      <!-- <p class="card-text">E-mail:   {{request_mail.teacher.email}} </p> -->
+      <div >
+        <h3 >Remitente:  </h3>
+        <div >
+          <p class="card-text">Nombre:   {{request_mail.requestable.first_name +' '+ request_mail.requestable.last_name}} </p>
+          <p class="card-text">E-mail:   {{request_mail.requester_email}} </p>
+          <p class="card-text">Cargo:  {{request_mail.user_type}} </p>
+        </div>
+      </div>
+      <div >
+        <h3 >Características:  </h3>
+        <div >
+          <p class="card-text">Tipo Salon:  {{request_mail.type_classroom}} </p>
+          <p class="card-text">Proposito:  {{request_mail.purpose_classroom}} </p>
+          <p class="card-text">Motivo : {{request_mail.motive}} </p>
+         </div>
+      </div>
+      <div *ngIf="request_mail.times">
+        <h3 >Horario:  </h3>
+        <div *ngFor="let time of request_mail.times"  >
+          <div>
+            <p class="card-text">Fecha: {{time.date}} </p>
+            <p class="card-text">Desde = {{time.begin_at_hour}} : {{time.begin_at_minute}}</p>
+            <p class="card-text">Hasta = {{time.end_at_hour}} : {{time.end_at_minute}}</p>
+            <a  (click)="getClassroom(time)" class="btn btn-primary">Elegir salon</a>
+            <!-- routerLink="/layout/inbox/mail/{{request_mail.id}}/class-ava" -->
+          </div>
+        </div>
+      </div>
+      <!-- <a (click)="getClassroomAvailable()" class="btn btn-primary">Elegir salon</a> -->
+    </div>
+    <div class="col-lg-2 col-md-2" style="margin-bottom: 15px">
+      <a  routerLink="/layout/inbox/" class="btn btn-info">Regresar</a>
+    </div>
+  </div>
+</div>

@@ -1,85 +1,139 @@
 <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css"
+      integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
-  <div class="list-group">
-    <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
-
+  <div [ngSwitch]="true" class="list-group">
+    <!-- Profile -->
+     <a routerLink="/layout/profile" [routerLinkActive]="['router-link-active']" class="list-group-item">
+      <span><i class="fa fa-user-circle"></i>Profile</span>
+    </a>
+    <!-- Dashboard -->
+    <a *ngSwitchCase="currentUser.role === 'manager'" routerLink="/layout/dashboard" [routerLinkActive]="['router-link-active']"
+       class="list-group-item">
       <span><i class="fa fa-bar-chart-o fa-fw"></i>Dashboard</span>
     </a>
-    <div class="nested-menu">
-      <a class="list-group-item" (click)="addExpandClass('pages')">
-        <span><i class="fa fa-file-text"></i>&nbsp;Recursos</span>
+    <!-- Recursos -->
+    <div *ngSwitchCase="currentUser.role === 'manager'"  class="nested-menu">
+      <a class="list-group-item" (click)="addExpandClass('resources')">
+        <span><i class="fa fa-sort-amount-down "></i>&nbsp;Recursos</span>
       </a>
-      <li class="nested" [class.expand]="showMenu === 'pages'">
+      <li class="nested" [class.expand]="showMenu === 'resources'">
         <ul class="submenu">
           <li>
-            <a  routerLink="/layout/buzonentrada"><span>Buzon de entrada</span></a>
+            <a  routerLink="/layout/inbox" ><span>Buzon de entrada</span></a>
           </li>
           <li>
-            <a href="javascript:void(0)"><span>Listado salones y reportes de daños</span></a>
+            <a routerLink="/layout/calendarevent"><span>Calendario</span></a>
+          </li>
+          <li>
+            <a routerLink="/layout/mycalendar"><span>MyCalendar</span></a>
+          </li>
+          <li>
+            <a routerLink="/layout/building"><span>Edificios</span></a>
           </li>
         </ul>
       </li>
     </div>
-    <a class="list-group-item more-themes" href="" >
-      <span><i class="fa fa-upload fa-fw"></i>Parametrización</span>
-    </a>
+    <!-- Parametrización -->
+    <div *ngSwitchCase="currentUser.role === 'manager'" class="nested-menu">
+      <a class="list-group-item"  (click)="addExpandClass('parametrization')"  [routerLinkActive]="['router-link-active']">
+        <span><i class="fa fa-file-text"></i>Parametrización</span>
+      </a>
+        <li class="nested" [class.expand]="showMenu === 'parametrization'">
+        <ul class="submenu">
+          <li>
+            <a  routerLink="/layout/loadrequest"><span>Cargue Semestral</span></a>
+          </li>
+        </ul>
+      </li>
+    </div>
 
-
-    <div class="nested-menu">
-      <a class="list-group-item" (click)="addExpandClass('pages')">
+    <!-- Administración -->
+    <div *ngSwitchCase="currentUser.role === 'manager'" class="nested-menu">
+      <a class="list-group-item"  (click)="addExpandClass('administration')"  [routerLinkActive]="['router-link-active']">
         <span><i class="fa fa-users fa-fw"></i>Administración</span>
       </a>
+      <li class="nested" [class.expand]="showMenu === 'administration'">
+        <ul class="submenu">
+          <li>
+            <a  routerLink="/layout/users"><span>Encargados</span></a>
+          </li>
+          <li>
+            <a  routerLink="/layout/faculty"><span>Facultad</span></a>
+          </li>
+          <li>
+            <a  routerLink="/layout/event"><span>Evento</span></a>
+          </li>
+          <li>
+            <a  routerLink="/layout/subject"><span>Asignatura</span></a>
+          </li>
+          <li>
+            <a  routerLink="/layout/group"><span>Grupo</span></a>
+          </li>
+          <li>
+            <a  routerLink="/layout/purpose-classroom"><span>Proposito salon</span></a>
+          </li>
+        </ul>
+      </li>
+    </div>
+    <!-- Historial -->
+    <a *ngSwitchCase="currentUser.role === 'manager'" [routerLinkActive]="['router-link-active']" class="list-group-item">
+      <span><i class="fa fa-history"></i>Historial</span>
+    </a>
+    <!-- Solicitudes -->
+    <div *ngSwitchCase="currentUser.role ==='teacher'" class="nested-menu">
+      <a class="list-group-item" (click)="addExpandClass('history')"  [routerLinkActive]="['router-link-active']">
+        <span><i class="fa fa-clipboard-list"></i>Solicitudes</span>
+      </a>
+      <li class="nested" [class.expand]="showMenu === 'history'">
+        <ul class="submenu">
+          <li>
+            <a  routerLink="/layout/requestbag"><span>Lista Solicitudes</span></a>
+          </li>
+          <li>
+            <a  routerLink="/layout/requestbag/register"><span>Crear Solicitud</span></a>
+          </li>
+        </ul>
+      </li>
+    </div>
+     <!-- Comentarios -->
+     <div class="nested-menu"><!--*ngSwitchCase="currentUser.role ==='student' "-->
+      <a class="list-group-item" (click)="addExpandClass('coments')"  [routerLinkActive]="['router-link-active']">
+        <span><i class="fas fa-comments fa-fw"></i>Comentarios</span>
+      </a>
+      <li class="nested" [class.expand]="showMenu === 'coments'">
+        <ul class="submenu">
+          <li>
+            <a  routerLink="/layout/coment"><span>Crear Comentario</span></a>
+          </li>
+          <li *ngSwitchCase="currentUser.role ==='manager' ">
+            <a  routerLink="/layout/comentreg"><span>Listado de comentarios</span></a>
+          </li>
+        </ul>
+      </li>
+    </div>
+    <!-- Daños -->
+    <div class="nested-menu">
+      <a class="list-group-item" (click)="addExpandClass('pages')">
+        <span><i class="fas fa-exclamation-triangle"></i>Reportar un daño</span>
+      </a>
       <li class="nested" [class.expand]="showMenu === 'pages'">
         <ul class="submenu">
           <li>
-            <a  routerLink="/layout/usuarios"><span>Encargados</span></a>
+            <a  routerLink="/layout/damagerecord"><span>Generar reporte</span></a>
+          </li>
+          <li><!--*ngSwitchCase="'manager'"-->
+              <a  routerLink="/layout/damagereg"><span>Listado de reportes</span></a>
           </li>
         </ul>
       </li>
     </div>
 
-    <a class="list-group-item more-themes" href="" >
-      <span><i class="fa fa-hdd-o fa-fw"></i>Historial</span>
-    </a>
-    <a class="list-group-item more-themes" href="" >
+    <!-- About -->
+    <a class="list-group-item more-themes" href=""  [routerLinkActive]="['router-link-active']">
       <span><i class="fa fa-question-circle fa-fw"></i>About</span>
     </a>
-    <div class="header-fields">
-      <a (click)="rltAndLtr()" class="list-group-item">
-        <span><i class="fa fa-arrows-h"></i>&nbsp; RTL/LTR</span>
-      </a>
-
-      <div class="nested-menu">
-        <a class="list-group-item" (click)="addExpandClass('profile')">
-          <span><i class="fa fa-user"></i>&nbsp; John Smith</span>
-        </a>
-        <li class="nested" [class.expand]="showMenu === 'profile'">
-          <ul class="submenu">
-            <li>
-              <a href="javascript:void(0)">
-                <span><i class="fa fa-fw fa-user"></i>Profile</span>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:void(0)">
-                <span><i class="fa fa-fw fa-envelope"></i> Inbox</span>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:void(0)">
-                <span><i class="fa fa-fw fa-gear"></i>Settings</span>
-              </a>
-            </li>
-            <li>
-              <a [routerLink]="['/login']" (click)="onLoggedout()">
-                <span><i class="fa fa-fw fa-power-off"></i>Log Out</span>
-              </a>
-            </li>
-          </ul>
-        </li>
-      </div>
-    </div>
   </div>
 </nav>
 
