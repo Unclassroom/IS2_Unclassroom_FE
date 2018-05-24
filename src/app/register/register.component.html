@@ -1,0 +1,152 @@
+<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.js"></script>
+<app-navbar></app-navbar>
+<main>
+
+  <!-- Main navigation -->
+  <header>
+    <!-- Navbar -->
+    <!-- Navbar -->
+    <!-- Full Page Intro -->
+
+    <div class="view login-page" style="background-image: url('../landing/assets/images/background1.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;"   [@routerTransition]>
+      <!-- Mask & flexbox options-->
+
+      <div class="mask rgba-gradient d-flex justify-content-center align-items-center">
+        <!-- Content -->
+        <div class="container">
+          <!--Grid row-->
+          <div class="row mt-5">
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-md-8 col-xl-6 mb-4 " >
+              <form role="form" (ngSubmit)="register()" #f="ngForm"  >
+                <!--Form-->
+                <div class="card wow fadeInRight rgba-black-strong" data-wow-delay="0.3s">
+                  <div class="card-body">
+                    <!--Header-->
+                    <div class="text-center">
+                      <h3 class="white-text">
+                        <i class="fa fa-user white-text"></i> Register:</h3>
+                      <hr class="hr-light">
+                    </div>
+                    <!--Body-->
+
+                    <div class="md-form">
+                      <i class="fa fa-envelope prefix white-text active"></i>
+                      <input type="text" id="first_name" class="white-text form-control validate" [(ngModel)]="model.first_name"
+                             required
+                             name="first_name">
+                      <label for="first_name" class="active">FirstName</label>
+
+                    </div>
+
+                    <div class="md-form">
+                      <i class="fa fa-envelope prefix white-text active"></i>
+                      <input type="text" id="last_name" class="white-text form-control validate" [(ngModel)]="model.last_name"
+                             required
+                             name="last_name">
+                      <label for="last_name" class="active">LastName</label>
+
+                    </div>
+                    <div class="md-form">
+                      <i class="fa fa-lock prefix white-text active"></i>
+                      <input type="text"
+                             id="username"
+                             class="white-text form-control validate"
+                             [(ngModel)]="model.username"
+                             required
+                             name="username">
+                      <label for="username" class="active">Username</label>
+                    </div>
+
+                    <div class="md-form">
+                      <i class="fa fa-lock prefix white-text active"></i>
+                      <input type="email"
+                             id="email"
+                             class="white-text form-control validate"
+                             pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+                             [(ngModel)]="model.email"
+                             required
+                             name="email">
+                      <i class="fa fa-check check-ok"></i>
+                      <label for="email" class="active">Email</label>
+                    </div>
+
+
+                    <div class="md-form">
+                      <i class="fa fa-lock prefix white-text active"></i>
+                      <input type="password"
+                             id="password"
+                             class="white-text form-control validate"
+                             [(ngModel)]="model.password"
+                             required
+                             name="password"
+                             pattern ="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@$!%*?]{8,16}">
+                      <p class="pcheck" style="color: #FFFFFF">*The password must have between 8 and 16 characters and have at least one uppercase letter, one lowercase and one number</p>
+
+                      <label for="password" class="active">Password</label>
+
+                    </div>
+
+                    <div class="md-form">
+                      <i class="fa fa-lock prefix white-text active"></i>
+                      <input type="password"
+                             id="password_confirmation"
+                             class="white-text form-control validate"
+                             [(ngModel)]="model.password_confirmation"
+                             required
+                             name="password_confirmation">
+                      <label for="password_confirmation" class="active">Password confirmation</label>
+
+                    </div>
+
+                    <span
+                      *ngIf="model.password != model.password_confirmation"
+                      style="color:red">Passwords must match<br>
+                    </span>
+                    <div class="text-center mt-4">
+                      <button type="submit"
+                              id="reg"
+                              [disabled]="loading"
+                              [disabled]="!(f.valid) || !(model.password == model.password_confirmation)"
+                        class="btn btn-indigo"
+                              mdbRippleRadius
+                              type="submit">Sign up</button>
+                      <hr class="hr-light mb-3 mt-4">
+                      <div  *ngIf="loading">
+                        <img src="../../assets/images/loader.gif">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--/.Form-->
+
+              </form>
+            </div>
+
+            <!--Grid column-->
+            <div class="col-md-6 mb-5 mt-md-0 mt-5 white-text text-center text-md-left">
+              <h1 class="h1-responsive font-weight-bold wow fadeInLeft" data-wow-delay="0.3s">Register now! </h1>
+              <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s">
+              <h6 class="mb-3 wow fadeInLeft" data-wow-delay="0.3s">Registrate y podras tener acceso al la plataforma de solicitudes, comentar y reportar sobre los recursos en prestamo y alquiler</h6>
+            </div>
+            <!--Grid column-->
+          </div>
+          <!--Grid row-->
+        </div>
+        <!-- Content -->
+      </div>
+      <!-- Mask & flexbox options-->
+    </div>
+    <!-- Full Page Intro -->
+  </header>
+  <!-- Main navigation -->
+  <!--Section: Features v.3-->
+
+
+
+</main>
+<app-footer></app-footer>
+

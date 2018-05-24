@@ -1,0 +1,84 @@
+<div [@routerTransition]>
+  <h2 class="text-muted">Dashboard</h2>
+  <div class="row">
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-xl-3 col-lg-3">
+
+      <app-stat [bgClass]="'primary'" [icon]="'fa-comments'" [count]="26" [label]="'Cantidad Peticiones'" ></app-stat>
+    </div>
+    <div class="col-xl-3 col-lg-3">
+      <app-stat [bgClass]="'warning'" [icon]="'fa-check'" [count]="12" [label]="'Peticiones Respondidas'" ></app-stat>
+    </div>
+    <div class="col-xl-3 col-lg-3">
+      <app-stat [bgClass]="'success'" [icon]="'fa-times'" [count]="124" [label]="'Peticiones Pendientes'" ></app-stat>
+    </div>
+    <div class="col-xl-3 col-lg-3">
+      <app-stat [bgClass]="'danger'" [icon]="'fa-clock-o'" [count]="13" [label]="'Peticiones sin confirmar'"></app-stat>
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <!-- /.col-lg-8 -->
+
+    <div class="col col-sm-12">
+
+      <form role="form" (ngSubmit)="getDataRequestByPurposes_Filtered()"  #filterpurposesForm="ngForm">
+      <div class="col col-sm-4">
+      <input mdbActive type="text" id="from" class="form-control" name="from" required placeholder="From"  [(ngModel)]="model.begin_date">
+
+      </div>
+      <div class="col col-sm-4">
+      <input mdbActive type="text" id="to" class="form-control" name="to" required placeholder="To"  [(ngModel)]="model.end_date">
+
+      </div>
+      <div class="col col-sm-4">
+        <button type="submit" class="btn btn-info"  [disabled]="!filterpurposesForm.form.valid">Search</button>
+
+      </div>
+      </form>
+    </div>
+    <div class="col col-sm-12">
+      <div class="card mb-3">
+        <div class="card-header">
+          <div class="col col-sm-9">
+          <i class="fa fa-clock-o fa-fw" style="font-size: 20px"></i>Propositos de solicitud
+          </div>
+          <button (click)="downloadPDF()" class="btn btn-warning ">Download results</button>
+        </div>
+        <div class="card-body">
+          <canvas baseChart height="180px"  [colors]="_backgroundColors" id="timerequest"[data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+          </canvas>
+        </div>
+      </div>
+    </div>
+    <!-- /.col-lg-4  [colors]="chartColors"  -->
+    <div class="col col-sm-12">
+      <div class="card mb-3">
+        <div class="card-header">
+          Estados de la solicitud
+        </div>
+        <div class="card-body">
+          <canvas baseChart height="180px"  [colors]="_backgroundColors" [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+          </canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col col-sm-12">
+      <div class="card mb-3">
+        <div class="card-header">
+          <div class="col col-sm-10">
+          Cantidad Solicitudes por mes
+          </div>
+        </div>
+        <div class="card-body">
+          <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+          </canvas>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

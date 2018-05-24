@@ -1,0 +1,94 @@
+<h3> Registro de comentarios </h3>
+<hr class=" px-4 ">
+<!--Grid row-->
+<div class="row mt-6 ml-6 ">
+
+  <!--Grid column-->
+  <div class="col-lg-4 col-md-4" style="margin-bottom: 15px">
+  </div>
+  <!--Grid row-->
+</div>
+<!--Top Table UI-->
+<div class="card card-cascade narrower">
+  <!--/Card image-->
+  <div class="px-4">
+    <div class="table-wrapper"  ><!--*ngIf="getOpinions"-->
+      <!--Table-->
+      <table class="table table-hover mb-0">
+        <!--Table head-->
+        <thead>
+        <tr>
+          <th class="mr-2"><label  class="th-lg label-table">No.</label>
+          </th>
+          <th class="th-lg"><a href="">Comentario<i class="fa fa-sort ml-1"></i></a></th>
+          <th class="th-lg"><a href="">Edificio<i class="fa fa-sort ml-1"></i></a></th>
+          <th class="th-lg"><a href="">Salón<i class="fa fa-sort ml-1"></i></a></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let opinion of opinions">
+          <th scope="row">
+            <label  class="label-table">{{opinion.id}}</label>
+          </th>
+          <td>{{opinion.description}}</td>
+          <td>{{opinion.classroom_id}}</td>
+          <td>{{opinion.user_id}}</td>
+        </tr>
+        </tbody>
+        <!--Table body-->
+      </table>
+
+      <!-- <app-tables ></app-tables> -->
+
+      <!--Table-->
+    </div>
+
+    <hr class="my-0">
+
+    <!--Bottom Table UI-->
+    <div class="d-flex justify-content-between">
+
+
+      <!--Pagination -->
+      <nav class="my-4">
+        <ul class="pagination pagination-circle pg-blue mb-0">
+
+          <!--First-->
+          <li class="page-item disabled"><a class="page-link" (click)="onChangeOpinion(1)">First</a></li>
+
+          <!--Arrow left-->
+          <li class="page-item disabled">
+            <a class="page-link" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+
+          <!--Numbers-->
+          <li class="page-item active" (click)="onChangeOpinion(1)"><a class="page-link" >1</a></li>
+          <li  (click)="onChangeOpinion(2)"><a class="page-link" >2</a></li>
+          <li  (click)="onChangeOpinion(3)"><a class="page-link" >3</a></li>
+          <li  (click)="onChangeOpinion(4)"><a class="page-link" >4</a></li>
+          <li  (click)="onChangeOpinion(5)"><a class="page-link" >5</a></li>
+          <li  (click)="onChangeOpinion(6)"><a class="page-link" >6</a></li>
+
+          <!--Arrow right-->
+          <li class="page-item">
+            <a class="page-link" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only"  (click)="onChangeOpinion(6)">Next</span>
+            </a>
+          </li>
+
+          <!--First-->
+          <li class="page-item"><a class="page-link">Last</a></li>
+
+        </ul>
+      </nav>
+      <!--/Pagination -->
+
+    </div>
+    <!--Bottom Table UI-->
+
+  </div>
+</div>
