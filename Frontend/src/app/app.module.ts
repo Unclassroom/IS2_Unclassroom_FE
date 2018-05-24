@@ -27,6 +27,8 @@ import { SocialLoginModule, AuthServiceConfig} from "angular5-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider} from "angular5-social-login";
 import {NavbarModule} from './components/navbar/navbar.module';
 import {FooterModule} from './components/footer/footer.module';
+// import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
+
 // import { LoginOpt } from "angular4-social-login";
 
 // Configs

@@ -13,10 +13,6 @@
     <div class="view login-page" style="background-image: url('../landing/assets/images/background1.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;"   [@routerTransition]>
       <!-- Mask & flexbox options-->
 
-      <div  *ngIf="loading">
-        <img src="../../assets/images/loader.gif">
-
-      </div>
       <div class="mask rgba-gradient d-flex justify-content-center align-items-center">
         <!-- Content -->
         <div class="container">
@@ -110,8 +106,6 @@
                       *ngIf="model.password != model.password_confirmation"
                       style="color:red">Passwords must match<br>
                     </span>
-
-
                     <div class="text-center mt-4">
                       <button type="submit"
                               id="reg"
@@ -121,9 +115,9 @@
                               mdbRippleRadius
                               type="submit">Sign up</button>
                       <hr class="hr-light mb-3 mt-4">
-
-
-
+                      <div  *ngIf="loading">
+                        <img src="../../assets/images/loader.gif">
+                      </div>
                     </div>
                   </div>
                 </div>
