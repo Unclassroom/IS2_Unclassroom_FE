@@ -3,13 +3,21 @@
 <!--Panel-->
 <div *ngIf="requests">
 <div class="card w-100"  *ngFor="let request of requests" style="margin-bottom: 10px">
+  <div class="row">
+    <div class="col-xl-9 col-lg-9">
+      <h4 style="margin-top: 15px"> Peticion no:  {{request.id}} </h4>
+    </div>
+    <div class="col-xl-3 col-lg-3" style="align-content: right;">
+      <h4 class="card-title">Estado:  {{request.state}}</h4>
+    </div>
+  </div>
   <div class="card-body">
-    <h3 class="card-title">Solicitud #  {{request.id}}</h3>
-    <a    class="btn btn-warning">{{request.state}}</a>
+    <!-- <h3 align=right class="card-title">Estado:  {{request.state}}</h3>
+    <h4 class="card-title">Solicitud #  {{request.id}}</h4> -->
     <p class="card-text">Tipo de salon: {{request.type_classroom}}</p>
     <p class="card-text">Proposito de salon: {{request.purpose_classroom}}</p>
     <div *ngIf="request.times != -1">
-        <h3 >Horario:  </h3>
+        <h5 >Horario:  </h5>
         <div *ngFor="let time of request.times"  >
           <div >
             <p class="card-text">Fecha: {{time.date}}</p>
@@ -24,7 +32,7 @@
         <h3 >Salon: {{request.classroom_events[0].classroom_id}} </h3> -->
         <div *ngFor="let event of request.classroom_events"  >
           <div  *ngIf="request.classroom_events?.length > 0">
-            <h3 >Salon: {{request.classroom_events[0].classroom_id}} </h3>
+            <h5 >Salon: {{request.classroom_events[0].classroom_id}} </h5>
             <!-- <p class="card-text">Evento: {{event.event_id}}</p> -->
             <!-- <p class="card-text">Salon: {{event.classroom_id}}</p> -->
             <!-- <p class="card-text">Desde (H): {{time.begin_at_hour}}</p>
@@ -33,13 +41,8 @@
             <p class="card-text">Hasta (M): {{time.end_at_minute}}</p> -->
           </div>
         </div> 
-      <!-- </div> -->
-    <!-- <p class="card-text">Dia: {{request.times[0].date}}</p>
-    <p class="card-text">Hora inicio: {{request.times[0].begin_at_hour}}</p> -->
-    
   </div>
 </div>
 </div>
-<!--/.Panel-->
 
 

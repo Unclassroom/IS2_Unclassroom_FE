@@ -12,6 +12,7 @@ import { AuthService, FacebookLoginProvider,GoogleLoginProvider} from 'angular5-
 
 import { AuthenticationService } from '../_services/index';
 import { UserService } from '../_services/index';
+import Swal from 'sweetalert2'
  
 interface Token {
   "jwt": string;
@@ -93,7 +94,6 @@ export class LoginComponent implements OnInit {
         this.model.email = userData.email
         this.model.username = e[0]
         this.model.role = "student"
-        console.log(this.model)
         this.userService.create_social(this.model)
           .subscribe(
             data => {              
@@ -105,21 +105,22 @@ export class LoginComponent implements OnInit {
                   data => 
                   {
                     // Create type user
-                    
                     this.model.first_name = fn[0]
                     this.model.last_name = fn[1]
                     this.model.id = JSON.stringify(data.id)
                     this.userService.createTypeUser(this.model, "student")
                     localStorage.setItem('currentUser', JSON.stringify(this.model));
+                    this.loading = false;
                     this.router.navigate(["/layout"]);
                   },
                   error => {
-                    this.herror=true;
-                    console.log("Error occured");
+                    Swal('Oops...', 'Error en el servidor!', 'error')
+                    this.loading = false;
                   }
               );
             },
             error => {
+              Swal('Oops...', 'Error en el servidor!', 'error')
               this.loading = false;
             });
       }
@@ -127,7 +128,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.clickscnt+=1
+    this.loading = true;
     this.authenticationService.getToken(this.model.email, this.model.password)
       .subscribe(
         token =>{
@@ -135,26 +136,18 @@ export class LoginComponent implements OnInit {
           this.authenticationService.login(this.token)
             .subscribe(
                 data => {
+                  this.loading = false;
                   this.router.navigate(["/layout"]);
-                  this.loading = true;
-                  console.log(this.loading)
-                  if (this.clickscnt>=2){
-                      this.clickstwo=true;
-                  }
                 },
                 error => {
-                  if (this.clickscnt>=2){
-                  this.clickstwo=true;
-                  }
-                  console.log("Error occured");
-                  this.herror=true;
+                  Swal('Oops...', 'Error en el servidor!', 'error')
                   this.loading = false;
                 }
             );
           },
         error =>{
-          console.log("Error occured");
-          this.herror=true;
+          Swal('Oops...', 'Usuario o contraseña incorrecta!', 'error')
+          this.loading = false;
         }
       );
   }

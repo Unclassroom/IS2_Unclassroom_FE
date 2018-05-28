@@ -4,29 +4,44 @@
 <div *ngIf="requests">
 <div class="card w-100"  *ngFor="let request of requests" style="margin-bottom: 10px">
   <div class="card-body">
-    <h3 class="card-title">Solicitud #  {{request.id}}</h3>
+      <div class="row">
+          <div class="col-xl-9 col-lg-9">
+            <h3 style="margin-top: 15px"> Peticion no:  {{request.id}} </h3>
+          </div>
+          <div class="col-xl-3 col-lg-3" style="align-content: right;">
+            <h3 class="card-title">Estado:  {{request.state}}</h3>
+          </div>
+        </div>
+    <!-- <h3 align=right class="card-title">Estado:  {{request.state}}</h3>
+    <h4 class="card-title">Solicitud #  {{request.id}}</h4> -->
     <p class="card-text">From: {{request.requestable.first_name +' '+ request.requestable.last_name}}</p>
     <p class="card-text">E-mail: {{request.requester_email}}</p>
     <p class="card-text">Cargo: {{request.user_type}}</p>
     <p class="card-text">Tipo de salon: {{request.type_classroom}}</p>
     <p class="card-text">Proposito de salon: {{request.purpose_classroom}}</p>
     <div *ngIf="request.times != -1">
-        <h3 >Horario:  </h3>
-        <div *ngFor="let time of request.times"  >
-          <div >
-            <p class="card-text">Fecha: {{time.date}}</p>
+      <h4 >Horario:  </h4>
+      <div *ngFor="let time of request.times"  >
+        <div >
+          <p class="card-text">Fecha: {{time.date}}</p>
             <!-- <p class="card-text">Desde (H): {{time.begin_at_hour}}</p>
             <p class="card-text">Desde (M): {{time.begin_at_minute}}</p>
             <p class="card-text">Hasta (H): {{time.end_at_hour}}</p>
             <p class="card-text">Hasta (M): {{time.end_at_minute}}</p> -->
-          </div>
         </div>
-      </div>
+       </div>
+       <div  *ngIf="request.state == 'no readed'">
+          <a  routerLink="/layout/inbox/mail/{{request.id}}" class="btn btn-primary">Gestionar</a>
+          <a href="#" class="btn btn-primary">Dar de Baja</a>
+        </div>
+    </div>
+   
+      
     <!-- <p class="card-text">Dia: {{request.times[0].date}}</p>
     <p class="card-text">Hora inicio: {{request.times[0].begin_at_hour}}</p> -->
-
-    <a  routerLink="/layout/inbox/mail/{{request.id}}" class="btn btn-primary">Gestionar</a>
-    <a href="#" class="btn btn-primary">Dar de Baja</a>
+    
+    
+    
   </div>
 </div>
 </div>

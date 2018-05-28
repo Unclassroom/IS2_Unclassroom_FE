@@ -5,6 +5,8 @@ import {MessageService} from './message.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Event} from '../models/event';
 import {catchError, tap} from 'rxjs/operators';
+import {UrloriginService} from './urlorigin.service';
+import {Faculty} from '../models/faculty';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -14,10 +16,12 @@ const httpOptions = {
 export class EventService {
 
 
-  private _Url = 'http://localhost:3000/events';
+  private _Url = this.urloriginService.getUrl('events');
+  private _UrlPages = this.urloriginService.getUrl('events_pages');
   constructor(
     private http: HttpClient,
-    private messageService: MessageService) { }
+    private messageService: MessageService,
+    private urloriginService: UrloriginService) { }
 
   /** GET events from the server */
   getEvents (): Observable<Event[]> {
@@ -32,6 +36,13 @@ export class EventService {
     );
   }
 
+  getEventsPagination (id: number): Observable<Event[]> {
+    return this.http.get<Event[]>(this._Url + '?page=' + id);
+  }
+
+  getEventsPages (): Observable<number> {
+    return this.http.get<number>(this._UrlPages);
+  }
   //////// Save methods //////////
 
   /** POST: add a new event to the server */

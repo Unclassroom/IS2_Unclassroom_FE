@@ -14,6 +14,7 @@ import {  Observable } from 'rxjs/Observable';
 import {  DatetimeService} from './datetime.service';
 import {  SpecificRequest } from '../../models/specific_request';
 import {  User } from '../../../_models/index';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-register',
@@ -104,11 +105,12 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         data => 
           {
-            console.log(data)
-            alert("Create request");
+            // console.log(data)
+            Swal('Solicitud creada exitosamente')
+
           },
         error => {
-            alert("Error occured");
+          Swal('Oops...', 'Error en el servidor: Creando solicitud!', 'error')
           }
       );
   }

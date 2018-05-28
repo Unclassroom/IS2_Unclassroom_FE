@@ -19,7 +19,9 @@ export class ClassroomComponent implements OnInit {
   }
   getClassroomsBuilding(): void {
     this.classroomService.getClassroomsBuilding(this.id)
-      .subscribe(classrooms => this.classrooms = classrooms);
-
+      .subscribe((classrooms) => {
+        this.classrooms = classrooms;
+        console.log(this.classrooms);
+      });
   }
 }

@@ -7,6 +7,7 @@ import { UserService } from '../_services/index';
 import { AuthenticationService } from '../_services/index';
 import {  HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../_models/index';
+import Swal from 'sweetalert2'
 
 interface Token {
   "jwt": string;
@@ -59,14 +60,11 @@ export class RegisterComponent implements OnInit {
     this.userService.createUser(this.model)
       .subscribe(
         tok => {
-          console.log(this.model)
           this.token = JSON.parse(localStorage.getItem('token'));
-          console.log(this.token)
           if (this.token == "-1"){
             //user already exists
-            // it is necessary validate more beatiful this error
-            console.log("user already exists");
-            alert("user already exist")
+            Swal('Oops...', 'Usuario ya existe!', 'error')
+            this.loading = false;
           }else{
             this.authenticationService.login(this.token)
             .subscribe(
@@ -75,8 +73,6 @@ export class RegisterComponent implements OnInit {
                 this.user = JSON.parse(localStorage.getItem('currentUser'))
                 this.user.first_name = this.model.first_name
                 this.user.last_name = this.model.last_name
-                // console.log(this.user)
-                // console.log(this.model)
                 this.userService.createTypeUser(this.user, "student")
                 .subscribe(
                   type => 
@@ -85,22 +81,23 @@ export class RegisterComponent implements OnInit {
                   },
                   error =>
                   {
-                    console.log("Error ocurred in create type user")
+                    Swal('Oops...', 'Error en el servidor!', 'error')
+                    this.loading = false;
                 });
                 localStorage.setItem('currentUser', JSON.stringify(this.user));
                 this.router.navigate(["/layout"]);
-                this.loading = true;
-                console.log(this.loading)
+                this.loading = false
               },
               error => 
               {
-                console.log("Error occured");
+                Swal('Oops...', 'Error en el servidor!', 'error')
                 this.loading = false;
               }
             );
           }
         },
         error => {
+          Swal('Oops...', 'Error en el servidor!', 'error')
           this.loading = false;
         });
   }
