@@ -16,8 +16,8 @@ import {  ClassroomService  } from '../services/classroom.service'
   templateUrl: './coment.component.html',
   styleUrls: ['./coment.component.css']
 })
-export class ComentComponent implements OnInit {
- 
+
+export class ComentComponent implements OnInit { 
   buildings: Building[];
   currentUser: User;
   classrooms: Classroom[];
@@ -36,9 +36,7 @@ export class ComentComponent implements OnInit {
   ngOnInit() {
     this.getBuildings();
     console.log(this.currentUser);
-
   }
-
   logForm(form: NgForm) {
     // console.log(this.currentUser.id);
     // console.log(this.opinion.classroom_id);
@@ -47,8 +45,6 @@ export class ComentComponent implements OnInit {
     this.opinion.user_id = this.currentUser.id;
     this.opinion.classroom_id = this.opinion.classroom_id ;
     this.opinion.description = this.opinion.description;
-    
-
     console.log("antes del add");
     this.add();
   }

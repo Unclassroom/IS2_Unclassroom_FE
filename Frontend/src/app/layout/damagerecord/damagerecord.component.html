@@ -22,12 +22,11 @@
       </div>
       <!-- Salon -->
       <label mdbActive  for="room" class="text-muted">Salón:</label>
-      <div class="md-form" *ngIf="verify"> <!--*ngIf="getSubjects"-->
+      <div class="md-form"> <!--*ngIf="getSubjects"-->
         <select [(ngModel)]="report.classroom_id" class="form-control" id="room" name="classroom_id"><!--[(ngModel)]="report.classroom_id" ngModel-->
             <option value=""></option>
-          <option value="1">1</option>
-          <option value="2">2</option>
           <!--*<option *ngFor="let classroom of classrooms" value="{{classroom.id}}">{{classroom.id}}</option>-->
+          <option *ngFor="let classroom of classrooms" value="{{classroom.id}}">{{classroom.id}}</option>
 
         </select>
       </div>

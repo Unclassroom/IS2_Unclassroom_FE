@@ -16,6 +16,7 @@ import {  ClassroomService  } from '../services/classroom.service'
   templateUrl: './damagerecord.component.html',
   styleUrls: ['./damagerecord.component.css']
 })
+
 export class DamagerecordComponent implements OnInit {
   buildings: Building[];
   currentUser: User;
