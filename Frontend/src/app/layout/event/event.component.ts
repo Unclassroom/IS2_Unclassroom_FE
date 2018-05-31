@@ -10,32 +10,65 @@ import {Event} from '../models/event';
 export class EventComponent implements OnInit {
 
   events: Event[];
-  eventsPages: number;
-  eventsNumber = [];
+  Pages: number;
+  Number = [];
+  previous: number;
+  next: number;
+  first: number;
+  last: number;
   constructor(private eventService: EventService) { }
 
   ngOnInit() {
     this.getEvents();
-    this.getEventsPages();
+    this.getPages();
   }
   getEvents(): void {
     this.eventService.getEvents()
       .subscribe(events => this.events = events);
 
   }
-  getEventsPages(): void {
-    this.eventService.getEventsPages()
+  getPages(): void {
+    this.eventService.getPages()
       .subscribe((eventsPages) => {
-        this.eventsPages = eventsPages;
-        for ( let i = 0; i < this.eventsPages; i++ ) {
-          this.eventsNumber[i] = i + 1;
+        this.Pages = eventsPages;
+        for ( let i = 0; i < this.Pages; i++ ) {
+          this.Number[i] = i + 1;
           console.log(i);
         }
+          this.previous = 1;
+          this.next = 1;
+          this.first = 1;
+          this.last = this.Pages;
     });
 
   }
-  onChangeEvent(id: number): void {
-    this.eventService.getEventsPagination(id)
+  onChangePage(id: number): void {
+
+    this.previous = id;
+    this.next = id;
+    /*
+    this.previous = (id - 1 >= this.first) ? id - 1 : 1;
+    this.next = (id + 1 <= this.last) ? id + 1 : this.last;*/
+    this.eventService.getPagination(id)
       .subscribe(events => this.events = events);
+  }
+
+  onChangeNext(id: number): void {
+    const nexteventsaux = id + 1;
+    if (nexteventsaux <= this.last ) {
+      this.previous = id + 1;
+      this.next = nexteventsaux;
+      this.eventService.getPagination(this.next)
+        .subscribe(events => this.events = events);
+    }
+  }
+  onChangePrevious(id: number): void {
+    const previouseventsaux = id - 1;
+    if (previouseventsaux >= this.first ) {
+      this.next = id - 1;
+      this.previous = previouseventsaux;
+      this.eventService.getPagination(this.previous)
+        .subscribe(events => this.events = events);
+    }
   }
 }

@@ -10,6 +10,8 @@ import {RequestPurpose} from '../models/requestpurposes';
 import 'rxjs/add/operator/toPromise';
 
 import { of } from 'rxjs/observable/of';
+import {Event} from '../models/event';
+import {UrloriginService} from './urlorigin.service';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -17,16 +19,18 @@ const httpOptions = {
 @Injectable()
 export class RequestService {
 
-  private AllRequestUrl = 'http://localhost:3000/requests'; // URL to web api
-  private requestByUserUrl = 'http://localhost:3000/teacher_requests';  
-  private DataRequestByPurposesUrl = 'http://localhost:3000/request_count_by_purpose';  // URL to web api
-  private DataRequestByStateUrl = 'http://localhost:3000/request_count_by_state';  // URL to web api
-  private DataRequestByMonthUrl = 'http://localhost:3000/request_count_by_month';  // URL to web api
-  private DataRequestByPurposesUrlFiltered = 'http://localhost:3000/request_count_by_purpose';  // URL to web api
+  private AllRequestUrl = this.urloriginService.getUrl('requests');// URL to web api
+  private requestByUserUrl = this.urloriginService.getUrl('teacher_requests');
+  private DataRequestByPurposesUrl = this.urloriginService.getUrl('request_count_by_purpose'); // URL to web api
+  private DataRequestByStateUrl = this.urloriginService.getUrl('request_count_by_state'); // URL to web api
+  private DataRequestByMonthUrl = this.urloriginService.getUrl('request_count_by_month'); // URL to web api
+  private DataRequestByPurposesUrlFiltered = this.urloriginService.getUrl('request_count_by_purpose');  // URL to web api
+  private _UrlPages = this.urloriginService.getUrl('requests_pages');
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService) { }
+    private messageService: MessageService,
+    private urloriginService: UrloriginService) { }
 
 
   /** GET Request from the server */
@@ -36,6 +40,13 @@ export class RequestService {
 
   getRequestByUser (user_id): Observable<InboxRequest[]> {
     return this.http.get<InboxRequest[]>(this.requestByUserUrl+"/"+ user_id);
+  }
+  getPagination (id: number): Observable<InboxRequest[]> {
+    return this.http.get<InboxRequest[]>(this.AllRequestUrl + '?page=' + id);
+  }
+
+  getPages (): Observable<number> {
+    return this.http.get<number>(this._UrlPages);
   }
 
   // getDataRequestByPurposes_Filtered (): Observable<Response> {
@@ -77,7 +88,7 @@ export class RequestService {
     console.log("in addRequest service")
     console.log(request.motive)
     console.log(request.type_request)
-  return this.http.post(this.AllRequestUrl, 
+  return this.http.post(this.AllRequestUrl,
     {
       "user_type": request.user_type,
       "user_id":request.user_id,
@@ -89,11 +100,11 @@ export class RequestService {
       [
         {
           "type_request": request.type_request,
-            "specific": 
+            "specific":
             // It is necessary fix this, because an object calling other object doesnt match or it isnt good.
              request.specific.specific
-            
-        }  
+
+        }
       ]
     }
     )

@@ -6,6 +6,8 @@ import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Report } from '../models/report';
 import { MessageService } from './message.service';
+import {Opinion} from '../models/opinion';
+import {UrloriginService} from './urlorigin.service';
 
 
 const httpOptions = {
@@ -14,11 +16,13 @@ const httpOptions = {
 
 @Injectable()
 export class ReportService {
-  private _Url = 'http://localhost:3000/reports';
+  private _Url = this.urloriginService.getUrl('reports');
+  private _UrlPages = this.urloriginService.getUrl('reports_pages');
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService) { }
+    private messageService: MessageService,
+    private urloriginService: UrloriginService) { }
 
   /** GET reports from the server */
   getReports(): Observable<Report[]> {
@@ -36,13 +40,20 @@ export class ReportService {
     return this.http.get<Report[]>(this._Url + '?page=' + id);
   }
 
+  getPagination (id: number): Observable<Report[]> {
+    return this.http.get<Report[]>(this._Url + '?page=' + id);
+  }
+
+  getPages (): Observable<number> {
+    return this.http.get<number>(this._UrlPages);
+  }
   //////// Save methods //////////
 
 
   /** POST: add a new report to the server */
   addReport (report: any) {
     console.log("in addRequest service")
-    return this.http.post(this._Url, 
+    return this.http.post(this._Url,
     {
       "description": report.description,
       "building_id": report.building_id,

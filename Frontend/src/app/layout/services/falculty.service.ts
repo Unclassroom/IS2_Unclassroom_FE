@@ -7,6 +7,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Faculty } from '../models/faculty';
 import { MessageService } from './message.service';
 import {UrloriginService} from './urlorigin.service';
+import {Report} from '../models/report';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -15,6 +16,7 @@ const relativeModule = 'faculties';
 @Injectable()
 export class FalcultyService {
   private _Url = this.urloriginService.getUrl(relativeModule);
+  private _UrlPages = this.urloriginService.getUrl('faculties_pages');
   constructor(
     private http: HttpClient,
     private messageService: MessageService,
@@ -34,6 +36,14 @@ export class FalcultyService {
   }
   getFacultiesPagination (id: number): Observable<Faculty[]> {
     return this.http.get<Faculty[]>(this._Url + '?page=' + id);
+  }
+
+  getPagination (id: number): Observable<Faculty[]> {
+    return this.http.get<Faculty[]>(this._Url + '?page=' + id);
+  }
+
+  getPages (): Observable<number> {
+    return this.http.get<number>(this._UrlPages);
   }
 
   //////// Save methods //////////

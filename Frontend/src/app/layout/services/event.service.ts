@@ -36,11 +36,11 @@ export class EventService {
     );
   }
 
-  getEventsPagination (id: number): Observable<Event[]> {
+  getPagination (id: number): Observable<Event[]> {
     return this.http.get<Event[]>(this._Url + '?page=' + id);
   }
 
-  getEventsPages (): Observable<number> {
+  getPages (): Observable<number> {
     return this.http.get<number>(this._UrlPages);
   }
   //////// Save methods //////////
