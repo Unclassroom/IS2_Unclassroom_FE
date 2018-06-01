@@ -20,9 +20,9 @@
         <tr>
           <th class="mr-2"><label  class="th-lg label-table">No.</label>
           </th>
-          <th class="th-lg"><a href="">Comentario<i class="fa fa-sort ml-1"></i></a></th>
-          <th class="th-lg"><a href="">Edificio<i class="fa fa-sort ml-1"></i></a></th>
-          <th class="th-lg"><a href="">Salón<i class="fa fa-sort ml-1"></i></a></th>
+          <th class="th-lg"><a>Comentario<i class="fa fa-sort ml-1"></i></a></th>
+          <th class="th-lg"><a>Edificio<i class="fa fa-sort ml-1"></i></a></th>
+          <th class="th-lg"><a>Salón<i class="fa fa-sort ml-1"></i></a></th>
         </tr>
         </thead>
         <tbody>
@@ -31,8 +31,8 @@
             <label  class="label-table">{{opinion.id}}</label>
           </th>
           <td>{{opinion.description}}</td>
-          <td>{{opinion.classroom_id}}</td>
-          <td>{{opinion.user_id}}</td>
+          <td>{{opinion.building.name}}</td>
+          <td>{{opinion.classroom.id}}</td>
         </tr>
         </tbody>
         <!--Table body-->

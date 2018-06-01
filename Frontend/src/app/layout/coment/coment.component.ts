@@ -43,15 +43,14 @@ export class ComentComponent implements OnInit {
     // console.log(this.opinion.description);
     this.opinion.user_type = this.currentUser.role;
     this.opinion.user_id = this.currentUser.id;
+    this.opinion.building_id = this.opinion.building_id;
     this.opinion.classroom_id = this.opinion.classroom_id ;
     this.opinion.description = this.opinion.description;
     console.log("antes del add");
     this.add();
   }
 
-  registerClient() {
-    this.router.initialNavigation();
-  }
+  
 
   add(): void {
     this.opinionService.addOpinion(this.opinion)

@@ -32,10 +32,11 @@
             <label  class="label-table">{{report.id}}</label>
           </th>
           <td>{{report.description}}</td>
-          <td>{{report.building_id}}</td>
-          <td>{{report.classroom_id}}</td>
-          <td><a class="btn  waves-light" style="background-color: #3EA5B9;"  (click)="form.show()"  mdbRippleRadius>
-            <i class="fa fa-clone left"></i> Image</a></td>
+          <td>{{report.building.name}}</td>
+          <td>{{report.classroom.id}}</td>
+          <td><a target="_blank" href="http://localhost:3000/{{report.image.url}}" class="btn btn-info" role="button">Ver imagen</a></td>
+          <!--td><a class="btn  waves-light" style="background-color: #3EA5B9;"  (click)="form.show()"  mdbRippleRadius>
+            <i class="fa fa-clone left"></i> Image</a></td-->
           <div mdbModal  #form="mdb-modal"   class="modal fade" id="modalImage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog cascading-modal" role="document">
               <!--Content-->

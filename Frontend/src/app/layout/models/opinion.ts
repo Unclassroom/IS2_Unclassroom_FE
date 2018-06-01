@@ -3,6 +3,7 @@ export class Opinion {
     user_type: string;
     user_id: number;
     description: string;
-    classroom_id: string;
+    classroom_id: number;
+    building_id: number;
 }
 
