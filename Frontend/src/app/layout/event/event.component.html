@@ -6,14 +6,12 @@
   <!--Grid column-->
   <div class="col-lg-6 col-md-6" style="margin-bottom: 15px">
 
-    <form class="form-inline mt-6 ml-6 px-4">
-      <input class="form-control my-0 py-0" type="text" placeholder="Search" style="width: 80%;">
-      <button class="btn btn-sm btn-info ml-2 px-15"><i class="fa fa-search"></i>  </button>
-    </form>
+    <!--<form class="form-inline mt-6 ml-6 px-4">
+     <input class="form-control my-0 py-0" type="text" placeholder="Search" style="width: 80%;">
+     <button class="btn btn-sm btn-info ml-2 px-15"><i class="fa fa-search"></i>  </button>
+   </form>
 
   </div>
-  <!--Grid column-->
-  <!--Grid column-->
   <div class="col-lg-4 col-md-4" style="margin-bottom: 15px">
 
 
@@ -22,7 +20,7 @@
 
     <a  routerLink="/layout/event/register/" class="btn btn-info">Nuevo</a>
 
-  </div>
+  </div>-->
   <!--Grid column-->
 
   <!--Grid row-->
@@ -80,34 +78,34 @@
 
 
       <!--Pagination -->
-      <nav class="my-4">
+      <nav class="my-4"   *ngIf="Number">
         <ul class="pagination pagination-circle pg-blue mb-0">
 
           <!--First-->
-          <li class="page-item disabled"><a class="page-link">First</a></li>
+          <li class="page-item" (click)="onChangePage(this.first)"><a class="page-link">First</a></li>
 
           <!--Arrow left-->
-          <li class="page-item disabled">
+          <li class="page-item" (click)="onChangePrevious(this.previous)">
             <a class="page-link" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
+              <span aria-hidden="true" >&laquo;</span>
               <span class="sr-only">Previous</span>
             </a>
           </li>
 
           <!--Numbers-->
 
-          <li class="page-item " *ngFor="let eventNumber of eventsNumber" (click)="onChangeEvent(eventNumber)"><a class="page-link">{{ eventNumber }}</a></li>
+          <li class="page-item " *ngFor="let eventNumber of Number" (click)="onChangePage(eventNumber)"><a class="page-link">{{ eventNumber }}</a></li>
 
           <!--Arrow right-->
-          <li class="page-item">
+          <li class="page-item" (click)="onChangeNext(this.next)">
             <a class="page-link" aria-label="Next">
-              <span aria-hidden="true" (click)="onChangeEvent(1)">&raquo;</span>
+              <span aria-hidden="true" >&raquo;</span>
               <span class="sr-only">Next</span>
             </a>
           </li>
 
           <!--First-->
-          <li class="page-item"><a class="page-link">Last</a></li>
+          <li class="page-item"  (click)="onChangePage(this.last)"><a class="page-link" >Last</a></li>
 
         </ul>
       </nav>

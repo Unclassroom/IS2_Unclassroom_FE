@@ -7,7 +7,7 @@ import { UserService } from '../_services/index';
 import { AuthenticationService } from '../_services/index';
 import {  HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../_models/index';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 interface Token {
   "jwt": string;
@@ -15,11 +15,11 @@ interface Token {
 @Component({
   moduleId: module.id,
   selector: 'app-register',
-  templateUrl: './register.component.html', 
+  templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  
+
   signUpUser = {
     email: '',
     password: '',
@@ -38,20 +38,20 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private http: HttpClient,
     private authenticationService: AuthenticationService
-  ) 
+  )
   {
     let passlengt= this.signUpUser.password.length;
   }
   ngOnInit() {}
 
-  passShort(passlengt){  
-    return passlengt<=8  
+  passShort(passlengt){
+    return passlengt<=8
   }
 
-  passLong(passlengt){ 
+  passLong(passlengt){
     if (passlengt<16)
-      return false 
-    else return true  
+      return false
+    else return true
   }
 
   register() {
@@ -68,16 +68,16 @@ export class RegisterComponent implements OnInit {
           }else{
             this.authenticationService.login(this.token)
             .subscribe(
-              data => 
+              data =>
               {
                 this.user = JSON.parse(localStorage.getItem('currentUser'))
                 this.user.first_name = this.model.first_name
                 this.user.last_name = this.model.last_name
                 this.userService.createTypeUser(this.user, "student")
                 .subscribe(
-                  type => 
+                  type =>
                   {
-                    console.log("Create type user")  
+                    console.log("Create type user")
                   },
                   error =>
                   {
@@ -88,7 +88,7 @@ export class RegisterComponent implements OnInit {
                 this.router.navigate(["/layout"]);
                 this.loading = false
               },
-              error => 
+              error =>
               {
                 Swal('Oops...', 'Error en el servidor!', 'error')
                 this.loading = false;

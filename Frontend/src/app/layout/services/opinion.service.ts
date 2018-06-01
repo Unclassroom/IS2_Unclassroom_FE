@@ -6,6 +6,8 @@ import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Opinion } from '../models/opinion';
 import { MessageService } from './message.service';
+import {UrloriginService} from './urlorigin.service';
+import {InboxRequest} from '../models/inboxrequest';
 
 
 const httpOptions = {
@@ -13,15 +15,24 @@ const httpOptions = {
 };
 @Injectable()
 export class OpinionService {
-  private AllOpinionUrl = 'http://localhost:3000/opinions';
+  private AllOpinionUrl = this.urloriginService.getUrl('opinions');
+  private _UrlPages = this.urloriginService.getUrl('opinions_pages');
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService) { }
+    private messageService: MessageService,
+    private urloriginService: UrloriginService) { }
 
   /** GET opinions from the server */
   getOpinions(): Observable<Opinion[]> {
     return this.http.get<Opinion[]>(this.AllOpinionUrl);
+  }
+  getPagination (id: number): Observable<Opinion[]> {
+    return this.http.get<Opinion[]>(this.AllOpinionUrl + '?page=' + id);
+  }
+
+  getPages (): Observable<number> {
+    return this.http.get<number>(this._UrlPages);
   }
   /** GET hero by id. Will 404 if id not found */
   getOpinion(id: number): Observable<Opinion> {
@@ -31,9 +42,6 @@ export class OpinionService {
       catchError(this.handleError<Opinion>(`getOpinion id=${id}`))
     );
   }
-  getOpinionsPagination (id: number): Observable<Opinion[]> {
-    return this.http.get<Opinion[]>(this.AllOpinionUrl + '?page=' + id);
-  }
 
   //////// Save methods //////////
 
@@ -41,7 +49,7 @@ export class OpinionService {
   /** POST: add a new hero to the server */
   addOpinion (opinion: any) {
     console.log("in addRequest service")
-    return this.http.post(this.AllOpinionUrl, 
+    return this.http.post(this.AllOpinionUrl,
     {
       "user_type":opinion.user_type,
       "user_id":opinion.user_id,
